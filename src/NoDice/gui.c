@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include <gtk/gtk.h>
 #include <stdio.h>
-#include "NoDiceLib.h"
+#include "../NoDiceLib/NoDiceLib.h"
 #include "NoDice.h"
 #include "guictls.h"
 
@@ -79,7 +79,7 @@ static volatile gboolean run_6502_timeout_thread_cond_ack = FALSE;
 // Used to run a timeout in case the 6502 freezes
 static gpointer run_6502_timeout_thread(gpointer optr)
 {
-	GTimeVal time;
+	GDateTime time;
 
 	// Required for g_cond_timed_wait, not used
 	GMutex *unused_mutex = g_mutex_new();

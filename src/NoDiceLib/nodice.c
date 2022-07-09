@@ -2,16 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-
-#ifndef WIN32
+#include <time.h>
 #include <unistd.h>
-#else
-#include <direct.h>
-#endif
 
-#include "NoDiceLib.h"
 #include "internal.h"
-#include "M6502/M6502.h"
+#include "NoDiceLib.h"
+#include "../M6502/M6502.h"
 
 char _error_msg[ERROR_MSG_LEN];
 char _buffer[BUFFER_LEN];
@@ -132,4 +128,3 @@ void NoDice_Shutdown()
 	_rom_free_level_list();
 	_config_shutdown();
 }
-

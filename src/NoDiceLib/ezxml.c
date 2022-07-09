@@ -22,36 +22,29 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#include <ctype.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
-#include <ctype.h>
-
-// RAS: Added a little Win32 compatability
-#ifndef _WIN32
-#include <unistd.h>
-#else
-#include <io.h>
-#define snprintf _snprintf
-#define vsnprintf _vsnprintf
-
-#	ifdef _MSC_VER
-#	pragma warning(disable:4244) // conversion from '...' to '...', possible loss of data
-#	pragma warning(disable:4267) // conversion from '...' to '...', possible loss of data
-#	endif
-
-#endif
-
-#include <sys/types.h>
-#ifndef EZXML_NOMMAP
 #include <sys/mman.h>
-#endif // EZXML_NOMMAP
 #include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
+
 #include "ezxml.h"
 
 #define EZXML_WS   "\t\r\n "  // whitespace
 #define EZXML_ERRL 128        // maximum error string length
+
+// Force the compiler to work
+#ifndef MADV_NORMAL
+#define MADV_NORMAL	  0
+#endif
+
+#ifndef MADV_SEQUENTIAL
+#define MADV_SEQUENTIAL  2
+#endif
 
 typedef struct ezxml_root *ezxml_root_t;
 struct ezxml_root {       // additional data for the root tag

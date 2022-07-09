@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "NoDiceLib.h"
+#include "../NoDiceLib/NoDiceLib.h"
 #include "NoDice.h"
 
 static gui_surface_t *PPU_BG_VROM[4];

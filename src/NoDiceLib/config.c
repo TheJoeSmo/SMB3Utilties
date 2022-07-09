@@ -1,14 +1,10 @@
 #include <string.h>
 #include <errno.h>
 #include <sys/stat.h>
-
-#ifndef WIN32
 #include <unistd.h>
-#else
-#include <direct.h>
-#endif
 
-#include "NoDiceLib.h"
+#include "../NoDiceLib/NoDiceLib.h"
+
 #include "ezxml.h"
 #include "internal.h"
 

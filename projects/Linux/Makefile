@@ -20,7 +20,7 @@ ARFLAGS := rcs
 
 # NoDiceLib labels
 NDLSRCPATH := ../../src/NoDiceLib/
-NDLOBJPATH := obj/NoDiceLib/
+NDLOBJPATH := o/NoDiceLib/
 NDLSOURCES := $(shell find $(NDLSRCPATH) -type f -name '*.c')
 NDLOBJS := $(patsubst $(NDLSRCPATH)%, $(NDLOBJPATH)%, $(patsubst %.c,%.o,$(NDLSOURCES)))
 NDLLIB := $(NDLOBJPATH)NoDiceLib.a
@@ -45,7 +45,7 @@ NoDiceLib: $(NDLLIB)
 GTKCFLAGS = $(shell pkg-config gtk+-2.0 --cflags)
 GTKLIBS = $(shell pkg-config gtk+-2.0 --libs)
 NDSRCPATH := ../../src/NoDice/
-NDOBJPATH := obj/NoDice/
+NDOBJPATH := o/NoDice/
 NDSOURCES := $(shell find $(NDSRCPATH) -type f -name '*.c')
 NDOBJS := $(patsubst $(NDSRCPATH)%, $(NDOBJPATH)%, $(patsubst %.c,%.o,$(NDSOURCES)))
 NDBIN := ../../bin/NoDice

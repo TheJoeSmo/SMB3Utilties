@@ -1,5 +1,5 @@
 #include <gtk/gtk.h>
-#include "NoDiceLib.h"
+#include "../NoDiceLib/NoDiceLib.h"
 #include "NoDice.h"
 #include "guictls.h"
 

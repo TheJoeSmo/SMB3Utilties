@@ -3,7 +3,7 @@
 #include <string.h>
 #include "NoDiceLib.h"
 #include "internal.h"
-#include "M6502/M6502.h"
+#include "../M6502/M6502.h"
 
 #define LOW(address)	((byte)((address) & 0x00FF))
 #define HIGH(address)	((byte)(((address) & 0xFF00) >> 8))
@@ -114,7 +114,6 @@ struct NoDice_level NoDice_the_level = { { 0 } };
 static byte is_loading_level = 0;	// Set to enable any of the following
 static struct NoDice_the_level_generator *cur_gen = NULL, *prev_gen = NULL;
 static unsigned short prev_gen_start_addr = 0x0000;	// Start address of generator; for determining size
-
 
 // Calculate virtual x pixel position of specified video address (non-vertical)
 static unsigned short vram_virtual_x(unsigned short addr)

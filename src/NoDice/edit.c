@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
-#include "NoDiceLib.h"
+#include "../NoDiceLib/NoDiceLib.h"
 #include "NoDice.h"
 
 #define UNDO_STACK_LIMIT	100	// FIXME: User-configurable!

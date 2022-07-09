@@ -1,18 +1,12 @@
-#ifndef _NODICELIB_H
-#define _NODICELIB_H
-
 #include <limits.h>
 
-#ifdef _MSC_VER
-// MSVC compatibility fixes
-#if _MSC_VER < 1900 //vs2015 already have this function
-#define snprintf _snprintf
+// Force a path max in case limits doesn't work
+#ifndef PATH_MAX
+#define PATH_MAX 4096
 #endif
-#define chdir _chdir
-#define strcasecmp _stricmp
-#define strdup _strdup
-#define PATH_MAX 260	// FIXME: Ought to come from header
-#endif
+
+#ifndef _NODICELIB_H
+#define _NODICELIB_H
 
 char *stristr(const char *String, const char *Pattern);
 

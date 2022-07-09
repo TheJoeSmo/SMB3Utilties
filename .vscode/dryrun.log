@@ -1,0 +1,9 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/joe/repos/NoDice/SMB3Utilties'
+gcc -std=c11 -O -c src/NoDiceLib/ezxml.c -o o/NoDiceLib/ezxml.o `pkg-config --cflags gtk+-2.0`
+gcc -std=c11 -O -c src/NoDice/gui_combobox_simple.c -o o/NoDice/guictls.o `pkg-config --cflags gtk+-2.0`
+gcc -std=c11 -O -c src/NoDice/gui_listbox.c -o o/NoDice/NoDice.o `pkg-config --cflags gtk+-2.0`
+gcc -std=c11 -O -c src/NoDice/main.c -o o/NoDice/main.o `pkg-config --cflags gtk+-2.0`
+gcc -std=c11 -O -o bin/nesasm o/M6502/M6502.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o `pkg-config --cflags gtk+-2.0`
+make: Leaving directory '/home/joe/repos/NoDice/SMB3Utilties'
+ 

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "NoDiceLib.h"
+#include "../NoDiceLib/NoDiceLib.h"
 #include "NoDice.h"
 
 #ifdef _WIN32

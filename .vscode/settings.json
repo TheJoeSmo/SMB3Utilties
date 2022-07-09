@@ -1,0 +1,12 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+    "files.associations": {
+        "internal.h": "c",
+        "m6502.h": "c",
+        "unistd.h": "c",
+        "nodicelib.h": "c",
+        "nodice.h": "c",
+        "guictls.h": "c"
+    }
+}
