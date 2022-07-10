@@ -1,5 +1,6 @@
-#include <string.h>
 #include <errno.h>
+#include <string.h>
+#include <stdlib.h>
 #include <sys/stat.h>
 #include <unistd.h>
 
@@ -290,12 +291,12 @@ int _config_init() {
 	memset(&NoDice_config, 0, sizeof(struct NoDice_configuration));
 
 	// Attempt to load configuration XML
-	if( ((config_xml = ezxml_parse_file(CONFIG_XML)) == NULL) || (config_xml->name == NULL) )
-	{
-		if(errno == ENOENT || errno == EACCES)
-			// Handle file errors
-			strncpy(_error_msg, "Unable to open " CONFIG_XML, sizeof(_error_msg));
-		else
+	if( ((config_xml = ezxml_parse_file(CONFIG_XML)) == NULL) || (config_xml->name == NULL) ) {
+		if (errno == ENOENT) {
+			snprintf(_error_msg, sizeof(_error_msg), "Unable to open %s\nNo such file or directory", CONFIG_XML);
+		} else if (errno == EACCES) {
+			snprintf(_error_msg, sizeof(_error_msg), "Unable to open %s\nPermission denied", CONFIG_XML);
+		} else
 			snprintf(_error_msg, sizeof(_error_msg), "%s: %s", CONFIG_XML, ezxml_error(game_xml));
 		return 0;
 	}
@@ -394,10 +395,12 @@ int _config_init() {
 	snprintf(_buffer, BUFFER_LEN, "%s/" GAME_XML, NoDice_config.game_dir);
 	if( ((game_xml = ezxml_parse_file(_buffer)) == NULL) || (game_xml->name == NULL) )
 	{
-		if(errno == ENOENT || errno == EACCES)
-			// Handle file errors
-			snprintf(_error_msg, sizeof(_error_msg), "Unable to open %s", _buffer);
-		else
+		// Handle error for opening game XML
+		if (errno == ENOENT) {
+			snprintf(_error_msg, sizeof(_error_msg), "Unable to open %s\nNo such file or directory", _buffer);
+		} else if (errno == EACCES) {
+			snprintf(_error_msg, sizeof(_error_msg), "Unable to open %s\nPermission denied", _buffer);
+		} else
 			snprintf(_error_msg, sizeof(_error_msg), "%s: %s", _buffer, ezxml_error(game_xml));
 		return 0;
 	}

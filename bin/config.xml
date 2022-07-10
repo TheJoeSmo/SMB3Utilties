@@ -1,12 +1,12 @@
 <config>
 	<!-- 	game: Current game project folder; note that the editor will change to this directory -->
-	<game value="SMB3" />
+	<game value="../../../Prime-Bros-3/smb3hack-master" />
 
 	<!-- 	filebase: Base name of root assembly file and output (e.g. "smb3" for "smb3.asm", "smb3.nes", etc.) -->
-	<filebase value="smb3" />
+	<filebase value="main" />
 
 	<!-- 	build: Path to assembler; if using a relative path, remember to be relative to your "game" directory -->
-	<build value="../nesasm" />
+	<build value="../nesasm.exe" />
 
 	<!--	builderror: How to check for failure of assembler:
 
@@ -36,4 +36,3 @@
 	-->
 	<levelrangecheckhigh value="0x798A" />
 </config>
-

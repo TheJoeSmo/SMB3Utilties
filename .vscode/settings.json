@@ -11,8 +11,13 @@
         "gui_popups.h": "c",
         "gui.h": "c",
         "ppu.h": "c",
-        "gui_combobox_simple.h": "c"
+        "gui_combobox_simple.h": "c",
+        "errno.h": "c"
     },
     "C_Cpp.default.cStandard": "c11",
-    "C_Cpp.default.compileCommands": ""
+    "C_Cpp.default.compileCommands": "",
+    "C_Cpp.default.cppStandard": "c++11",
+    "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
+        "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling"
+    ],
 }

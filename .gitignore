@@ -12,5 +12,7 @@
 /projects/MSVC
 *.o
 *.a
+*.vscode
+.vscode-ctags
 bin/MusConv
 bin/NoDice

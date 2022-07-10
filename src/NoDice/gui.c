@@ -1969,7 +1969,7 @@ void gui_boot(int argc, char *argv[])
 	gdk_threads_init();
 
 	// Initialize GTK+
-	gtk_init (&argc, &argv);
+	gtk_init(&argc, &argv);
 }
 
 

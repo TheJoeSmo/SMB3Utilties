@@ -2,10 +2,10 @@
 
 all: compile
 
-compile: bin/nesasm
+compile: bin/NoDice
 
 # Generate the main file to run
-bin/nesasm: o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o
+bin/NoDice: o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o
 	gcc -std=c11 -g -o $@ o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o `pkg-config --cflags gtk+-2.0`  `pkg-config --libs gtk+-2.0`
 
 o/NoDice/main.o: src/NoDice/main.c

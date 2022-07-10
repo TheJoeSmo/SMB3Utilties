@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul  9 22:13:02 2022
+# Make data base, printed on Sat Jul  9 22:59:16 2022
 
 # Variables
 
@@ -49,9 +49,11 @@ PATH = /home/joe/.vscode-server/bin/92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
+XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
+# environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-55a2e18f-ede9-455f-818e-9282a6a30f0b.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-5e4e6e39-821f-48b8-9d43-e8b9f135b091.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -59,11 +61,15 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # automatic
 %F = $(notdir $%)
 # environment
+DISPLAY = :0
+# environment
 PWD = /home/joe/repos/NoDice/SMB3Utilties
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/1306_interop
+WSL_INTEROP = /run/WSL/14_interop
+# environment
+PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
 MANPATH = /home/linuxbrew/.linuxbrew/share/man::
 # environment
@@ -142,6 +148,8 @@ HOSTTYPE = x86_64
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
+# environment
+WAYLAND_DISPLAY = wayland-0
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # default
@@ -153,7 +161,7 @@ TERM = xterm-256color
 # environment
 WSL_DISTRO_NAME = Ubuntu
 # variable set hash-table stats:
-# Load=71/1024=7%, Rehash=0, Collisions=5/99=5%
+# Load=75/1024=7%, Rehash=0, Collisions=5/103=5%
 
 # Pattern-specific Variable Values
 
@@ -161,8 +169,8 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 2064, inode 175630): 13 files, no impossibilities.
-# src/M6502 (device 2064, inode 266508): 7 files, no impossibilities.
+# . (device 2080, inode 175630): 13 files, no impossibilities.
+# src/M6502 (device 2080, inode 266508): 7 files, no impossibilities.
 
 # 20 files, no impossibilities in 2 directories.
 
@@ -200,28 +208,9 @@ clear: clean
 
 o/NoDice/gui_overlay.o: src/NoDice/gui_overlay.c src/NoDice/gui_overlay.h
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  File does not exist.
+#  Last modified 2022-07-09 22:40:32.0936555
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := o/NoDice/gui_overlay.o
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := src/NoDice/gui_overlay.c src/NoDice/gui_overlay.h
-# automatic
-# | := 
-# automatic
-# < := src/NoDice/gui_overlay.c
-# automatic
-# ^ := src/NoDice/gui_overlay.c src/NoDice/gui_overlay.h
-# automatic
-# ? := src/NoDice/gui_overlay.c src/NoDice/gui_overlay.h
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/13=8%
+#  Successfully updated.
 #  recipe to execute (from 'makefile', line 27):
 	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 
@@ -248,21 +237,24 @@ all: compile
 
 # Not a target:
 src/NoDiceLib/exec.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 21:23:43.7756662
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 src/NoDice/gui_combobox_simple.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-08 23:05:04.9952732
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 src/NoDice/edit.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 21:42:33.7656662
+#  File has been updated.
+#  Successfully updated.
 
 o/NoDiceLib/ezxml.o: src/NoDiceLib/ezxml.c src/NoDiceLib/ezxml.h
 #  Implicit rule search has not been done.
@@ -273,7 +265,6 @@ o/NoDiceLib/ezxml.o: src/NoDiceLib/ezxml.c src/NoDiceLib/ezxml.h
 
 # Not a target:
 src/NoDice/main.c:
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -282,13 +273,15 @@ src/NoDice/main.c:
 src/NoDice/gui.h:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 # Not a target:
 src/NoDiceLib/config.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 22:58:48.3336555
+#  File has been updated.
+#  Successfully updated.
 
 o/NoDiceLib/NoDiceLib.o: src/NoDiceLib/nodice.c src/NoDiceLib/NoDiceLib.h
 #  Implicit rule search has not been done.
@@ -311,15 +304,17 @@ src/NoDice/ppu.h:
 
 # Not a target:
 src/NoDiceLib/exec.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 19:39:31.78693
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 src/NoDice/gui_combobox_simple.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 21:53:50.9256662
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 .SUFFIXES:
@@ -336,9 +331,10 @@ src/M6502/M6502.c:
 
 # Not a target:
 src/NoDice/edit.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 21:46:53.1656662
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 src/NoDiceLib/internal.c:
@@ -346,20 +342,10 @@ src/NoDiceLib/internal.c:
 #  Modification time never checked.
 #  File has not been updated.
 
-bin/nesasm: o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
-#  recipe to execute (from 'makefile', line 9):
-	gcc -std=c11 -g -o $@ o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o `pkg-config --cflags gtk+-2.0`  `pkg-config --libs gtk+-2.0`
-
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-09 22:12:50.8356662
+#  Last modified 2022-07-09 22:40:27.5836555
 #  File has been updated.
 #  Successfully updated.
 
@@ -372,9 +358,10 @@ o/NoDice/gui.o: src/NoDice/gui.c src/NoDice/gui.h
 
 # Not a target:
 src/NoDiceLib/config.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 19:17:51.81693
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 src/NoDice/guictls.h:
@@ -391,9 +378,10 @@ o/NoDice/NoDice.o: src/NoDice/NoDice.c src/NoDice/NoDice.h
 
 # Not a target:
 src/NoDiceLib/ram.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 19:50:52.62693
+#  File has been updated.
+#  Successfully updated.
 
 o/NoDice/ppu.o: src/NoDice/ppu.c src/NoDice/ppu.h
 #  Implicit rule search has not been done.
@@ -411,22 +399,25 @@ src/M6502/M6502.h:
 
 o/NoDiceLib/exec.o: src/NoDiceLib/exec.c src/NoDiceLib/exec.h
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-07-09 22:40:33.1036555
+#  File has been updated.
+#  Successfully updated.
 #  recipe to execute (from 'makefile', line 45):
 	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 
 o/NoDice/gui_combobox_simple.o: src/NoDice/gui_combobox_simple.c src/NoDice/gui_combobox_simple.h
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-07-09 22:40:33.0136555
+#  File has been updated.
+#  Successfully updated.
 #  recipe to execute (from 'makefile', line 36):
 	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 
 o/NoDice/edit.o: src/NoDice/edit.c src/NoDice/edit.h
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-07-09 22:40:32.7736555
+#  File has been updated.
+#  Successfully updated.
 #  recipe to execute (from 'makefile', line 21):
 	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 
@@ -445,9 +436,10 @@ o/NoDice/main.o: src/NoDice/main.c
 
 # Not a target:
 src/NoDice/gui_property_box.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 22:06:24.3156662
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 src/M6502/Debug.c:
@@ -464,22 +456,44 @@ src/NoDiceLib/nodice.c:
 
 o/NoDiceLib/config.o: src/NoDiceLib/config.c src/NoDiceLib/config.h
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit/static pattern stem: ''
+#  Last modified 2022-07-09 22:40:33.2136555
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := o/NoDiceLib/config.o
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := src/NoDiceLib/config.c src/NoDiceLib/config.h
+# automatic
+# | := 
+# automatic
+# < := src/NoDiceLib/config.c
+# automatic
+# ^ := src/NoDiceLib/config.c src/NoDiceLib/config.h
+# automatic
+# ? := src/NoDiceLib/config.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/13=8%
 #  recipe to execute (from 'makefile', line 51):
 	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 
 # Not a target:
 src/NoDiceLib/ram.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 19:51:05.40693
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 src/NoDiceLib/stristr.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 21:23:30.6056662
+#  File has been updated.
+#  Successfully updated.
 
 o/NoDice/guictls.o: src/NoDice/gui_listbox.c src/NoDice/guictls.h
 #  Implicit rule search has not been done.
@@ -490,12 +504,13 @@ o/NoDice/guictls.o: src/NoDice/gui_listbox.c src/NoDice/guictls.h
 
 o/NoDiceLib/ram.o: src/NoDiceLib/ram.c src/NoDiceLib/ram.h
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-07-09 22:40:33.0636555
+#  File has been updated.
+#  Successfully updated.
 #  recipe to execute (from 'makefile', line 57):
 	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 
-compile: bin/nesasm
+compile: bin/NoDice
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
@@ -505,7 +520,7 @@ compile: bin/nesasm
 
 o/M6502/M6502.o: src/NoDiceLib/rom.c src/M6502/M6502.c src/M6502/Debug.c src/M6502/ConDebug.c src/M6502/M6502.h src/M6502/Codes.h
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-09 22:12:55.3356662
+#  Last modified 2022-07-09 22:40:31.8036555
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'makefile', line 63):
@@ -519,9 +534,10 @@ o/M6502/M6502.o: src/NoDiceLib/rom.c src/M6502/M6502.c src/M6502/Debug.c src/M65
 
 # Not a target:
 src/NoDice/gui_property_box.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 22:05:54.2356662
+#  File has been updated.
+#  Successfully updated.
 
 o/NoDiceLib/internal.o: src/NoDiceLib/internal.c src/NoDiceLib/internal.h
 #  Implicit rule search has not been done.
@@ -542,9 +558,10 @@ clean:
 
 # Not a target:
 src/NoDiceLib/stristr.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-09 21:22:55.6756662
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 src/M6502/Codes.h:
@@ -554,11 +571,21 @@ src/M6502/Codes.h:
 #  Successfully updated.
 
 # Not a target:
- 
 src/NoDice/gui_popups.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+bin/NoDice: o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-07-09 22:40:35.0336555
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+ 
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+#  recipe to execute (from 'makefile', line 9):
+	gcc -std=c11 -g -o $@ o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o `pkg-config --cflags gtk+-2.0`  `pkg-config --libs gtk+-2.0`
 
 # Not a target:
 src/NoDice/gui_overlay.c:
@@ -576,8 +603,9 @@ src/NoDiceLib/rom.c:
 
 o/NoDice/gui_property_box.o: src/NoDice/gui_property_box.c src/NoDice/gui_property_box.h
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-07-09 22:40:32.3736555
+#  File has been updated.
+#  Successfully updated.
 #  recipe to execute (from 'makefile', line 30):
 	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 
@@ -596,8 +624,9 @@ src/M6502/ConDebug.c:
 
 o/NoDiceLib/stristr.o: src/NoDiceLib/stristr.c src/NoDiceLib/stristr.h
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-07-09 22:40:33.0436555
+#  File has been updated.
+#  Successfully updated.
 #  recipe to execute (from 'makefile', line 54):
 	gcc -std=c11 -g -c $< -o $@
 
@@ -640,6 +669,6 @@ src/NoDiceLib/ezxml.h:
 # strcache performance: lookups = 136 / hit rate = 37%
 # hash-table stats:
 # Load=85/8192=1%, Rehash=0, Collisions=2/136=1%
-# Finished Make data base on Sat Jul  9 22:13:02 2022
+# Finished Make data base on Sat Jul  9 22:59:16 2022
 
  

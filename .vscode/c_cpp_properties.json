@@ -15,7 +15,7 @@
             "compilerArgs": [
                 "`pkg-config --cflags gtk+-2.0`"
             ],
-            "cStandard": "c17"
+            "cStandard": "c11"
         }
     ],
     "version": 4

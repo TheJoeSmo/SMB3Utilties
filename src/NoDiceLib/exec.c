@@ -6,6 +6,7 @@
 #include "config.h"
 #include "exec.h"
 #include "stristr.h"
+#include "ram.h"
 
 int NoDice_exec_build(void (*buffer_callback)(const char *))
 {
@@ -34,11 +35,17 @@ int NoDice_exec_build(void (*buffer_callback)(const char *))
 		execvp(NoDice_config.buildinfo.build_argv[0], NoDice_config.buildinfo.build_argv);
 
 		// You only get here if the process failed to execute...
+		char working_directory[PATH_MAX];
+		getcwd(working_directory, sizeof(working_directory));
+
+		char error_message[BUFFER_LEN];
+		snprintf(error_message, sizeof(error_message), "Error executing %s from %s", NoDice_config.buildinfo.build_argv[0], working_directory);
+
 
 		// !!NOTE!! DELIBERATE use of the word "error" in case we're
 		// doing trip-on-word-error!  Make sure that remains...
 		// This will get piped so it will show up on the parent process.
-		perror("Error executing");
+		perror(error_message);
 
 		// And otherwise, we must return non-zero to trip in that case
 		exit(1);

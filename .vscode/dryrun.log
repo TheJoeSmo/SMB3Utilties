@@ -1,5 +1,6 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/joe/repos/NoDice/SMB3Utilties'
+gcc -std=c11 -g -c src/NoDiceLib/rom.c -o o/M6502/M6502.o
 gcc -std=c11 -g -c src/NoDice/gui_overlay.c -o o/NoDice/gui_overlay.o `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 gcc -std=c11 -g -c src/NoDice/gui_property_box.c -o o/NoDice/gui_property_box.o `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 gcc -std=c11 -g -c src/NoDice/edit.c -o o/NoDice/edit.o `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
@@ -16,6 +17,6 @@ gcc -std=c11 -g -c src/NoDiceLib/ezxml.c -o o/NoDiceLib/ezxml.o `pkg-config --cf
 gcc -std=c11 -g -c src/NoDice/gui_listbox.c -o o/NoDice/guictls.o `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 gcc -std=c11 -g -c src/NoDice/NoDice.c -o o/NoDice/NoDice.o `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 gcc -std=c11 -g -c src/NoDice/main.c -o o/NoDice/main.o `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
-gcc -std=c11 -g -o bin/nesasm o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o `pkg-config --cflags gtk+-2.0`  `pkg-config --libs gtk+-2.0`
+gcc -std=c11 -g -o bin/NoDice o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o `pkg-config --cflags gtk+-2.0`  `pkg-config --libs gtk+-2.0`
 make: Leaving directory '/home/joe/repos/NoDice/SMB3Utilties'
  

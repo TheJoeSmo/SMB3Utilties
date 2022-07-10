@@ -30,7 +30,7 @@ CLR_PC	src/M6502/ConDebug.c	39;"	d	file:
 CLR_SP	src/M6502/ConDebug.c	40;"	d	file:
 CLR_TEXT	src/M6502/ConDebug.c	37;"	d	file:
 CONFIG_XML	src/MusConv/config.c	9;"	d	file:
-CONFIG_XML	src/NoDiceLib/config.c	12;"	d	file:
+CONFIG_XML	src/NoDiceLib/config.c	13;"	d	file:
 CPU_Context	src/NoDiceLib/rom.c	/^static M6502 CPU_Context;$/;"	v	file:
 C_FLAG	src/M6502/M6502.h	30;"	d
 ChrDump	src/M6502/ConDebug.c	/^static byte ChrDump(byte C)$/;"	f	file:
@@ -72,7 +72,7 @@ EZXML_TXTM	src/NoDiceLib/ezxml.h	39;"	d
 EZXML_WS	src/NoDiceLib/ezxml.c	37;"	d	file:
 Exec6502	src/M6502/M6502.c	/^int Exec6502(M6502 *R,int RunCycles)$/;"	f
 Format	src/MusConv/import.c	/^   unsigned short Format;$/;"	m	struct:MTHD_CHUNK	file:
-GAME_XML	src/NoDiceLib/config.c	13;"	d	file:
+GAME_XML	src/NoDiceLib/config.c	14;"	d	file:
 GCC	projects/Linux/Makefile	/^GCC := gcc$/;"	m
 GENTYPE_FIXED	src/NoDiceLib/NoDiceLib.h	/^	GENTYPE_FIXED		\/\/ Fixed-size generator$/;"	e	enum:__anon2
 GENTYPE_JCTSTART	src/NoDiceLib/NoDiceLib.h	/^	GENTYPE_JCTSTART,	\/\/ Junction start generator$/;"	e	enum:__anon2
