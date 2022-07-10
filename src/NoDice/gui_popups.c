@@ -28,8 +28,9 @@ void gui_display_6502_error(enum RUN6502_STOP_REASON reason) {
         "Did not return with the expected number of generators",  // RUN6502_GENGENCOUNT_MISMATCH
     };
 
-    if (reason == RUN6502_INIT_ERROR)
+    if (reason == RUN6502_INIT_ERROR) {
         s3 = NoDice_Error();
+    }
 
     dialog = gtk_message_dialog_new(
         GTK_WINDOW(gui_main_window),
@@ -87,7 +88,8 @@ struct _gui_open_level_popup_desc_widgets {
 static gint gui_open_level_popup_sort(GtkTreeModel *model, GtkTreeIter *a, GtkTreeIter *b, gpointer user_data) {
     int result;
 
-    GValue value_a = {0}, value_b = {0};
+    GValue value_a = {0};
+    GValue value_b = {0};
 
     gtk_tree_model_get_value(model, a, 0, &value_a);
     gtk_tree_model_get_value(model, b, 0, &value_b);
@@ -103,7 +105,9 @@ static gint gui_open_level_popup_sort(GtkTreeModel *model, GtkTreeIter *a, GtkTr
 static void gui_open_level_popup_filter_change(GtkComboBox *widget, gpointer user_data) {
     GtkWidget *level_list = (GtkWidget *) user_data;
     GtkListStore *store = gui_listbox_get_disconnected_list(level_list);
-    int current, end, index = gui_combobox_simple_get_index(GTK_WIDGET(widget));
+    int current;
+    int end;
+    int index = gui_combobox_simple_get_index(GTK_WIDGET(widget));
 
     // Clear all list items
     gtk_list_store_clear(store);
@@ -118,11 +122,13 @@ static void gui_open_level_popup_filter_change(GtkComboBox *widget, gpointer use
 
     for (; current <= end; current++) {
         const struct NoDice_tileset *t = &NoDice_config.game.tilesets[current];
-        int i, base = (current << 16);
+        int i;
+        int base = (current << 16);
 
         if ((index != -2) || (t->id <= 15)) {
-            for (i = 0; i < t->levels_count; i++)
+            for (i = 0; i < t->levels_count; i++) {
                 gui_listbox_additem(store, base | i, t->levels[i].name);
+            }
         }
     }
 
@@ -136,22 +142,24 @@ static void gui_open_level_popup_filter_change(GtkComboBox *widget, gpointer use
 
     gui_listbox_reconnect_list(level_list, store);
 
-    if (NoDice_the_level.tiles == NULL)
+    if (NoDice_the_level.tiles == NULL) {
         gui_listbox_set_first(level_list);
-    else {
+    } else {
         int tileset_index = NoDice_the_level.tileset - NoDice_config.game.tilesets;
         int level_index = NoDice_the_level.level - NoDice_the_level.tileset->levels;
 
         gui_listbox_set_index(level_list, (tileset_index << 16) | level_index);
     }
 
-    if (gui_listbox_get_index(level_list) == -1)
+    if (gui_listbox_get_index(level_list) == -1) {
         gui_listbox_set_first(level_list);
+    }
 }
 
 static gboolean gui_open_level_popup_change_level(GtkTreeView *treeview, gpointer user_data) {
     struct _gui_open_level_popup_desc_widgets *desc_widgets = (struct _gui_open_level_popup_desc_widgets *) user_data;
-    GtkTextIter start, end;
+    GtkTextIter start;
+    GtkTextIter end;
     GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(desc_widgets->textbox_desc));
     int index = gui_listbox_get_index_by_view(treeview);
 
@@ -182,7 +190,8 @@ static gboolean gui_open_level_popup_change_level(GtkTreeView *treeview, gpointe
 
 int gui_open_level_popup(
     enum OPEN_LEVEL_POPUP popup_options, unsigned char *tileset, const struct NoDice_the_levels **level) {
-    int i, result = TRUE;
+    int i;
+    int result = TRUE;
     GtkWidget *level_filter;
     GtkWidget *level_list;
     struct _gui_open_level_popup_desc_widgets gui_open_level_popup_desc_widgets;
@@ -216,8 +225,9 @@ int gui_open_level_popup(
             struct NoDice_tileset *tileset = &NoDice_config.game.tilesets[i];
 
             // Filter out tilesets above 15 if OLP_NIBBLE_TILESETS_ONLY is set
-            if (!(popup_options & OLP_NIBBLE_TILESETS_ONLY) || (tileset->id <= 15))
+            if (!(popup_options & OLP_NIBBLE_TILESETS_ONLY) || (tileset->id <= 15)) {
                 gui_combobox_simple_add_item(level_filter, i, tileset->name);
+            }
         }
 
         gtk_box_pack_start(GTK_BOX(GTK_DIALOG(popup)->vbox), level_filter, FALSE, FALSE, 5);
@@ -293,8 +303,9 @@ int gui_open_level_popup(
     if (gtk_dialog_run(GTK_DIALOG(popup)) == GTK_RESPONSE_ACCEPT) {
         *tileset = gui_open_level_popup_desc_widgets.selected_level_tileset;
         *level = gui_open_level_popup_desc_widgets.selected_level;
-    } else
+    } else {
         result = FALSE;
+    }
 
     gtk_widget_destroy(popup);
 
@@ -323,12 +334,13 @@ static void gui_level_properties_option_toggle_change(GtkToggleButton *togglebut
     const struct NoDice_header_options *option_list =
         &NoDice_config.game.headers[header_byte].options_list[option_list_index];
 
-    if (!gtk_toggle_button_get_active(togglebutton))
+    if (!gtk_toggle_button_get_active(togglebutton)) {
         // Mask out the old value in the header
         NoDice_the_level.header.option[header_byte] &= ~option_list->mask;
-    else
+    } else {
         // Set the new value
         NoDice_the_level.header.option[header_byte] |= option_list->mask;
+    }
 }
 
 static void gui_level_properties_option_spin_change(GtkSpinButton *spinbutton, gpointer user_data) {
@@ -367,8 +379,9 @@ static void gui_level_properties_browse_click(GtkButton *button, gpointer user_d
         const struct NoDice_tileset *the_tileset = NULL;
 
         for (i = 0; i < NoDice_config.game.tileset_count; i++) {
-            if (NoDice_config.game.tilesets[i].id == tileset)
+            if (NoDice_config.game.tilesets[i].id == tileset) {
                 the_tileset = &NoDice_config.game.tilesets[i];
+            }
         }
 
         NoDice_the_level.header.alt_level_layout = NoDice_get_addr_for_label(level->layoutlabel);
@@ -418,10 +431,10 @@ void gui_level_properties(struct NoDice_the_level_generator *selected_gen) {
             NoDice_the_level.header.alt_level_tileset,
             NoDice_the_level.header.alt_level_layout,
             NoDice_the_level.header.alt_level_objects);
-        GtkWidget *alt_level_hbox = gtk_hbox_new(FALSE, 6),
-                  *alt_level_browse = gtk_button_new_with_label("Select Alt Level"),
-                  *alt_level_label =
-                      gtk_label_new((alt_level != NULL) ? alt_level->name : "<Undefined alternate level>");
+        GtkWidget *alt_level_hbox = gtk_hbox_new(FALSE, 6);
+        GtkWidget *alt_level_browse = gtk_button_new_with_label("Select Alt Level");
+        GtkWidget *alt_level_label =
+            gtk_label_new((alt_level != NULL) ? alt_level->name : "<Undefined alternate level>");
         g_signal_connect(
             G_OBJECT(alt_level_browse),
             "clicked",
@@ -465,9 +478,10 @@ void gui_level_properties(struct NoDice_the_level_generator *selected_gen) {
     if (gtk_dialog_run(GTK_DIALOG(popup)) == GTK_RESPONSE_ACCEPT) {
         // Reloading level... good luck!
         edit_header_change(selected_gen, option_backup);
-    } else
+    } else {
         // User cancelled, restore backup
         memcpy(NoDice_the_level.header.option, option_backup, LEVEL_HEADER_COUNT);
+    }
 
     gtk_widget_destroy(popup);
 
@@ -508,13 +522,14 @@ static void gui_special_obj_properties_option_toggle_change(GtkToggleButton *tog
     const struct NoDice_header_options *option_list =
         &NoDice_config.game.objects[object->id].special_options.options_list[option_list_index];
 
-    if (!gtk_toggle_button_get_active(togglebutton))
+    if (!gtk_toggle_button_get_active(togglebutton)) {
         // Mask out the old value in the header
         // NoDice_the_level.objects[header_byte]
         object->row &= ~option_list->mask;
-    else
+    } else {
         // Set the new value
         object->row |= option_list->mask;
+    }
 }
 
 static void gui_special_obj_properties_option_spin_change(GtkSpinButton *spinbutton, gpointer user_data) {
@@ -605,7 +620,8 @@ int gui_special_obj_properties(struct NoDice_the_level_object *object) {
     gtk_widget_set_size_request(popup, (int) ((double) alloc.width * 0.75), (int) ((double) alloc.width * 0.35));
 
     {
-        int i, sel_index = -1;
+        int i;
+        int sel_index = -1;
         GtkWidget *scrolled_window = gtk_scrolled_window_new(NULL, NULL);
         GtkWidget *vbox = gtk_vbox_new(FALSE, 6);
 
@@ -617,11 +633,12 @@ int gui_special_obj_properties(struct NoDice_the_level_object *object) {
                 gui_combobox_simple_add_item(special_objs_list, i, this_obj->name);
 
                 // In cases where this is a new special object, we need the first valid index
-                if (sel_index == -1)
+                if (sel_index == -1) {
                     sel_index = i;
 
-                else if (object->id == i)
+                } else if (object->id == i) {
                     sel_index = i;
+                }
             }
         }
 
@@ -695,7 +712,9 @@ int gui_map_obj_properties(struct NoDice_the_level_object *object) {
     // gtk_widget_set_size_request(popup, (int)((double)alloc.width * 0.75), (int)((double)alloc.width * 0.35));
 
     {
-        int i, sel_index = -1, obj_index = object - NoDice_the_level.objects;
+        int i;
+        int sel_index = -1;
+        int obj_index = object - NoDice_the_level.objects;
 
         // Add all available map objects
         for (i = 0; i < 256; i++) {
@@ -705,11 +724,12 @@ int gui_map_obj_properties(struct NoDice_the_level_object *object) {
                 gui_combobox_simple_add_item(map_objs_list, i, this_obj->name);
 
                 // In cases where this is a new special object, we need the first valid index
-                if (sel_index == -1)
+                if (sel_index == -1) {
                     sel_index = i;
 
-                else if (object->id == i)
+                } else if (object->id == i) {
                     sel_index = i;
+                }
             }
         }
 
@@ -804,10 +824,11 @@ static void map_link_change_by_opt_list(
     unsigned short *addr;
     unsigned char this_val;
 
-    if ((maplink_ovrtype == MLIO_TILEL) || (maplink_ovrtype == MLIO_TILEH))
+    if ((maplink_ovrtype == MLIO_TILEL) || (maplink_ovrtype == MLIO_TILEH)) {
         addr = &NoDice_the_level.map_links[maplink_index].layout_addr;
-    else
+    } else {
         addr = &NoDice_the_level.map_links[maplink_index].object_addr;
+    }
 
     this_val = is_high ? ((*addr) >> 8) : ((*addr) & 0x00FF);
 
@@ -817,12 +838,13 @@ static void map_link_change_by_opt_list(
     // Set the new value
     this_val |= (relative_value << option_list->shift) & option_list->mask;
 
-    if (is_high)
+    if (is_high) {
         // High
         *addr = ((*addr) & 0x00FF) | (this_val << 8);
-    else
+    } else {
         // Low
         *addr = ((*addr) & 0xFF00) | this_val;
+    }
 }
 
 static void gui_map_links_option_list_change(GtkComboBox *widget, gpointer user_data) {
@@ -832,9 +854,9 @@ static void gui_map_links_option_list_change(GtkComboBox *widget, gpointer user_
     unsigned short header_byte = (header_ref_tag & 0xFFFF0000) >> 16;
     int option_list_index = (header_ref_tag & 0x0000FFFF);
 
-    unsigned short maplink_ovrtype = MAPLINK_UNPACK_OVRTYPE(header_byte),
-                   maplink_spectile = MAPLINK_UNPACK_SPECTILE_IDX(header_byte),
-                   maplink_index = MAPLINK_UNPACK_MAPLINK_IDX(header_byte);
+    unsigned short maplink_ovrtype = MAPLINK_UNPACK_OVRTYPE(header_byte);
+    unsigned short maplink_spectile = MAPLINK_UNPACK_SPECTILE_IDX(header_byte);
+    unsigned short maplink_index = MAPLINK_UNPACK_MAPLINK_IDX(header_byte);
 
     const struct NoDice_header_options *option_list =
         opt_list_for_map_link(option_list_index, maplink_spectile, maplink_ovrtype);
@@ -849,9 +871,9 @@ static void gui_map_links_option_toggle_change(GtkToggleButton *togglebutton, gp
     unsigned short header_byte = (header_ref_tag & 0xFFFF0000) >> 16;
     int option_list_index = (header_ref_tag & 0x0000FFFF);
 
-    unsigned short maplink_ovrtype = MAPLINK_UNPACK_OVRTYPE(header_byte),
-                   maplink_spectile = MAPLINK_UNPACK_SPECTILE_IDX(header_byte),
-                   maplink_index = MAPLINK_UNPACK_MAPLINK_IDX(header_byte);
+    unsigned short maplink_ovrtype = MAPLINK_UNPACK_OVRTYPE(header_byte);
+    unsigned short maplink_spectile = MAPLINK_UNPACK_SPECTILE_IDX(header_byte);
+    unsigned short maplink_index = MAPLINK_UNPACK_MAPLINK_IDX(header_byte);
 
     const struct NoDice_header_options *option_list =
         opt_list_for_map_link(option_list_index, maplink_spectile, maplink_ovrtype);
@@ -866,9 +888,9 @@ static void gui_map_links_option_spin_change(GtkSpinButton *spinbutton, gpointer
     unsigned short header_byte = (header_ref_tag & 0xFFFF0000) >> 16;
     int option_list_index = (header_ref_tag & 0x0000FFFF);
 
-    unsigned short maplink_ovrtype = MAPLINK_UNPACK_OVRTYPE(header_byte),
-                   maplink_spectile = MAPLINK_UNPACK_SPECTILE_IDX(header_byte),
-                   maplink_index = MAPLINK_UNPACK_MAPLINK_IDX(header_byte);
+    unsigned short maplink_ovrtype = MAPLINK_UNPACK_OVRTYPE(header_byte);
+    unsigned short maplink_spectile = MAPLINK_UNPACK_SPECTILE_IDX(header_byte);
+    unsigned short maplink_index = MAPLINK_UNPACK_MAPLINK_IDX(header_byte);
 
     const struct NoDice_header_options *option_list =
         opt_list_for_map_link(option_list_index, maplink_spectile, maplink_ovrtype);
@@ -902,16 +924,18 @@ static void gui_map_links_browse_click(GtkButton *button, gpointer user_data) {
         const struct NoDice_tileset *the_tileset = NULL;
 
         for (i = 0; i < NoDice_config.game.tileset_count; i++) {
-            if (NoDice_config.game.tilesets[i].id == tileset)
+            if (NoDice_config.game.tilesets[i].id == tileset) {
                 the_tileset = &NoDice_config.game.tilesets[i];
+            }
         }
 
         data->map_link->row_tileset = (data->map_link->row_tileset & 0xF0) | the_tileset->id;
         data->map_link->layout_addr = NoDice_get_addr_for_label(level->layoutlabel);
 
         // Only set the object address if this is not a special tile
-        if (!data->is_special)
+        if (!data->is_special) {
             data->map_link->object_addr = NoDice_get_addr_for_label(level->objectlabel);
+        }
 
         gtk_label_set(GTK_LABEL(data->level_label), level->name);
     }
@@ -928,7 +952,8 @@ static void gui_map_warpzone_spin_val_change(GtkSpinButton *spinbutton, gpointer
 }
 
 int gui_map_link_properties(struct NoDice_map_link *link) {
-    int i, result;
+    int i;
+    int result;
 
     // Get the tile that this map link is sitting on to handle special tiles
     unsigned char tile_id = edit_maptile_get(((link->row_tileset & 0xF0) >> 4) - MAP_OBJECT_BASE_ROW, link->col_hi);
@@ -972,10 +997,10 @@ int gui_map_link_properties(struct NoDice_map_link *link) {
                     link->row_tileset & 0x0F,
                     link->layout_addr,
                     (special_tile == NULL) ? link->object_addr : 0xFFFF);
-                GtkWidget *target_level_hbox = gtk_hbox_new(FALSE, 6),
-                          *target_level_browse = gtk_button_new_with_label("Select Target Level"),
-                          *target_level_label =
-                              gtk_label_new((target_level != NULL) ? target_level->name : "<Undefined target level>");
+                GtkWidget *target_level_hbox = gtk_hbox_new(FALSE, 6);
+                GtkWidget *target_level_browse = gtk_button_new_with_label("Select Target Level");
+                GtkWidget *target_level_label =
+                    gtk_label_new((target_level != NULL) ? target_level->name : "<Undefined target level>");
                 struct _gui_map_links_browse_click_data gui_map_links_browse_click_data = {
                     target_level_label,
                     link,
@@ -1000,7 +1025,7 @@ int gui_map_link_properties(struct NoDice_map_link *link) {
             if (special_tile != NULL) {
                 int index = link - NoDice_the_level.map_links;
 
-                if (special_tile->override_tile.low.options_list_count > 0)
+                if (special_tile->override_tile.low.options_list_count > 0) {
                     gui_generate_option_controls(
                         &property_context,
                         vbox,
@@ -1010,8 +1035,9 @@ int gui_map_link_properties(struct NoDice_map_link *link) {
                         G_CALLBACK(gui_map_links_option_list_change),
                         G_CALLBACK(gui_map_links_option_toggle_change),
                         G_CALLBACK(gui_map_links_option_spin_change));
+                }
 
-                if (special_tile->override_tile.high.options_list_count > 0)
+                if (special_tile->override_tile.high.options_list_count > 0) {
                     gui_generate_option_controls(
                         &property_context,
                         vbox,
@@ -1021,8 +1047,9 @@ int gui_map_link_properties(struct NoDice_map_link *link) {
                         G_CALLBACK(gui_map_links_option_list_change),
                         G_CALLBACK(gui_map_links_option_toggle_change),
                         G_CALLBACK(gui_map_links_option_spin_change));
+                }
 
-                if (special_tile->override_object.low.options_list_count > 0)
+                if (special_tile->override_object.low.options_list_count > 0) {
                     gui_generate_option_controls(
                         &property_context,
                         vbox,
@@ -1032,8 +1059,9 @@ int gui_map_link_properties(struct NoDice_map_link *link) {
                         G_CALLBACK(gui_map_links_option_list_change),
                         G_CALLBACK(gui_map_links_option_toggle_change),
                         G_CALLBACK(gui_map_links_option_spin_change));
+                }
 
-                if (special_tile->override_object.high.options_list_count > 0)
+                if (special_tile->override_object.high.options_list_count > 0) {
                     gui_generate_option_controls(
                         &property_context,
                         vbox,
@@ -1043,6 +1071,7 @@ int gui_map_link_properties(struct NoDice_map_link *link) {
                         G_CALLBACK(gui_map_links_option_list_change),
                         G_CALLBACK(gui_map_links_option_toggle_change),
                         G_CALLBACK(gui_map_links_option_spin_change));
+                }
 
                 gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolled_window), vbox);
                 gtk_box_pack_start(GTK_BOX(GTK_DIALOG(popup)->vbox), scrolled_window, TRUE, TRUE, 5);
@@ -1118,11 +1147,13 @@ static void gui_new_level_tileset_change(GtkComboBox *widget, gpointer user_data
     gui_combobox_simple_clear_items(layout_object_cbs.layouts);
     gui_combobox_simple_clear_items(layout_object_cbs.objects);
 
-    if (layout_pairs != NULL)
+    if (layout_pairs != NULL) {
         free(layout_pairs);
+    }
 
-    if (object_pairs != NULL)
+    if (object_pairs != NULL) {
         free(object_pairs);
+    }
 
     // Allocate enough pairs to support this
     layout_pairs = (struct label_file_pair *) malloc(sizeof(struct label_file_pair) * tileset->levels_count);
@@ -1188,7 +1219,8 @@ static void gui_new_level_existing_lo_change(GtkComboBox *widget, gpointer user_
 
 static int gui_new_level_validate_name(const char *label, const char *name, int for_label) {
     char buffer[256];
-    int i, name_ok = 1;
+    int i;
+    int name_ok = 1;
 
     // Must contain SOMETHING
     if (strlen(name) < 1) {
@@ -1205,47 +1237,45 @@ static int gui_new_level_validate_name(const char *label, const char *name, int 
 
                 name_ok = FALSE;
                 break;
-            } else {
-                // Check if valid characters are used
-                name_ok = (name[i] >= '0' && name[i] <= '9') || (name[i] >= 'A' && name[i] <= 'Z') ||
-                          (name[i] >= 'a' && name[i] <= 'z') || (name[i] == '_');
+            }  // Check if valid characters are used
+            name_ok = (name[i] >= '0' && name[i] <= '9') || (name[i] >= 'A' && name[i] <= 'Z') ||
+                      (name[i] >= 'a' && name[i] <= 'z') || (name[i] == '_');
+
+            if (!name_ok) {
+                if (for_label) {
+                    snprintf(
+                        buffer,
+                        sizeof(buffer),
+                        "%s contains invalid characters; you may only use alphanumeric characters and underscores",
+                        label);
+                    gui_display_message(TRUE, buffer);
+                    break;
+                }
+                int j;
+
+                // Filenames allow a few more... list characters we really can't allow
+                const char invalid_fchars[] = "\\ / * ? \" < > |   ";  // NOTE: Space [and space] at the end;
+                                                                       // spaces can be bad in filenames!
+
+                // Assume we're actually GOOD until we're not
+                name_ok = TRUE;
+
+                // Deliberately spaced for display purposes, so j += 2
+                for (j = 0; (invalid_fchars[j] != '\0') && name_ok; j += 2) {
+                    if (name[i] == invalid_fchars[j]) {
+                        name_ok = FALSE;
+                    }
+                }
 
                 if (!name_ok) {
-                    if (for_label) {
-                        snprintf(
-                            buffer,
-                            sizeof(buffer),
-                            "%s contains invalid characters; you may only use alphanumeric characters and underscores",
-                            label);
-                        gui_display_message(TRUE, buffer);
-                        break;
-                    } else {
-                        int j;
-
-                        // Filenames allow a few more... list characters we really can't allow
-                        const char invalid_fchars[] = "\\ / * ? \" < > |   ";  // NOTE: Space [and space] at the end;
-                                                                               // spaces can be bad in filenames!
-
-                        // Assume we're actually GOOD until we're not
-                        name_ok = TRUE;
-
-                        // Deliberately spaced for display purposes, so j += 2
-                        for (j = 0; (invalid_fchars[j] != '\0') && name_ok; j += 2) {
-                            if (name[i] == invalid_fchars[j])
-                                name_ok = FALSE;
-                        }
-
-                        if (!name_ok) {
-                            snprintf(
-                                buffer,
-                                sizeof(buffer),
-                                "%s contains invalid characters; you cannot use spaces or any of the following:\n%s",
-                                label,
-                                invalid_fchars);
-                            gui_display_message(TRUE, buffer);
-                            break;
-                        }
-                    }
+                    snprintf(
+                        buffer,
+                        sizeof(buffer),
+                        "%s contains invalid characters; you cannot use spaces or any of the following:\n%s",
+                        label,
+                        invalid_fchars);
+                    gui_display_message(TRUE, buffer);
+                    break;
                 }
             }
         }
@@ -1306,8 +1336,9 @@ static const struct NoDice_the_levels *gui_new_level_get_level_by_name(const cha
         const struct NoDice_tileset *tileset = &NoDice_config.game.tilesets[i];
         for (t = 0; t < tileset->levels_count && !the_level; t++) {
             const struct NoDice_the_levels *level = &tileset->levels[t];
-            if (!strcmp(level->name, name))
+            if (!strcmp(level->name, name)) {
                 the_level = level;
+            }
         }
     }
 
@@ -1322,7 +1353,8 @@ static int gui_new_level_check_name_exists(const char *name) {
 int gui_new_level_popup() {
     int tset;
     GtkWidget *cb_tilesets = gui_combobox_simple_new();
-    GtkWidget *level_name_entry = gtk_entry_new_with_max_length(250), *level_desc = gtk_entry_new();
+    GtkWidget *level_name_entry = gtk_entry_new_with_max_length(250);
+    GtkWidget *level_desc = gtk_entry_new();
 
     int result = 0;
 
@@ -1460,248 +1492,255 @@ Object Filename:	[    ]
         result = (gtk_dialog_run(GTK_DIALOG(popup)) == GTK_RESPONSE_ACCEPT);
 
         // If user pressed cancel, quit!
-        if (!result)
+        if (!result) {
             break;
 
-        // Otherwise, let's check some things...
-        else {
-            char buffer[512];
-            const char *level_name = gtk_entry_get_text(GTK_ENTRY(level_name_entry));
-            const char *layout_label = gtk_entry_get_text(GTK_ENTRY(level_layout.labelname));
-            const char *layout_file = gtk_entry_get_text(GTK_ENTRY(level_layout.filename));
-            const char *object_label = gtk_entry_get_text(GTK_ENTRY(level_object.labelname));
-            const char *object_file = gtk_entry_get_text(GTK_ENTRY(level_object.filename));
+            // Otherwise, let's check some things...
+        }
+        char buffer[512];
+        const char *level_name = gtk_entry_get_text(GTK_ENTRY(level_name_entry));
+        const char *layout_label = gtk_entry_get_text(GTK_ENTRY(level_layout.labelname));
+        const char *layout_file = gtk_entry_get_text(GTK_ENTRY(level_layout.filename));
+        const char *object_label = gtk_entry_get_text(GTK_ENTRY(level_object.labelname));
+        const char *object_file = gtk_entry_get_text(GTK_ENTRY(level_object.filename));
 
-            // Name of level MUST be specified
-            if (strlen(level_name) < 1) {
-                snprintf(buffer, sizeof(buffer), "Name of level must be specified");
-                gui_display_message(TRUE, buffer);
+        // Name of level MUST be specified
+        if (strlen(level_name) < 1) {
+            snprintf(buffer, sizeof(buffer), "Name of level must be specified");
+            gui_display_message(TRUE, buffer);
 
-                // FAIL
-                result = FALSE;
-                continue;
-            } else if (gui_new_level_check_name_exists(level_name)) {
+            // FAIL
+            result = FALSE;
+            continue;
+        }
+        if (gui_new_level_check_name_exists(level_name)) {
+            snprintf(
+                buffer,
+                sizeof(buffer),
+                "Level name '%s' has already been defined, please use a different name",
+                level_name);
+            gui_display_message(TRUE, buffer);
+
+            // FAIL
+            result = FALSE;
+            continue;
+        }
+
+        // Validate the other entries...
+        result = gui_new_level_validate_name("Layout label name", layout_label, TRUE) &&
+                 gui_new_level_validate_name("Layout file name", layout_file, FALSE) &&
+                 gui_new_level_validate_name("Object label name", object_label, TRUE) &&
+                 gui_new_level_validate_name("Object file name", object_file, FALSE);
+
+        if (result && !strcmp(layout_label, object_label)) {
+            snprintf(buffer, sizeof(buffer), "Layout label and object label can NOT be the same!");
+            gui_display_message(TRUE, buffer);
+
+            // FAIL
+            result = FALSE;
+            continue;
+        }
+
+        // If the names are valid...
+        if (result) {
+            // This will store flags based on what the user has done...
+            int reused_layout = 0;
+            int reused_object = 0;
+
+            int existence_check;
+            int tset = gui_combobox_simple_get_index(cb_tilesets);
+            const struct NoDice_tileset *tileset = &NoDice_config.game.tilesets[tset];
+
+            const char *layout_collection_file = tileset->rootfile;
+            const char *object_collection_file = NoDice_config.game.options.object_set_bank;
+
+            // Check if label currently exists in THIS tileset; this situation is
+            // okay, it's valid as re-use of an existing layout.
+            snprintf(buffer, sizeof(buffer), SUBDIR_LEVELS "/%s" EXT_ASM, layout_collection_file);
+            existence_check = gui_new_level_check_label_exists(buffer, layout_label);
+            if (existence_check == 1) {
                 snprintf(
                     buffer,
                     sizeof(buffer),
-                    "Level name '%s' has already been defined, please use a different name",
-                    level_name);
-                gui_display_message(TRUE, buffer);
+                    "NOTE: Layout Label %s already exists in this tileset; this is not a problem, but the layout "
+                    "will be shared with whatever other levels also use this layout.\n\nAlso note that the entered "
+                    "Layout Filename will be ignored (since it is already defined by this label.)\n\nDo you want "
+                    "to continue?",
+                    layout_label);
 
-                // FAIL
+                // Give user a chance to cancel in case of mistake
+                if (!gui_ask_question(buffer)) {
+                    result = FALSE;
+                } else {
+                    // Don't re-create the layout file!!
+                    reused_layout = 1;
+                }
+            } else if (existence_check == -1) {
+                gui_display_message(
+                    TRUE,
+                    "Failed the layout label check due to a file error.  Cannot safely create the new level!");
                 result = FALSE;
-                continue;
+            } else {
+                // Otherwise, check if label specified exists in a different tileset;
+                // this situation is NOT okay, it would result in SMB3 crashing!
+
+                // We'll use NoDice_get_addr_for_label to attempt to resolve the label;
+                // if we get anything besides 0xFFFF (not found) back, we can assume
+                // that the label exists in another tileset or in whatever way is not
+                // valid to be used here!
+                if (NoDice_get_addr_for_label(layout_label) != 0xFFFF) {
+                    snprintf(
+                        buffer,
+                        sizeof(buffer),
+                        "Label %s cannot be used in this tileset because it is defined in another bank (e.g. in an "
+                        "incompatible tileset); enter a different name.",
+                        layout_label);
+                    gui_display_message(TRUE, buffer);
+                    result = FALSE;
+                }
             }
 
-            // Validate the other entries...
-            result = gui_new_level_validate_name("Layout label name", layout_label, TRUE) &&
-                     gui_new_level_validate_name("Layout file name", layout_file, FALSE) &&
-                     gui_new_level_validate_name("Object label name", object_label, TRUE) &&
-                     gui_new_level_validate_name("Object file name", object_file, FALSE);
-
-            if (result && !strcmp(layout_label, object_label)) {
-                snprintf(buffer, sizeof(buffer), "Layout label and object label can NOT be the same!");
-                gui_display_message(TRUE, buffer);
-
-                // FAIL
-                result = FALSE;
-                continue;
-            }
-
-            // If the names are valid...
             if (result) {
-                // This will store flags based on what the user has done...
-                int reused_layout = 0, reused_object = 0;
-
-                int existence_check;
-                int tset = gui_combobox_simple_get_index(cb_tilesets);
-                const struct NoDice_tileset *tileset = &NoDice_config.game.tilesets[tset];
-
-                const char *layout_collection_file = tileset->rootfile;
-                const char *object_collection_file = NoDice_config.game.options.object_set_bank;
-
-                // Check if label currently exists in THIS tileset; this situation is
-                // okay, it's valid as re-use of an existing layout.
-                snprintf(buffer, sizeof(buffer), SUBDIR_LEVELS "/%s" EXT_ASM, layout_collection_file);
-                existence_check = gui_new_level_check_label_exists(buffer, layout_label);
+                // Check if label currently exists in the object collection; this situation is
+                // okay, it's valid as re-use of an existing object layout.
+                snprintf(buffer, sizeof(buffer), SUBDIR_PRG "/%s" EXT_ASM, object_collection_file);
+                existence_check = gui_new_level_check_label_exists(buffer, object_label);
                 if (existence_check == 1) {
                     snprintf(
                         buffer,
                         sizeof(buffer),
-                        "NOTE: Layout Label %s already exists in this tileset; this is not a problem, but the layout "
-                        "will be shared with whatever other levels also use this layout.\n\nAlso note that the entered "
-                        "Layout Filename will be ignored (since it is already defined by this label.)\n\nDo you want "
-                        "to continue?",
-                        layout_label);
+                        "NOTE: Object Label %s already exists; this is not a problem, but the object layout will "
+                        "be shared with whatever other levels also use this object layout.\n\nAlso note that the "
+                        "entered Object Filename will be ignored (since it is already defined by this "
+                        "label.)\n\nDo you want to continue?",
+                        object_label);
 
                     // Give user a chance to cancel in case of mistake
-                    if (!gui_ask_question(buffer))
+                    if (!gui_ask_question(buffer)) {
                         result = FALSE;
-                    else
-                        // Don't re-create the layout file!!
-                        reused_layout = 1;
+                    } else {
+                        // Don't re-create the object file!!
+                        reused_object = 1;
+                    }
                 } else if (existence_check == -1) {
                     gui_display_message(
                         TRUE,
-                        "Failed the layout label check due to a file error.  Cannot safely create the new level!");
+                        "Failed the object label check due to a file error.  Cannot safely create the new level!");
                     result = FALSE;
                 } else {
-                    // Otherwise, check if label specified exists in a different tileset;
-                    // this situation is NOT okay, it would result in SMB3 crashing!
+                    // Otherwise, check if label specified exists elsewhere;
+                    // this situation is NOT okay, SMB3 only has one bank!
 
                     // We'll use NoDice_get_addr_for_label to attempt to resolve the label;
                     // if we get anything besides 0xFFFF (not found) back, we can assume
-                    // that the label exists in another tileset or in whatever way is not
-                    // valid to be used here!
-                    if (NoDice_get_addr_for_label(layout_label) != 0xFFFF) {
+                    // that the label exists in elsewhere and is not valid.
+                    if (NoDice_get_addr_for_label(object_label) != 0xFFFF) {
                         snprintf(
                             buffer,
                             sizeof(buffer),
-                            "Label %s cannot be used in this tileset because it is defined in another bank (e.g. in an "
-                            "incompatible tileset); enter a different name.",
-                            layout_label);
+                            "Label %s cannot be used since it is defined outside the object bank; enter a "
+                            "different name.",
+                            object_label);
                         gui_display_message(TRUE, buffer);
                         result = FALSE;
                     }
                 }
+            }
 
-                if (result) {
-                    // Check if label currently exists in the object collection; this situation is
-                    // okay, it's valid as re-use of an existing object layout.
-                    snprintf(buffer, sizeof(buffer), SUBDIR_PRG "/%s" EXT_ASM, object_collection_file);
-                    existence_check = gui_new_level_check_label_exists(buffer, object_label);
-                    if (existence_check == 1) {
-                        snprintf(
-                            buffer,
-                            sizeof(buffer),
-                            "NOTE: Object Label %s already exists; this is not a problem, but the object layout will "
-                            "be shared with whatever other levels also use this object layout.\n\nAlso note that the "
-                            "entered Object Filename will be ignored (since it is already defined by this "
-                            "label.)\n\nDo you want to continue?",
-                            object_label);
+            if (result) {
+                int save_layout = !reused_layout;
+                int save_objects = !reused_object;
 
-                        // Give user a chance to cancel in case of mistake
-                        if (!gui_ask_question(buffer))
-                            result = FALSE;
-                        else
-                            // Don't re-create the object file!!
-                            reused_object = 1;
-                    } else if (existence_check == -1) {
-                        gui_display_message(
-                            TRUE,
-                            "Failed the object label check due to a file error.  Cannot safely create the new level!");
+                // Make sure user isn't accidentally overwriting something they didn't mean to
+                edit_level_save_new_check(tileset->path, layout_file, &save_layout, object_file, &save_objects);
+
+                // If edit_level_save_new_check reported the layout file exists, alert user about this!
+                if (!reused_layout && !save_layout) {
+                    snprintf(
+                        buffer,
+                        sizeof(buffer),
+                        "NOTE: Layout file %s already exists; this is not a problem, but the layout data will be "
+                        "shared with whatever other levels also use this object layout file.\n\nDo you want to "
+                        "continue?",
+                        layout_file);
+
+                    // Give user a chance to cancel in case of mistake
+                    if (!gui_ask_question(buffer)) {
                         result = FALSE;
-                    } else {
-                        // Otherwise, check if label specified exists elsewhere;
-                        // this situation is NOT okay, SMB3 only has one bank!
-
-                        // We'll use NoDice_get_addr_for_label to attempt to resolve the label;
-                        // if we get anything besides 0xFFFF (not found) back, we can assume
-                        // that the label exists in elsewhere and is not valid.
-                        if (NoDice_get_addr_for_label(object_label) != 0xFFFF) {
-                            snprintf(
-                                buffer,
-                                sizeof(buffer),
-                                "Label %s cannot be used since it is defined outside the object bank; enter a "
-                                "different name.",
-                                object_label);
-                            gui_display_message(TRUE, buffer);
-                            result = FALSE;
-                        }
                     }
                 }
 
                 if (result) {
-                    int save_layout = !reused_layout, save_objects = !reused_object;
-
-                    // Make sure user isn't accidentally overwriting something they didn't mean to
-                    edit_level_save_new_check(tileset->path, layout_file, &save_layout, object_file, &save_objects);
-
-                    // If edit_level_save_new_check reported the layout file exists, alert user about this!
-                    if (!reused_layout && !save_layout) {
+                    // If edit_level_save_new_check reported the object file exists, alert user about this!
+                    if (!reused_object && !save_objects) {
                         snprintf(
                             buffer,
                             sizeof(buffer),
-                            "NOTE: Layout file %s already exists; this is not a problem, but the layout data will be "
-                            "shared with whatever other levels also use this object layout file.\n\nDo you want to "
-                            "continue?",
-                            layout_file);
+                            "NOTE: Object layout file %s already exists; this is not a problem, but the object "
+                            "layout data will be shared with whatever other levels also use this object layout "
+                            "file.\n\nDo you want to continue?",
+                            object_file);
 
                         // Give user a chance to cancel in case of mistake
-                        if (!gui_ask_question(buffer))
-                            result = FALSE;
-                    }
-
-                    if (result) {
-                        // If edit_level_save_new_check reported the object file exists, alert user about this!
-                        if (!reused_object && !save_objects) {
-                            snprintf(
-                                buffer,
-                                sizeof(buffer),
-                                "NOTE: Object layout file %s already exists; this is not a problem, but the object "
-                                "layout data will be shared with whatever other levels also use this object layout "
-                                "file.\n\nDo you want to continue?",
-                                object_file);
-
-                            // Give user a chance to cancel in case of mistake
-                            if (!gui_ask_question(buffer))
-                                result = FALSE;
-                        }
-                    }
-                }
-
-                // Layout and Object labels are verified OK!  Now comes the dangerous part!
-                if (result) {
-                    const char *error = NoDice_config_game_add_level_entry(
-                        (unsigned char) tset,
-                        level_name,
-                        layout_file,
-                        layout_label,
-                        object_file,
-                        object_label,
-                        gtk_entry_get_text(GTK_ENTRY(level_desc)));
-
-                    // Need to re-point this
-                    tileset = &NoDice_config.game.tilesets[tset];
-
-                    // Associating minimal info..
-                    NoDice_the_level.tileset = tileset;
-
-                    // If error occurred, display it!
-                    if (error != NULL) {
-                        gui_display_message(TRUE, error);
-                        result = FALSE;
-                    }
-                    // No error...
-                    else {
-                        // Get the level back out of configuration
-                        const struct NoDice_the_levels *new_level = gui_new_level_get_level_by_name(level_name);
-
-                        NoDice_the_level.tileset = tileset;
-
-                        // NoDice_the_level has now been minimally configured with new level
-                        // thanks to the efforts of NoDice_config_game_add_level_entry...
-
-                        // Non-reuse labels MUST be added to their respective files
-                        if (edit_level_add_labels(new_level, !reused_layout, !reused_object)) {
-                            // So now we should call the save routine so the files get created
-                            // as needed...
-                            if (edit_level_save(!reused_layout, !reused_object)) {
-                                // Now load level and we should be in sync!
-                                edit_level_load(tileset->id, new_level);
-
-                                gui_reboot();
-
-                                gui_update_for_generators();
-                            }
-                        } else {
-                            gui_display_message(TRUE, "Failed to create new labels!");
+                        if (!gui_ask_question(buffer)) {
                             result = FALSE;
                         }
                     }
                 }
             }
+
+            // Layout and Object labels are verified OK!  Now comes the dangerous part!
+            if (result) {
+                const char *error = NoDice_config_game_add_level_entry(
+                    (unsigned char) tset,
+                    level_name,
+                    layout_file,
+                    layout_label,
+                    object_file,
+                    object_label,
+                    gtk_entry_get_text(GTK_ENTRY(level_desc)));
+
+                // Need to re-point this
+                tileset = &NoDice_config.game.tilesets[tset];
+
+                // Associating minimal info..
+                NoDice_the_level.tileset = tileset;
+
+                // If error occurred, display it!
+                if (error != NULL) {
+                    gui_display_message(TRUE, error);
+                    result = FALSE;
+                }
+                // No error...
+                else {
+                    // Get the level back out of configuration
+                    const struct NoDice_the_levels *new_level = gui_new_level_get_level_by_name(level_name);
+
+                    NoDice_the_level.tileset = tileset;
+
+                    // NoDice_the_level has now been minimally configured with new level
+                    // thanks to the efforts of NoDice_config_game_add_level_entry...
+
+                    // Non-reuse labels MUST be added to their respective files
+                    if (edit_level_add_labels(new_level, !reused_layout, !reused_object)) {
+                        // So now we should call the save routine so the files get created
+                        // as needed...
+                        if (edit_level_save(!reused_layout, !reused_object)) {
+                            // Now load level and we should be in sync!
+                            edit_level_load(tileset->id, new_level);
+
+                            gui_reboot();
+
+                            gui_update_for_generators();
+                        }
+                    } else {
+                        gui_display_message(TRUE, "Failed to create new labels!");
+                        result = FALSE;
+                    }
+                }
+            }
         }
+
     } while (!result);
 
     gtk_widget_destroy(popup);

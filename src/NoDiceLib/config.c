@@ -42,9 +42,8 @@ static int attr_to_int(ezxml_t node, const char *attr_name, int default_val) {
 
     if (attr_value != NULL) {
         return (int) strtol(attr_value, NULL, 0);
-    } else {
-        return default_val;
     }
+    return default_val;
 }
 
 static unsigned char attr_to_byte(ezxml_t node, const char *attr_name, unsigned char default_val) {
@@ -282,8 +281,9 @@ int _config_init() {
             snprintf(_error_msg, sizeof(_error_msg), "Unable to open %s\nNo such file or directory", CONFIG_XML);
         } else if (errno == EACCES) {
             snprintf(_error_msg, sizeof(_error_msg), "Unable to open %s\nPermission denied", CONFIG_XML);
-        } else
+        } else {
             snprintf(_error_msg, sizeof(_error_msg), "%s: %s", CONFIG_XML, ezxml_error(game_xml));
+        }
         return 0;
     }
 
@@ -307,8 +307,9 @@ int _config_init() {
         int count = 1;
         const char *token;
 
-        if ((build = ezxml_attr(required_child(config_xml, "build"), "value")) == NULL)
+        if ((build = ezxml_attr(required_child(config_xml, "build"), "value")) == NULL) {
             return 0;
+        }
 
         // Form [game].asm
         snprintf(_buffer, BUFFER_LEN, "%s" EXT_ASM, NoDice_config.filebase);
@@ -388,11 +389,13 @@ int _config_init() {
             snprintf(_error_msg, sizeof(_error_msg), "Unable to open %s\nNo such file or directory", _buffer);
         } else if (errno == EACCES) {
             snprintf(_error_msg, sizeof(_error_msg), "Unable to open %s\nPermission denied", _buffer);
-        } else
+        } else {
             snprintf(_error_msg, sizeof(_error_msg), "%s: %s", _buffer, ezxml_error(game_xml));
+        }
         return 0;
     } else {
-        ezxml_t game_node, node;
+        ezxml_t game_node;
+        ezxml_t node;
 
         // Parse <config />
         if ((game_node = required_child(game_xml, "config")) == NULL) {
@@ -776,7 +779,7 @@ const char *NoDice_config_game_add_level_entry(
             // that memory to be managed as such, we must add this to
             // XML immediately to use it, even though it also must also
             // be added to the internal structure...
-            if (node = ezxml_add_child_d(game_node, "level", 0)) {
+            if ((node = ezxml_add_child_d(game_node, "level", 0))) {
                 // Create the new child <level /> node
                 ezxml_set_attr_d(node, "name", name);
                 ezxml_set_attr_d(node, "layoutfile", layoutfile);
@@ -804,8 +807,9 @@ const char *NoDice_config_game_add_level_entry(
                 // shutdown and reload config!
                 _config_shutdown();
 
-                if (!_config_init())
+                if (!_config_init()) {
                     return _error_msg;
+                }
 
                 // Success!
                 // Setup a pseudo-level so we can initiate a save on it

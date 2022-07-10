@@ -45,8 +45,9 @@ GtkWidget *gui_listbox_new(GCallback sel_change_callback, gpointer user_data) {
     hscroll = gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(scroll_window));
     gtk_tree_view_set_hadjustment(GTK_TREE_VIEW(list_view), hscroll);
 
-    if (sel_change_callback != NULL)
+    if (sel_change_callback != NULL) {
         g_signal_connect(list_view, "cursor-changed", G_CALLBACK(sel_change_callback), user_data);
+    }
 
     return scroll_window;
 }
@@ -106,8 +107,9 @@ int gui_listbox_get_index_by_view(GtkTreeView *view) {
         result = value.data->v_int;
 
         g_value_unset(&value);
-    } else
+    } else {
         result = -1;
+    }
 
     return result;
 }

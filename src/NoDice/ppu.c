@@ -54,23 +54,33 @@ static const struct _nes_palette *nes_palette_current[32];
 #endif
 
 static void ppu_sprite_calc_limits(struct NoDice_objects *this_obj, int *off_x, int *off_y, int *width, int *height) {
-    int i, min_x = INT_MAX, min_y = INT_MAX, max_x = INT_MIN, max_y = INT_MIN;
+    int i;
+    int min_x = INT_MAX;
+    int min_y = INT_MAX;
+    int max_x = INT_MIN;
+    int max_y = INT_MIN;
 
     for (i = 0; i < this_obj->total_sprites; i++) {
         struct NoDice_object_sprites *this_spr = &this_obj->sprites[i];
 
         // SMB3 uses 8x16 sprite segments
-        int left = this_spr->x, top = this_spr->y;
-        int right = this_spr->x + 8, bottom = this_spr->y + 16;
+        int left = this_spr->x;
+        int top = this_spr->y;
+        int right = this_spr->x + 8;
+        int bottom = this_spr->y + 16;
 
-        if (left < min_x)
+        if (left < min_x) {
             min_x = left;
-        if (right > max_x)
+        }
+        if (right > max_x) {
             max_x = right;
-        if (top < min_y)
+        }
+        if (top < min_y) {
             min_y = top;
-        if (bottom > max_y)
+        }
+        if (bottom > max_y) {
             max_y = bottom;
+        }
     }
 
     *off_x = min_x;
@@ -103,8 +113,9 @@ void ppu_init() {
 
     // Create linear space, enough for 256 tiles, 4 times
     // (different palettes, maybe there's a better way?)
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < 4; i++) {
         PPU_BG_VROM[i] = gui_surface_create(8, 256 * 8);
+    }
 
     // Configure sprites/limits for objects and map objects
     ppu_init_objs(PPU_SPR_objects, 0);
@@ -112,19 +123,23 @@ void ppu_init() {
 }
 
 static void ppu_configure_for_level_sprites(struct NoDice_objects *this_obj) {
-    int i, id = this_obj - NoDice_config.game.objects;
+    int i;
+    int id = this_obj - NoDice_config.game.objects;
     struct _PPU_SPR *spr = &PPU_SPR[id];
 
     if (spr->surface != NULL) {
-        int surface_stride, surface_offset;
-        int x, y;
-        unsigned char *surface_data = gui_surface_capture_data(spr->surface, &surface_stride),
-                      *clear_ptr = surface_data;
+        int surface_stride;
+        int surface_offset;
+        int x;
+        int y;
+        unsigned char *surface_data = gui_surface_capture_data(spr->surface, &surface_stride);
+        unsigned char *clear_ptr = surface_data;
 
         // First, need to clear the sprite surface completely
         for (y = 0; y < spr->height; y++) {
-            for (x = 0; x < spr->width; x++)
+            for (x = 0; x < spr->width; x++) {
                 *clear_ptr = 0x00;
+            }
         }
 
         for (i = 0; i < this_obj->total_sprites; i++) {
@@ -132,18 +147,21 @@ static void ppu_configure_for_level_sprites(struct NoDice_objects *this_obj) {
             const unsigned char *VROM = NoDice_get_raw_CHR_bank(this_spr->bank) + ((int) this_spr->pattern * 64);
 
             int cbase = 16 + (this_spr->palette << 2);
-            int hflip = (this_spr->flips & 1), vflip = (this_spr->flips & 2);
+            int hflip = (this_spr->flips & 1);
+            int vflip = (this_spr->flips & 2);
 
             surface_offset = ((this_spr->y - spr->offset_y) * surface_stride) + ((this_spr->x - spr->offset_x) * 4);
 
             // When v-flipped, jump to last row of sprite
-            if (vflip)
+            if (vflip) {
                 VROM += 8 * 15;
+            }
 
             for (y = 0; y < 16; y++) {
                 // Horizontally flipped starts at end of row
-                if (hflip)
+                if (hflip) {
                     VROM += 8;
+                }
 
                 for (x = 0; x < 8; x++) {
                     unsigned char c = (!hflip) ? (*VROM++) : (*--VROM);
@@ -154,17 +172,20 @@ static void ppu_configure_for_level_sprites(struct NoDice_objects *this_obj) {
 
                         // Expand palette pixel into RGB
                         nes_pixel(surface_data, surface_offset, pal, 255);
-                    } else
+                    } else {
                         surface_offset += 4;
+                    }
                 }
 
                 // Next row
-                if (hflip)
+                if (hflip) {
                     VROM += 8;
+                }
 
                 // If vertically flipped, move up one line
-                if (vflip)
+                if (vflip) {
                     VROM -= 16;
+                }
 
                 // Hop the rest of the stride (if any)
                 surface_offset += surface_stride - (8 * 4);
@@ -186,14 +207,17 @@ static void ppu_configure_for_level_sprites(struct NoDice_objects *this_obj) {
 // So if to0800 is non-zero, it adds to the "bottom half"
 void ppu_set_BG_bank(unsigned char bank, unsigned char to0800) {
     int row;
-    const unsigned char *VROM_start = NoDice_get_raw_CHR_bank(bank), *VROM;
-    int pal, cbase;
+    const unsigned char *VROM_start = NoDice_get_raw_CHR_bank(bank);
+    const unsigned char *VROM;
+    int pal;
+    int cbase;
 
     // Generate all four palette copies (seems wasteful; better way?)
     for (pal = 0; pal < 4; pal++) {
         // Get surface data and stride
         gui_surface_t *surface = PPU_BG_VROM[pal];
-        int surface_stride, surface_offset;
+        int surface_stride;
+        int surface_offset;
         unsigned char *surface_data = gui_surface_capture_data(surface, &surface_stride);
 
         // Set offset by value of to 08000
@@ -259,18 +283,25 @@ void ppu_draw_tile(int x, int y, unsigned char tile, unsigned char pal) {
 }
 
 void ppu_draw(int x, int y, int w, int h) {
-    int row, col;
-    int row_end, col_end;
-    int start_x, col_start;
-    int max_row, max_col;
+    int row;
+    int col;
+    int row_end;
+    int col_end;
+    int start_x;
+    int col_start;
+    int max_row;
+    int max_col;
 
-    unsigned char screen, col_ef;
-    unsigned char pal, tile;
+    unsigned char screen;
+    unsigned char col_ef;
+    unsigned char pal;
+    unsigned char tile;
     unsigned short offset;
 
     // Shouldn't happen except at start
-    if (NoDice_the_level.tiles == NULL)
+    if (NoDice_the_level.tiles == NULL) {
         return;
+    }
 
     // Need to align x and y to tile grid!
     x &= ~(TILESIZE - 1);
@@ -297,20 +328,24 @@ void ppu_draw(int x, int y, int w, int h) {
     }
 
     // If too low, just quit!
-    if (row > max_row)
+    if (row > max_row) {
         return;
+    }
 
     // Cap off row_end
-    if (row_end > max_row)
+    if (row_end > max_row) {
         row_end = max_row;
+    }
 
     // If too far, just quit!
-    if (col > max_col)
+    if (col > max_col) {
         return;
+    }
 
     // Cap off end_col
-    if (col_end > max_col)
+    if (col_end > max_col) {
         col_end = max_col;
+    }
 
     for (; row < row_end; row++) {
         for (; col < col_end; col++) {
@@ -330,8 +365,9 @@ void ppu_draw(int x, int y, int w, int h) {
             ppu_draw_tile(x, y, tile, pal);
 
             // World map has no use for Tile Hints!
-            if (gui_tilehints[tile].hint != NULL && NoDice_the_level.tileset->id != 0)
+            if (gui_tilehints[tile].hint != NULL && NoDice_the_level.tileset->id != 0) {
                 gui_surface_overlay(gui_tilehints[tile].hint, x + 0, y + 0);
+            }
 
             x += 16;
         }
@@ -374,12 +410,14 @@ int ppu_sprite_draw(unsigned char id, int x, int y) {
 void ppu_shutdown() {
     int i;
 
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < 4; i++) {
         gui_surface_destroy(PPU_BG_VROM[i]);
+    }
 
     for (i = 0; i < sizeof(PPU_SPR) / sizeof(struct _PPU_SPR); i++) {
-        if (PPU_SPR[i].surface != NULL)
+        if (PPU_SPR[i].surface != NULL) {
             gui_surface_destroy(PPU_SPR[i].surface);
+        }
         PPU_SPR[i].surface = NULL;
     }
 }

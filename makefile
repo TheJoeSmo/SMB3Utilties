@@ -62,6 +62,18 @@ o/NoDiceLib/ezxml.o: src/NoDiceLib/ezxml.c src/NoDiceLib/ezxml.h
 o/M6502/M6502.o: src/NoDiceLib/rom.c $(wildcard src/M6502/*.c) $(wildcard src/M6502/*.h)
 	gcc -std=c11 -g -c $< -o $@
 
+tidy:
+	clang-tidy -fix src/NoDice/*.c -checks=readability-else-after-return,readability-isolate-declaration,readability-braces-around-statements -- `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` 
+	clang-tidy -fix src/NoDiceLib/*.c -checks=readability-else-after-return,readability-isolate-declaration,readability-braces-around-statements -- `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` 
+	clang-tidy -fix src/NoDice/*.h -checks=readability-else-after-return,readability-isolate-declaration,readability-braces-around-statements -- `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` 
+	clang-tidy -fix src/NoDiceLib/*.h -checks=readability-else-after-return,readability-isolate-declaration,readability-braces-around-statements -- `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` 
+	clang-tidy -fix src/M6502/M6502.h -checks=readability-else-after-return,readability-isolate-declaration,readability-braces-around-statements -- `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` 
+	clang-format -i --style=file ./src/NoDice/*.c
+	clang-format -i --style=file ./src/NoDiceLib/*.c
+	clang-format -i --style=file ./src/NoDice/*.h
+	clang-format -i --style=file ./src/NoDiceLib/*.h
+	clang-format -i --style=file ./src/M6502/M6502.h
+
 clear: clean
 	@clear
 

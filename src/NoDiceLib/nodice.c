@@ -20,7 +20,8 @@ static void exec_buffer_callback(const char *next_line) {
     // Make sure we haven't hit the end of the buffer
     if (exec_buffer_pos < (ERROR_MSG_LEN - 1)) {
         // Number of characters for next line of output
-        int len = strlen(next_line), max = (ERROR_MSG_LEN - 1) - exec_buffer_pos;
+        int len = strlen(next_line);
+        int max = (ERROR_MSG_LEN - 1) - exec_buffer_pos;
 
         if (max > 0) {
             // Use strncat to limit number of characters we copy up to
@@ -41,9 +42,8 @@ const char *NoDice_DoBuild() {
 
     if (!NoDice_exec_build(exec_buffer_callback)) {
         return _error_msg;
-    } else {
-        return NULL;
     }
+    return NULL;
 }
 
 static int verify_generated_files() {

@@ -40,7 +40,8 @@ static int option_string_add(char *opt_str, const char *addition, int *opt_str_p
 
         for (i = 0; i < 2; i++) {
             // Number of characters for next line of output
-            int len = strlen(additions[i]), max = (OPTION_STRING_LEN - 1) - *opt_str_pos;
+            int len = strlen(additions[i]);
+            int max = (OPTION_STRING_LEN - 1) - *opt_str_pos;
 
             if (max > 0) {
                 // Use strncat to limit number of characters we copy up to
@@ -49,9 +50,10 @@ static int option_string_add(char *opt_str, const char *addition, int *opt_str_p
 
                 // Advance position
                 *opt_str_pos += len;
-            } else
+            } else {
                 // Not enough room!
                 return 0;
+            }
         }
 
         return 1;
@@ -88,8 +90,9 @@ const struct NoDice_the_levels *edit_level_find(
                 // the object label...
                 if (addr == layout_addr) {
                     // Special object drop override used for special tile map links ONLY
-                    if (objects_addr != 0xFFFF)
+                    if (objects_addr != 0xFFFF) {
                         addr = NoDice_get_addr_for_label(level->objectlabel);
+                    }
 
                     if (addr == objects_addr || objects_addr == 0xFFFF) {
                         // We found it!!
@@ -107,7 +110,8 @@ const struct NoDice_the_levels *edit_level_find(
 }
 
 static const char *edit_level_save_make_option_string(int header_index) {
-    int i, opt_str_pos = 0;
+    int i;
+    int opt_str_pos = 0;
     static char opt_str[OPTION_STRING_LEN];
     const struct NoDice_headers *header = &NoDice_config.game.headers[header_index];
     unsigned char header_val = NoDice_the_level.header.option[header_index];
@@ -130,8 +134,9 @@ static const char *edit_level_save_make_option_string(int header_index) {
             // But only do anything if it's set, otherwise forget it
             if (header_val & option_list->mask) {
                 // Bit set; add the mask, but abort if we run out of room (shouldn't happen, hopefully!!)
-                if (!option_string_add(opt_str, option_list->options[0].label, &opt_str_pos))
+                if (!option_string_add(opt_str, option_list->options[0].label, &opt_str_pos)) {
                     return NULL;
+                }
             }
         } else if (option_list->options_count > 1) {
             int resolved = 0;  // Flag set if label is resolved
@@ -148,8 +153,9 @@ static const char *edit_level_save_make_option_string(int header_index) {
                 // value, then we have our label!
                 if ((opt->label != NULL) && (opt->value == relative_value)) {
                     // Push in the flag value if we can...
-                    if (!option_string_add(opt_str, opt->label, &opt_str_pos))
+                    if (!option_string_add(opt_str, opt->label, &opt_str_pos)) {
                         return NULL;
+                    }
 
                     // We found it!
                     resolved = 1;
@@ -162,21 +168,23 @@ static const char *edit_level_save_make_option_string(int header_index) {
             // We don't have a flag for this!  Just put in a raw value for now...
             if (!resolved) {
                 snprintf(alt_val, sizeof(alt_val), "(%i << %i)", relative_value, option_list->shift);
-                if (!option_string_add(opt_str, alt_val, &opt_str_pos))
+                if (!option_string_add(opt_str, alt_val, &opt_str_pos)) {
                     return NULL;
+                }
             }
         }
     }
 
     // Unlikely, but if we wound up with absolutely nothing, just return a zero
-    if (strlen(opt_str) == 0)
+    if (strlen(opt_str) == 0) {
         strcpy(opt_str, "0");
-    else {
+    } else {
         int len = strlen(opt_str);
 
         // Trim off trailing " | ", if present
-        if (opt_str[len - 3] == ' ' && opt_str[len - 2] == '|' && opt_str[len - 1] == ' ')
+        if (opt_str[len - 3] == ' ' && opt_str[len - 2] == '|' && opt_str[len - 1] == ' ') {
             opt_str[len - 3] = '\0';
+        }
     }
 
     return opt_str;
@@ -188,7 +196,9 @@ int edit_level_save(int save_layout, int save_objects) {
     const char *build_err;
     const struct NoDice_the_levels *level_alternate;
     const unsigned char *level_data;
-    int i, size, col = 0;
+    int i;
+    int size;
+    int col = 0;
     FILE *asm_file;
 
     if (NoDice_the_level.tileset->id > 0) {
@@ -247,9 +257,9 @@ int edit_level_save(int save_layout, int save_objects) {
             // Go through each header and add the header bytes
             for (i = 0; i < LEVEL_HEADER_COUNT; i++) {
                 const char *next_header = edit_level_save_make_option_string(i);
-                if (next_header != NULL)
+                if (next_header != NULL) {
                     fprintf(asm_file, "\t.byte %s\n", next_header);
-                else {
+                } else {
                     // This really should NEVER happen!!
                     gui_display_message(1, "INTERNAL ERROR: A generated header line was too long!");
                     fclose(asm_file);
@@ -262,15 +272,17 @@ int edit_level_save(int save_layout, int save_objects) {
 
             // Write it out, byte-for-byte, 16 bytes per row
             for (i = 0; i < size; i++) {
-                if (col == 0)
+                if (col == 0) {
                     fprintf(asm_file, "\n\t.byte ");
+                }
 
                 fprintf(asm_file, "$%02X", level_data[i]);
 
-                if (++col == 16)
+                if (++col == 16) {
                     col = 0;
-                else if (i < (size - 1))
+                } else if (i < (size - 1)) {
                     fprintf(asm_file, ", ");
+                }
             }
 
             fclose(asm_file);
@@ -306,10 +318,11 @@ int edit_level_save(int save_layout, int save_objects) {
                 fputs("\t.byte ", asm_file);
 
                 // Label expansion
-                if (label != NULL)
+                if (label != NULL) {
                     fprintf(asm_file, "%s, ", label);
-                else
+                } else {
                     fprintf(asm_file, "$%02X, ", obj->id);  // Fallback to raw ID
+                }
 
                 fprintf(asm_file, "$%02X, $%02X\n", obj->col, obj->row);
             }
@@ -360,15 +373,17 @@ int edit_level_save(int save_layout, int save_objects) {
 
             // Write it out, byte-for-byte, 16 bytes per row
             for (i = 0; i < SCREEN_BYTESIZE_M; i++) {
-                if (col == 0)
+                if (col == 0) {
                     fprintf(asm_file, "\n\t.byte ");
+                }
 
                 fprintf(asm_file, "$%02X", NoDice_the_level.tiles[screen_offset + i]);
 
-                if (++col == 16)
+                if (++col == 16) {
                     col = 0;
-                else if (i < (SCREEN_BYTESIZE_M - 1))
+                } else if (i < (SCREEN_BYTESIZE_M - 1)) {
                     fprintf(asm_file, ", ");
+                }
             }
 
             // spacer
@@ -412,24 +427,27 @@ int edit_level_save(int save_layout, int save_objects) {
                     struct NoDice_the_level_object *object = &NoDice_the_level.objects[j];
                     unsigned char next_byte;
 
-                    if (i == OF_ID)
+                    if (i == OF_ID) {
                         next_byte = object->id;
-                    else if (i == OF_ITEM)
+                    } else if (i == OF_ITEM) {
                         next_byte = NoDice_the_level.map_object_items[j];
-                    else if ((i == OF_X) || (i == OF_XHI)) {
+                    } else if ((i == OF_X) || (i == OF_XHI)) {
                         unsigned short x = ((unsigned short) object->col) * TILESIZE;
                         next_byte = (i == OF_X) ? (x & 0x00FF) : ((x & 0xFF00) >> 8);
-                    } else if (i == OF_Y)
+                    } else if (i == OF_Y) {
                         next_byte = ((object->row + MAP_OBJECT_BASE_ROW) * TILESIZE);
+                    }
 
-                    if ((i != OF_ID) || NoDice_config.game.map_objects[next_byte].label == NULL)
+                    if ((i != OF_ID) || NoDice_config.game.map_objects[next_byte].label == NULL) {
                         fprintf(asm_file, "$%02X", next_byte);
-                    else
+                    } else {
                         // Object ID label expansion
                         fprintf(asm_file, "%s", NoDice_config.game.map_objects[next_byte].label);
+                    }
 
-                    if (j < (MOBJS_MAX - 1))
+                    if (j < (MOBJS_MAX - 1)) {
                         fputs(", ", asm_file);
+                    }
                 }
 
                 fclose(asm_file);
@@ -468,8 +486,9 @@ int edit_level_save(int save_layout, int save_objects) {
                 i,
                 edit_cur_level->layoutlabel);
 
-            if (i < 4)
+            if (i < 4) {
                 fputs(", ", asm_file);
+            }
         }
         fputc('\n', asm_file);
 
@@ -509,17 +528,19 @@ int edit_level_save(int save_layout, int save_objects) {
                                 this_screen + 1,
                                 data_type);
                             screen = this_screen;
-                        } else if (i > 0)
+                        } else if (i > 0) {
                             fputs(", ", asm_file);
+                        }
 
-                        if (col == LBL_BYROWTYPE)
+                        if (col == LBL_BYROWTYPE) {
                             fprintf(asm_file, "$%02X", link->row_tileset);
-                        else if (col == LBL_BYSCRCOL)
+                        } else if (col == LBL_BYSCRCOL) {
                             fprintf(asm_file, "$%02X", link->col_hi);
-                        else if ((col == LBL_OBJSETS) || (col == LBL_LEVELLAYOUT)) {
+                        } else if ((col == LBL_OBJSETS) || (col == LBL_LEVELLAYOUT)) {
                             // Non-warp zone...
 
-                            int tile_check, is_special = 0;
+                            int tile_check;
+                            int is_special = 0;
 
                             // Get tileset of link
                             unsigned char tileset = link->row_tileset & 0x0F;
@@ -541,25 +562,28 @@ int edit_level_save(int save_layout, int save_objects) {
                             }
 
                             // Get appropriate level
-                            if (!is_special || (col == LBL_LEVELLAYOUT))
+                            if (!is_special || (col == LBL_LEVELLAYOUT)) {
                                 level = edit_level_find(
                                     tileset,
                                     link->layout_addr,
                                     !is_special ? link->object_addr : 0xFFFF);
+                            }
 
                             // Write appropriate label or value
                             if (col == LBL_LEVELLAYOUT) {
-                                if (level != NULL)
+                                if (level != NULL) {
                                     // Layout label is always printed
                                     fprintf(asm_file, "%s", level->layoutlabel);
-                                else
+                                } else {
                                     fprintf(asm_file, "$%04X", link->layout_addr);
+                                }
                             } else {
                                 // Object label is printed only if not special
-                                if (!is_special && level != NULL)
+                                if (!is_special && level != NULL) {
                                     fprintf(asm_file, "%s", level->objectlabel);
-                                else
+                                } else {
                                     fprintf(asm_file, "$%04X", link->object_addr);
+                                }
                             }
                         }
                     }
@@ -572,8 +596,9 @@ int edit_level_save(int save_layout, int save_objects) {
                 }
 
                 // Write out missing labels, if any
-                for (screen++; screen < 4; screen++)
+                for (screen++; screen < 4; screen++) {
                     fprintf(asm_file, "W%s_%s_S%i:\n", edit_cur_level->layoutlabel, labels[col], screen + 1);
+                }
 
                 // Begin storing screens
                 screen = 0;
@@ -589,11 +614,11 @@ int edit_level_save(int save_layout, int save_objects) {
     if (build_err != NULL) {
         gui_display_message(1, build_err);
         return 0;
+    }
+    if (!NoDice_PRG_refresh()) {
+        gui_display_message(0, NoDice_Error());
     } else {
-        if (!NoDice_PRG_refresh())
-            gui_display_message(0, NoDice_Error());
-        else
-            gui_display_message(0, "Save and build complete!");
+        gui_display_message(0, "Save and build complete!");
     }
 
     return 1;
@@ -608,8 +633,9 @@ void edit_level_save_new_check(
         snprintf(path_buffer, PATH_MAX, SUBDIR_LEVELS "/%s/%s" EXT_ASM, tileset_path, layoutfile);
 
         // If file is found, do NOT actually save layout
-        if (stat(path_buffer, &unused) == 0)
+        if (stat(path_buffer, &unused) == 0) {
             *save_layout = 0;
+        }
     }
 
     // Does an object layout already exist?
@@ -617,8 +643,9 @@ void edit_level_save_new_check(
         snprintf(path_buffer, PATH_MAX, SUBDIR_OBJECTS "/%s" EXT_ASM, objectfile);
 
         // If file is found, do NOT actually save layout
-        if (stat(path_buffer, &unused) == 0)
+        if (stat(path_buffer, &unused) == 0) {
             *save_objects = 0;
+        }
     }
 }
 
@@ -727,8 +754,9 @@ static void undo_mark(enum UNDOMODE undo_mode) {
         free(undo_stack[undo_stack_bottom].layout_data);
 
         undo_stack_bottom = (undo_stack_bottom + 1) % UNDO_STACK_LIMIT;
-    } else
+    } else {
         undo_stack_total++;
+    }
 
     // Advance position in the undo stack
     undo_stack_pos = (undo_stack_pos + 1) % UNDO_STACK_LIMIT;
@@ -839,13 +867,15 @@ static void undo_revert() {
             NoDice_load_level_raw_data(undo->layout_data, undo->layout_data_size, has_header);
 
             // If undo changed header, have to reset the virtual PPU
-            if (has_header)
+            if (has_header) {
                 ppu_configure_for_level();
+            }
         }
 
         // Free the memory used by this undo
-        if (undo->undo_mode != UNDOMODE_MAPTILE)
+        if (undo->undo_mode != UNDOMODE_MAPTILE) {
             free(undo->layout_data);
+        }
     }
 }
 
@@ -857,14 +887,16 @@ static void level_gen_remove(struct NoDice_the_level_generator *remove) {
         NoDice_the_level.generators = remove->next;
 
         // The new first element needs to have no previous!
-        if (NoDice_the_level.generators != NULL)
+        if (NoDice_the_level.generators != NULL) {
             NoDice_the_level.generators->prev = NULL;
+        }
     } else {
         // Non-first element general removal
         remove->prev->next = remove->next;
 
-        if (remove->next != NULL)
+        if (remove->next != NULL) {
             remove->next->prev = remove->prev;
+        }
     }
 }
 
@@ -877,9 +909,10 @@ static void level_gen_insert(
         if (NoDice_the_level.generators != NULL) {
             NoDice_the_level.generators->prev = insert;
             insert->next = NoDice_the_level.generators;
-        } else
+        } else {
             // New item in empty list
             insert->next = NULL;
+        }
 
         // New first element
         insert->prev = NULL;
@@ -888,8 +921,9 @@ static void level_gen_insert(
         // Non-first element general insert
         insert->next = insert_after->next;
 
-        if (insert_after->next != NULL)
+        if (insert_after->next != NULL) {
             insert_after->next->prev = insert;
+        }
 
         insert->prev = insert_after;
         insert_after->next = insert;
@@ -923,8 +957,9 @@ void edit_level_load(unsigned char tileset, const struct NoDice_the_levels *leve
     gui_6052_timeout_end();
 
     // If an error occurred, display it!
-    if (NoDice_Run6502_Stop != RUN6502_STOP_END)
+    if (NoDice_Run6502_Stop != RUN6502_STOP_END) {
         gui_display_6502_error(NoDice_Run6502_Stop);
+    }
 
     // Unwind the undo stack
     while (undo_stack_total > 0) {
@@ -940,8 +975,9 @@ void edit_level_load(unsigned char tileset, const struct NoDice_the_levels *leve
         undo = &undo_stack[undo_stack_pos];
 
         // Free the memory used by this undo
-        if (undo->undo_mode != UNDOMODE_MAPTILE)
+        if (undo->undo_mode != UNDOMODE_MAPTILE) {
             free(undo->layout_data);
+        }
     }
 
     // Disable objects and warn if empty object set
@@ -966,10 +1002,11 @@ static void level_reload(int expected_generator_count) {
         int actual_count = level_gen_count();
 
         // Verify that the generator count did not change!
-        if (expected_generator_count != actual_count)
+        if (expected_generator_count != actual_count) {
             // FIXME: Kind of ugly, it doesn't need to be a 6502 stop signal
             // because we're already stopped at this point
             NoDice_Run6502_Stop = RUN6502_GENGENCOUNT_MISMATCH;
+        }
     }
 
     if (NoDice_Run6502_Stop != RUN6502_STOP_END) {
@@ -1018,7 +1055,10 @@ void edit_revert() {
 }
 
 void edit_gen_translate(struct NoDice_the_level_generator *gen, int diff_row, int diff_col) {
-    int cur_row, cur_col, target_row, target_col;
+    int cur_row;
+    int cur_col;
+    int target_row;
+    int target_col;
 
     // Set an undo mark
     undo_mark(UNDOMODE_GENS_NOHEADER);
@@ -1033,26 +1073,30 @@ void edit_gen_translate(struct NoDice_the_level_generator *gen, int diff_row, in
         int target_screen = target_col / SCREEN_WIDTH;
 
         // Vertical transformation is pretty simple...
-        if (target_row >= 0 && target_row < (SCREEN_BYTESIZE / SCREEN_WIDTH))
+        if (target_row >= 0 && target_row < (SCREEN_BYTESIZE / SCREEN_WIDTH)) {
             gen->addr_start += diff_row * SCREEN_WIDTH;
+        }
 
         // Horizontal transformation needs to pay attention to the screen!
         if (target_screen >= 0 && target_screen <= SCREEN_COUNT) {
             // Get the difference in screens, if any
             int screen_diff = (target_col / SCREEN_WIDTH) - (cur_col / SCREEN_WIDTH);
 
-            if (screen_diff != 0)
+            if (screen_diff != 0) {
                 gen->addr_start += (SCREEN_BYTESIZE * screen_diff) - (screen_diff * SCREEN_WIDTH) + diff_col;
-            else
+            } else {
                 gen->addr_start += diff_col;
+            }
         }
     } else {
         // Things are much easier in vertical levels because the memory is linear!
-        if (target_row >= 0 && target_row < (SCREEN_BYTESIZE_V / SCREEN_WIDTH) * SCREEN_COUNT)
+        if (target_row >= 0 && target_row < (SCREEN_BYTESIZE_V / SCREEN_WIDTH) * SCREEN_COUNT) {
             gen->addr_start += diff_row * SCREEN_WIDTH;
+        }
 
-        if (target_col >= 0 && target_col <= 15)
+        if (target_col >= 0 && target_col <= 15) {
             gen->addr_start += diff_col;
+        }
     }
 
     // Reload level
@@ -1155,9 +1199,9 @@ void edit_gen_bring_to_front(struct NoDice_the_level_generator *gen) {
 
 void edit_gen_insert_generator(const struct NoDice_generator *gen, int row, int col, const unsigned char *p) {
     int index = 0;
-    struct NoDice_the_level_generator *tail = NoDice_the_level.generators,
-                                      *new_gen = (struct NoDice_the_level_generator *) malloc(
-                                          sizeof(struct NoDice_the_level_generator));
+    struct NoDice_the_level_generator *tail = NoDice_the_level.generators;
+    struct NoDice_the_level_generator *new_gen =
+        (struct NoDice_the_level_generator *) malloc(sizeof(struct NoDice_the_level_generator));
 
     if (tail != NULL) {
         // Need to find the tail first...
@@ -1196,8 +1240,9 @@ void edit_gen_insert_generator(const struct NoDice_generator *gen, int row, int 
             new_gen->p[i] = p[i];
             new_gen->size++;
         }
-    } else
+    } else {
         new_gen->size = 3;
+    }
 
     // Insert it in at the end
     level_gen_insert(tail, new_gen);
@@ -1213,8 +1258,9 @@ void edit_gen_set_parameters(struct NoDice_the_level_generator *gen, const unsig
     undo_mark(UNDOMODE_GENS_NOHEADER);
 
     // Update parameters
-    for (i = 0; i < GEN_MAX_PARAMS; i++)
+    for (i = 0; i < GEN_MAX_PARAMS; i++) {
         gen->p[i] = parameters[i];
+    }
 
     // Reload level
     level_reload_with_selection(level_gen_count(), gen->index);
@@ -1236,10 +1282,11 @@ void edit_header_change(struct NoDice_the_level_generator *selected_gen, const u
     memcpy(NoDice_the_level.header.option, new_header, LEVEL_HEADER_COUNT);
 
     // Reload level
-    if (selected_gen != NULL)
+    if (selected_gen != NULL) {
         level_reload_with_selection(level_gen_count(), selected_gen->index);
-    else
+    } else {
         level_reload(level_gen_count());
+    }
 
     ppu_configure_for_level();
     gui_update_for_generators();
@@ -1265,8 +1312,9 @@ void edit_startspot_alt_load() {
     gui_6052_timeout_end();
 
     // If an error occurred, display it!
-    if (NoDice_Run6502_Stop != RUN6502_STOP_END)
+    if (NoDice_Run6502_Stop != RUN6502_STOP_END) {
         gui_display_6502_error(NoDice_Run6502_Stop);
+    }
 
     ppu_configure_for_level();
 }
@@ -1281,10 +1329,10 @@ static int sort_objs_compare(const void *a, const void *b) {
     const struct NoDice_the_level_object *oa = (struct NoDice_the_level_object *) a;
     const struct NoDice_the_level_object *ob = (struct NoDice_the_level_object *) b;
 
-    if (!NoDice_the_level.header.is_vert)
+    if (!NoDice_the_level.header.is_vert) {
         return oa->col - ob->col;
-    else
-        return oa->row - ob->row;
+    }
+    return oa->row - ob->row;
 }
 
 // In SMB3, objects must be sorted forward by their
@@ -1299,7 +1347,8 @@ static void edit_obj_sort() {
 }
 
 void edit_obj_translate(struct NoDice_the_level_object *obj, int diff_row, int diff_col) {
-    int target_row = obj->row + diff_row, target_col = obj->col + diff_col;
+    int target_row = obj->row + diff_row;
+    int target_col = obj->col + diff_col;
 
     if (target_row >= 0 && target_col >= 0) {
         // Mark undo
@@ -1309,10 +1358,11 @@ void edit_obj_translate(struct NoDice_the_level_object *obj, int diff_row, int d
         obj->col = target_col;
 
         // World Map (tileset 0) does not sort objects
-        if (NoDice_the_level.tileset->id != 0)
+        if (NoDice_the_level.tileset->id != 0) {
             edit_obj_sort();
-        else
+        } else {
             gui_update_for_generators();
+        }
     }
 }
 
@@ -1341,14 +1391,16 @@ int edit_obj_insert_object(const struct NoDice_objects *obj, int row, int col) {
 }
 
 void edit_obj_remove(struct NoDice_the_level_object *obj) {
-    int i, index = obj - NoDice_the_level.objects;
+    int i;
+    int index = obj - NoDice_the_level.objects;
 
     // Mark undo
     undo_mark(UNDOMODE_OBJECTS);
 
     // Move all objects back
-    for (i = index + 1; i < NoDice_the_level.object_count; i++)
+    for (i = index + 1; i < NoDice_the_level.object_count; i++) {
         memcpy(&NoDice_the_level.objects[i - 1], &NoDice_the_level.objects[i], sizeof(struct NoDice_the_level_object));
+    }
 
     // One less object
     NoDice_the_level.object_count--;
@@ -1409,7 +1461,8 @@ static void edit_link_sort() {
 }
 
 void edit_link_translate(struct NoDice_map_link *link, int diff_row, int diff_col) {
-    int target_row = ((link->row_tileset & 0xF0) >> 4) + diff_row, target_col = link->col_hi + diff_col;
+    int target_row = ((link->row_tileset & 0xF0) >> 4) + diff_row;
+    int target_col = link->col_hi + diff_col;
 
     if (target_row >= 0 && target_col >= 0) {
         // Mark undo
@@ -1446,14 +1499,16 @@ int edit_link_insert_link(int row, int col) {
 }
 
 void edit_link_remove(struct NoDice_map_link *link) {
-    int i, index = link - NoDice_the_level.map_links;
+    int i;
+    int index = link - NoDice_the_level.map_links;
 
     // Mark undo
     undo_mark(UNDOMODE_LINK);
 
     // Move all link back
-    for (i = index + 1; i < NoDice_the_level.map_link_count; i++)
+    for (i = index + 1; i < NoDice_the_level.map_link_count; i++) {
         memcpy(&NoDice_the_level.map_links[i - 1], &NoDice_the_level.map_links[i], sizeof(struct NoDice_map_link));
+    }
 
     // One less link
     NoDice_the_level.map_link_count--;

@@ -154,14 +154,16 @@ static gboolean gtk_selectable_overlay_expose(GtkWidget *widget, GdkEventExpose 
     // Go ahead and redraw this rectangle!
     gui_PPU_portal_expose_event_callback(widget, event, &alloc);
 
-    if (overlay->obj != NULL)
+    if (overlay->obj != NULL) {
         gtk_selectable_overlay_paint_obj(widget, overlay->obj);
-    else if (overlay->link != NULL)
+    } else if (overlay->link != NULL) {
         gtk_selectable_overlay_paint_link(widget, overlay->link);
+    }
 
     // Now we may draw as we please~
-    if (overlay->selected)
+    if (overlay->selected) {
         gtk_selectable_overlay_paint_selection(widget);
+    }
 
     return TRUE;
 }
@@ -193,11 +195,12 @@ static void gtk_selectable_overlay_paint_obj(GtkWidget *widget, struct NoDice_th
         char numbuf[3];
         const char *printtext = numbuf;
 
-        if (this_obj->special_options.options_list_count == 0)
+        if (this_obj->special_options.options_list_count == 0) {
             // Non-special no sprite object
             snprintf(numbuf, sizeof(numbuf), "%02X", obj->id);
-        else
+        } else {
             printtext = this_obj->name;
+        }
 
         // Restore to pre-scale cairo
         cairo_restore(cr);
@@ -216,9 +219,10 @@ static void gtk_selectable_overlay_paint_obj(GtkWidget *widget, struct NoDice_th
         cairo_set_font_size(cr, tsize);
         cairo_move_to(cr, tx, ty);
 
-        if (this_obj->special_options.options_list_count != 0)
+        if (this_obj->special_options.options_list_count != 0) {
             // Special object rotate 90
             cairo_rotate(cr, 1.570796327);
+        }
 
         cairo_show_text(cr, printtext);
     }
@@ -313,12 +317,13 @@ static void gtk_selectable_overlay_release_foreach_callback(GtkWidget *widget, g
             selectable_overlay->selected = FALSE;
 
             if ((selectable_overlay->obj != NULL) &&
-                (NoDice_config.game.objects[selectable_overlay->obj->id].special_options.options_list_count != 0))
+                (NoDice_config.game.objects[selectable_overlay->obj->id].special_options.options_list_count != 0)) {
                 // Special object should be hidden
                 gtk_widget_hide(GTK_WIDGET(selectable_overlay));
-            else
+            } else {
                 // Otherwise just redraw for de-selection
                 gtk_widget_queue_draw(widget);
+            }
         }
     }
 }
@@ -382,7 +387,8 @@ static gboolean gtk_selectable_overlay_release(GtkWidget *widget, GdkEventButton
     if (event->type == GDK_BUTTON_RELEASE && event->button == 1) {
         GtkAllocation alloc;
         GtkSelectableOverlay *selectable_overlay = GTK_SELECTABLE_OVERLAY(widget);
-        int diff_row, diff_col;
+        int diff_row;
+        int diff_col;
 
         gtk_widget_get_allocation(widget, &alloc);
 
@@ -392,14 +398,15 @@ static gboolean gtk_selectable_overlay_release(GtkWidget *widget, GdkEventButton
             (int) ((double) (alloc.x - selectable_overlay->translation_data.origin_x) / gui_draw_info.zoom / TILESIZE);
 
         if (diff_row != 0 || diff_col != 0) {
-            if (selectable_overlay->gen != NULL)
+            if (selectable_overlay->gen != NULL) {
                 edit_gen_translate(selectable_overlay->gen, diff_row, diff_col);
-            else if (selectable_overlay->obj != NULL) {
+            } else if (selectable_overlay->obj != NULL) {
                 const struct NoDice_objects *this_obj = &NoDice_config.game.objects[selectable_overlay->obj->id];
 
-                if (this_obj->special_options.options_list_count != 0)
+                if (this_obj->special_options.options_list_count != 0) {
                     // Special object: Do not allow row changes (property window handles that)
                     diff_row = 0;
+                }
 
                 edit_obj_translate(selectable_overlay->obj, diff_row, diff_col);
             } else if (selectable_overlay->link != NULL) {
@@ -437,8 +444,9 @@ void gtk_selectable_overlay_select(GtkSelectableOverlay *selectable_overlay) {
     selectable_overlay->selected = TRUE;
 
     // Run callback
-    if (selectable_overlay->select_handler != NULL)
+    if (selectable_overlay->select_handler != NULL) {
         selectable_overlay->select_handler(selectable_overlay);
+    }
 
     // Need to redraw
     gtk_widget_queue_draw(GTK_WIDGET(selectable_overlay));

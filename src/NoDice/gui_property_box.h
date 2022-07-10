@@ -1,5 +1,7 @@
 #include <gtk/gtk.h>
 
+#include "../NoDiceLib/config.h"
+
 #ifndef GUI_PROPERTY_BOX_H
 #define GUI_PROPERTY_BOX_H
 

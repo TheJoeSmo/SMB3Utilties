@@ -28,14 +28,18 @@
 typedef unsigned int uint;
 
 char *stristr(const char *String, const char *Pattern) {
-    char *pptr, *sptr, *start;
+    char *pptr;
+    char *sptr;
+    char *start;
 
     for (start = (char *) String; *start != NUL; start++) {
         /* find start of pattern in string */
-        for (; ((*start != NUL) && (toupper(*start) != toupper(*Pattern))); start++)
+        for (; ((*start != NUL) && (toupper(*start) != toupper(*Pattern))); start++) {
             ;
-        if (NUL == *start)
+        }
+        if (NUL == *start) {
             return NULL;
+        }
 
         pptr = (char *) Pattern;
         sptr = (char *) start;
@@ -46,8 +50,9 @@ char *stristr(const char *String, const char *Pattern) {
 
             /* if end of pattern then pattern was found */
 
-            if (NUL == *pptr)
+            if (NUL == *pptr) {
                 return (start);
+            }
         }
     }
     return NULL;

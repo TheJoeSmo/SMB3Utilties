@@ -346,11 +346,12 @@ void Int6502(M6502 *R, byte Type) {
         M_PUSH(R->PC.B.l);
         M_PUSH(R->P & ~B_FLAG);
         R->P &= ~D_FLAG;
-        if (R->IAutoReset && (Type == R->IRequest))
+        if (R->IAutoReset && (Type == R->IRequest)) {
             R->IRequest = INT_NONE;
-        if (Type == INT_NMI)
+        }
+        if (Type == INT_NMI) {
             J.W = 0xFFFA;
-        else {
+        } else {
             R->P |= I_FLAG;
             J.W = 0xFFFE;
         }
@@ -365,7 +366,8 @@ void Int6502(M6502 *R, byte Type) {
 /** emulation stopped, and current register values in R.    **/
 /*************************************************************/
 word Run6502(M6502 *R) {
-    register pair J, K;
+    register pair J;
+    register pair K;
     register byte I;
 
     for (;;) {
@@ -373,56 +375,60 @@ word Run6502(M6502 *R) {
         R->ICount -= Cycles[I];
         switch (I) {
             case 0x10:
-                if (R->P & N_FLAG)
+                if (R->P & N_FLAG) {
                     R->PC.W++;
-                else {
+                } else {
                     M_JR;
                 }
                 break; /* BPL * REL */
             case 0x30:
                 if (R->P & N_FLAG) {
                     M_JR;
-                } else
+                } else {
                     R->PC.W++;
+                }
                 break; /* BMI * REL */
             case 0xD0:
-                if (R->P & Z_FLAG)
+                if (R->P & Z_FLAG) {
                     R->PC.W++;
-                else {
+                } else {
                     M_JR;
                 }
                 break; /* BNE * REL */
             case 0xF0:
                 if (R->P & Z_FLAG) {
                     M_JR;
-                } else
+                } else {
                     R->PC.W++;
+                }
                 break; /* BEQ * REL */
             case 0x90:
-                if (R->P & C_FLAG)
+                if (R->P & C_FLAG) {
                     R->PC.W++;
-                else {
+                } else {
                     M_JR;
                 }
                 break; /* BCC * REL */
             case 0xB0:
                 if (R->P & C_FLAG) {
                     M_JR;
-                } else
+                } else {
                     R->PC.W++;
+                }
                 break; /* BCS * REL */
             case 0x50:
-                if (R->P & V_FLAG)
+                if (R->P & V_FLAG) {
                     R->PC.W++;
-                else {
+                } else {
                     M_JR;
                 }
                 break; /* BVC * REL */
             case 0x70:
                 if (R->P & V_FLAG) {
                     M_JR;
-                } else
+                } else {
                     R->PC.W++;
+                }
                 break; /* BVS * REL */
 
             /* RTI */
@@ -995,14 +1001,16 @@ word Run6502(M6502 *R) {
             default:
                 /* Try to execute a patch function. If it fails, treat */
                 /* the opcode as undefined.                            */
-                if (!Patch6502(Op6502(R->PC.W - 1), R))
-                    if (R->TrapBadOps)
+                if (!Patch6502(Op6502(R->PC.W - 1), R)) {
+                    if (R->TrapBadOps) {
                         printf(
                             "[M6502 %lX] Unrecognized instruction: $%02X at "
                             "PC=$%04X\n",
                             (unsigned long) (R->User),
                             Op6502(R->PC.W - 1),
                             (word)(R->PC.W - 1));
+                    }
+                }
                 break;
         }
 
@@ -1017,14 +1025,17 @@ word Run6502(M6502 *R) {
             } else {
                 I = Loop6502(R);         /* Call the periodic handler */
                 R->ICount += R->IPeriod; /* Reset the cycle counter   */
-                if (!I)
+                if (!I) {
                     I = R->IRequest; /* Realize pending interrupt */
+                }
             }
 
-            if (I == INT_QUIT)
+            if (I == INT_QUIT) {
                 return (R->PC.W); /* Exit if INT_QUIT     */
-            if (I)
+            }
+            if (I) {
                 Int6502(R, I); /* Interrupt if needed  */
+            }
         }
     }
 
@@ -1131,7 +1142,8 @@ static void prev_gen_patch(int size_offset) {
 }
 
 void _rom_free_level_list() {
-    struct NoDice_the_level_generator *gen, *next;
+    struct NoDice_the_level_generator *gen;
+    struct NoDice_the_level_generator *next;
 
     gen = NoDice_the_level.generators;
     while (gen != NULL) {
@@ -1151,73 +1163,84 @@ void Wr6502(register word Addr, register byte Value) {
 
         // If writing in the address space used by the scratch below
         // the expanded RAM bank, you're probably out of order!
-        if (Addr >= SCRATCH_START && Addr < MEM_B_START)
+        if (Addr >= SCRATCH_START && Addr < MEM_B_START) {
             NoDice_Run6502_Stop = RUN6502_LEVEL_OORW_LOW;
 
-        // If writing beyond the sensible end of the tile grid,
-        // mark it as out-of-range-high.  There actually are some
-        // generator layouts that overwrite memory they shouldn't,
-        // but for the sake of legacy compatibility, we're allowing
-        // a user-defined acceptable overrun... ideally this would
-        // not exceed TILEMEM_END, but oh well...
-        else if (Addr > TILEMEM_END && Addr <= NoDice_config.level_range_check_high)
+            // If writing beyond the sensible end of the tile grid,
+            // mark it as out-of-range-high.  There actually are some
+            // generator layouts that overwrite memory they shouldn't,
+            // but for the sake of legacy compatibility, we're allowing
+            // a user-defined acceptable overrun... ideally this would
+            // not exceed TILEMEM_END, but oh well...
+        } else if (Addr > TILEMEM_END && Addr <= NoDice_config.level_range_check_high) {
             NoDice_Run6502_Stop = RUN6502_LEVEL_OORW_HIGH;
+        }
 
         // This is assuming tile memory grid writes from generators,
         // but this might not be completely safe...
         if (Addr >= MEM_B_START && Addr <= MEM_B_END && prev_gen != NULL) {
-            short x, y;
+            short x;
+            short y;
 
             // Update min/max ranges as needed
-            if (Addr < prev_gen->addr_min)
+            if (Addr < prev_gen->addr_min) {
                 prev_gen->addr_min = Addr;
-            if (Addr > prev_gen->addr_max)
+            }
+            if (Addr > prev_gen->addr_max) {
                 prev_gen->addr_max = Addr;
+            }
 
             if (prev_gen->type != GENTYPE_JCTSTART) {
                 // Check if we've hit a new high or low x/y position
                 x = (!Level_7Vertical) ? vram_virtual_x(Addr) : vram_virtual_x_v(Addr);
                 y = (!Level_7Vertical) ? vram_virtual_y(Addr) : vram_virtual_y_v(Addr);
 
-                if (x < prev_gen->xs)
+                if (x < prev_gen->xs) {
                     prev_gen->xs = x;
-                if (x > prev_gen->xe)
+                }
+                if (x > prev_gen->xe) {
                     prev_gen->xe = x;
+                }
 
-                if (y < prev_gen->ys)
+                if (y < prev_gen->ys) {
                     prev_gen->ys = y;
-                if (y > prev_gen->ye)
+                }
+                if (y > prev_gen->ye) {
                     prev_gen->ye = y;
+                }
             }
 
             // Record generator index onto tile_id_grid (acceptable range only)
             // This will allow us to later identify what tiles actually belong
             // to this generator, a finer detection than just the rectangle.
-            if (Addr <= TILEMEM_END)
+            if (Addr <= TILEMEM_END) {
                 NoDice_the_level.tile_id_grid[Addr - TILEMEM_BASE] = prev_gen->index;
+            }
         }
     }
 
-    if (Addr >= MEM_A_START && Addr <= MEM_A_END)
+    if (Addr >= MEM_A_START && Addr <= MEM_A_END) {
         _RAM[Addr - MEM_A_START] = Value;
-    else if (Addr >= MEM_B_START && Addr <= MEM_B_END)
+    } else if (Addr >= MEM_B_START && Addr <= MEM_B_END) {
         _RAM[Addr - MEM_B_START + MEM_A_END + 1] = Value;
-    else if (Addr == MMC3_COMMAND)
+    } else if (Addr == MMC3_COMMAND) {
         MMC3_Command = Value;
-    else if (Addr == MMC3_PAGE) {
+    } else if (Addr == MMC3_PAGE) {
         // printf("*** Page change %s to %i\n", (MMC3_Command ==
         // MMC3_8K_TO_PRG_A000) ? "A000" : "C000", Value );
 
-        if (MMC3_Command == MMC3_8K_TO_PRG_A000)
+        if (MMC3_Command == MMC3_8K_TO_PRG_A000) {
             _PRG_B = &_PRG[Value * MMC3_BANKSIZE];
-        else if (MMC3_Command == MMC3_8K_TO_PRG_C000)
+        } else if (MMC3_Command == MMC3_8K_TO_PRG_C000) {
             _PRG_C = &_PRG[Value * MMC3_BANKSIZE];
-        else
+        } else {
             fprintf(stderr, "Warning: Unsupported MMC3 command %02X\n", MMC3_Command);
+        }
 
         MMC3_Command = 0;
-    } else
+    } else {
         fprintf(stderr, "Warning: Out of range write %04X\n", Addr);
+    }
 }
 
 byte Rd6502(register word Addr) {
@@ -1321,30 +1344,31 @@ byte Rd6502(register word Addr) {
 
     // 0xFFFC, normally the "RESET" vector, will be used as the termination
     // address
-    if (Addr == 0xFFFC)
+    if (Addr == 0xFFFC) {
         NoDice_Run6502_Stop = RUN6502_STOP_END;  // Flag execution as terminated
-    else if (Addr >= 0xFFFA)
+    } else if (Addr >= 0xFFFA) {
         return (Addr & 1) ? 0xFF : 0xF9;  // Handle interrupt vectors with
                                           // 0xFFF9 (mainly in case of BRK)
-    else if (Addr == 0xFFF9)
+    } else if (Addr == 0xFFF9) {
         return 0x40;  // 0xFFF9 will just return RTI
-    else if (Addr >= MEM_A_START && Addr <= MEM_A_END)
+    } else if (Addr >= MEM_A_START && Addr <= MEM_A_END) {
         return _RAM[Addr - MEM_A_START];
-    else if (Addr >= MEM_B_START && Addr <= MEM_B_END)
+    } else if (Addr >= MEM_B_START && Addr <= MEM_B_END) {
         return _RAM[Addr - MEM_B_START + MEM_A_END + 1];
-    else if (Addr >= SCRATCH_START && Addr <= SCRATCH_END && is_loading_level)
+    } else if (Addr >= SCRATCH_START && Addr <= SCRATCH_END && is_loading_level) {
         // Scratch space for modified levels; see defs for SCRATCH_START/END
         return _PRG_FakeScratch[Addr - SCRATCH_START];
-    else if (Addr >= PRG_A_START && Addr <= PRG_A_END)
+    } else if (Addr >= PRG_A_START && Addr <= PRG_A_END) {
         return _PRG_A[Addr - PRG_A_START];
-    else if (Addr >= PRG_B_START && Addr <= PRG_B_END)
+    } else if (Addr >= PRG_B_START && Addr <= PRG_B_END) {
         return _PRG_B[Addr - PRG_B_START];
-    else if (Addr >= PRG_C_START && Addr <= PRG_C_END)
+    } else if (Addr >= PRG_C_START && Addr <= PRG_C_END) {
         return _PRG_C[Addr - PRG_C_START];
-    else if (Addr >= PRG_D_START && Addr <= PRG_D_END)
+    } else if (Addr >= PRG_D_START && Addr <= PRG_D_END) {
         return _PRG_D[Addr - PRG_D_START];
-    else
+    } else {
         fprintf(stderr, "Warning: Out of range read %04X\n", Addr);
+    }
 
     return 0xFF;
 }
@@ -1390,7 +1414,8 @@ static void rom_Reset6502(int ram_clear) {
 }
 
 static int _rom_load_symbols() {
-    struct ROM_label *label_cur = NULL, *label_next;
+    struct ROM_label *label_cur = NULL;
+    struct ROM_label *label_next;
     FILE *rom;
 
     // Free old symbols, if any
@@ -1418,8 +1443,9 @@ static int _rom_load_symbols() {
 
         // Remove any comments
         char *semi = strchr(_buffer, ';');
-        if (semi != NULL)
+        if (semi != NULL) {
             *semi = '\0';
+        }
 
         // Pull out the label and its assigned address
         if (sscanf(_buffer, "%31s = $%04X", label, &addr) == 2) {
@@ -1486,7 +1512,9 @@ int _rom_load() {
     // In total each tile is (8px * 2bpp * 8) = 128 bits / 8 = 16 bytes
     // We'll decode it to regular 8bpp linear memory for ease of use...
     {
-        int tile, row, chrpos = 0;
+        int tile;
+        int row;
+        int chrpos = 0;
         char tile_buffer[16];  // Read in one 8x8 tile for decoding
 
         // Allocate enough space to store CHR as 8bpp
@@ -1527,18 +1555,21 @@ int _rom_load() {
     rom_Reset6502(1);
 
     // Load symbols
-    if (!_rom_load_symbols())
+    if (!_rom_load_symbols()) {
         return 0;
+    }
 
     // Resolve RAM labels
-    if (!_ram_resolve_labels())
+    if (!_ram_resolve_labels()) {
         return 0;
+    }
 
     return 1;
 }
 
 void _rom_shutdown() {
-    struct ROM_label *label_cur = ROM_labels, *label_next;
+    struct ROM_label *label_cur = ROM_labels;
+    struct ROM_label *label_next;
 
     if (_PRG != NULL) {
         free((void *) _PRG);
@@ -1608,25 +1639,31 @@ int NoDice_PRG_refresh() {
     fclose(rom);
 
     // Need to reload symbols
-    if (!_rom_load_symbols())
+    if (!_rom_load_symbols()) {
         return 0;
+    }
 
     // Resolve RAM labels
-    if (!_ram_resolve_labels())
+    if (!_ram_resolve_labels()) {
         return 0;
+    }
 
     return 1;
 }
 
 static const unsigned char *rom_make_ptr_for_addr(unsigned short Addr) {
-    if (Addr >= PRG_A_START && Addr <= PRG_A_END)
+    if (Addr >= PRG_A_START && Addr <= PRG_A_END) {
         return &_PRG_A[Addr - PRG_A_START];
-    else if (Addr >= PRG_B_START && Addr <= PRG_B_END)
+    }
+    if (Addr >= PRG_B_START && Addr <= PRG_B_END) {
         return &_PRG_B[Addr - PRG_B_START];
-    else if (Addr >= PRG_C_START && Addr <= PRG_C_END)
+    }
+    if (Addr >= PRG_C_START && Addr <= PRG_C_END) {
         return &_PRG_C[Addr - PRG_C_START];
-    else if (Addr >= PRG_D_START && Addr <= PRG_D_END)
+    }
+    if (Addr >= PRG_D_START && Addr <= PRG_D_END) {
         return &_PRG_D[Addr - PRG_D_START];
+    }
 
     return NULL;
 }
@@ -1638,8 +1675,9 @@ unsigned short NoDice_get_addr_for_label(const char *label) {
     struct ROM_label *label_cur = ROM_labels;
     while (label_cur != NULL) {
         // If label found, return address
-        if (!strcmp(label_cur->label, label))
+        if (!strcmp(label_cur->label, label)) {
             return label_cur->address;
+        }
 
         label_cur = label_cur->next;
     }
@@ -1663,7 +1701,8 @@ static void rom_MMC3_set_pages(unsigned char page_A000, unsigned char page_C000)
 }
 
 void NoDice_load_level(unsigned char tileset, const char *level_layout, const char *object_layout) {
-    unsigned short address, object_address;
+    unsigned short address;
+    unsigned short object_address;
 
     if (tileset > 0) {
         if ((address = NoDice_get_addr_for_label(level_layout)) == 0xFFFF) {
@@ -1697,8 +1736,13 @@ void NoDice_load_level_by_addr(unsigned char tileset, unsigned short address, un
     //
     //	JSR LevelLoad_ByTileset			; Load the level layout data!
 
-    unsigned short PAGE_A000_ByTileset, PAGE_C000_ByTileset, LevelLoad_ByTileset, Level_BG_Pages1, Level_BG_Pages2,
-        TileLayout_ByTileset, Palette_By_Tileset;
+    unsigned short PAGE_A000_ByTileset;
+    unsigned short PAGE_C000_ByTileset;
+    unsigned short LevelLoad_ByTileset;
+    unsigned short Level_BG_Pages1;
+    unsigned short Level_BG_Pages2;
+    unsigned short TileLayout_ByTileset;
+    unsigned short Palette_By_Tileset;
 
     unsigned short header_addr;
     int i;
@@ -1777,8 +1821,9 @@ void NoDice_load_level_by_addr(unsigned char tileset, unsigned short address, un
         NoDice_the_level.header.alt_level_layout = MAKE16(Rd6502(header_addr + 1), Rd6502(header_addr + 0));
         NoDice_the_level.header.alt_level_objects = MAKE16(Rd6502(header_addr + 3), Rd6502(header_addr + 2));
 
-        for (i = 0; i < LEVEL_HEADER_COUNT; i++)
+        for (i = 0; i < LEVEL_HEADER_COUNT; i++) {
             NoDice_the_level.header.option[i] = Rd6502(header_addr + 4 + i);
+        }
 
         // Set all jct starts to 0xFF
         for (i = 0; i < LEVEL_JCT_STARTS; i++) {
@@ -1794,7 +1839,8 @@ void NoDice_load_level_by_addr(unsigned char tileset, unsigned short address, un
         // now
         prev_gen_patch(0);
     } else {
-        unsigned short Map_Reload_with_Completions, Map_Init;
+        unsigned short Map_Reload_with_Completions;
+        unsigned short Map_Init;
 
         // World Map only (Tileset 0)
         // Loads the grid tiles
@@ -1888,8 +1934,9 @@ void NoDice_load_level_by_addr(unsigned char tileset, unsigned short address, un
             // Found it!  Now to run through it until we hit 0xFF...
             // Or 4 map screens... in case the data's bad...
 
-            while (Rd6502(map_data_start++) != 0xFF)
+            while (Rd6502(map_data_start++) != 0xFF) {
                 byte_count++;
+            }
 
             // Okay, end of loop, divide byte_count by map screen size
             // to get the number of screens...
@@ -1897,8 +1944,9 @@ void NoDice_load_level_by_addr(unsigned char tileset, unsigned short address, un
         }
 
         // Failed to find map or came up short; assume 4 screens
-        if (screens == 0)
+        if (screens == 0) {
             screens = 4;
+        }
 
         // World map has some assumptions
         NoDice_the_level.header.alt_level_tileset = 0;
@@ -1915,11 +1963,13 @@ void NoDice_load_level_by_addr(unsigned char tileset, unsigned short address, un
     {
         unsigned short layoutAddr =
             MAKE16(Rd6502(TileLayout_ByTileset + (tileset * 2) + 1), Rd6502(TileLayout_ByTileset + (tileset * 2) + 0));
-        int tile, quarter;
+        int tile;
+        int quarter;
         for (quarter = 0; quarter < 4; quarter++) {
-            for (tile = 0; tile < 256; tile++)
+            for (tile = 0; tile < 256; tile++) {
                 // The layouts are stored as 4 contiguous 256 byte arrays
                 NoDice_the_level.tile_layout[tile][quarter] = Rd6502(layoutAddr++);
+            }
         }
     }
 
@@ -1931,13 +1981,16 @@ void NoDice_load_level_by_addr(unsigned char tileset, unsigned short address, un
             MAKE16(Rd6502(Palette_By_Tileset + (tileset * 2) + 1), Rd6502(Palette_By_Tileset + (tileset * 2) + 0));
 
         // Then read colors as offset by PalSel_Tile_Colors
-        int c, base = PalSel_Tile_Colors * 16;
-        for (c = 0; c < 16; c++)
+        int c;
+        int base = PalSel_Tile_Colors * 16;
+        for (c = 0; c < 16; c++) {
             NoDice_the_level.bg_pal[c] = Rd6502(pal_base_addr + base + c);
+        }
 
         base = PalSel_Obj_Colors * 16;
-        for (c = 0; c < 16; c++)
+        for (c = 0; c < 16; c++) {
             NoDice_the_level.spr_pal[c] = Rd6502(pal_base_addr + base + c);
+        }
     }
 
     // Tasks for regular level (not world map) only...
@@ -1985,7 +2038,10 @@ void NoDice_load_level_by_addr(unsigned char tileset, unsigned short address, un
     } else {
         // World Map
         int i;
-        unsigned short Wx_ByRowType, Wx_ByScrCol, Wx_ObjSets, Wx_LevelLayout;
+        unsigned short Wx_ByRowType;
+        unsigned short Wx_ByScrCol;
+        unsigned short Wx_ObjSets;
+        unsigned short Wx_LevelLayout;
 
         // Copy in map objects
         NoDice_the_level.object_count = 0;
@@ -2084,8 +2140,9 @@ static void vaddr_to_level(unsigned short addr, unsigned char *t15, unsigned cha
 
     // Bit 4 (0x10) of Temp_Var15 specifies "lower half" of screen (0x100 -
     // 0x1B0) for non-vertical
-    if (!is_vert)  // only non-vertical levels have this issue
+    if (!is_vert) {  // only non-vertical levels have this issue
         *t15 |= (inter_screen_offset >= 0x100) ? 0x10 : 0x00;
+    }
 
     // Lower 4 bits of Temp_Var15 are the upper 4 bits of the inter-screen
     // offset
@@ -2105,20 +2162,23 @@ static void rom_pack_level_header(unsigned char **ptr) {
     *(*ptr)++ = LOW(NoDice_the_level.header.alt_level_objects);
     *(*ptr)++ = HIGH(NoDice_the_level.header.alt_level_objects);
 
-    for (i = 0; i < LEVEL_HEADER_COUNT; i++)
+    for (i = 0; i < LEVEL_HEADER_COUNT; i++) {
         *(*ptr)++ = NoDice_the_level.header.option[i];
+    }
 }
 
 // Packs level data into raw SMB3 standard form -> _PRG_FakeScratch
 const unsigned char *NoDice_pack_level(int *size, int need_header) {
-    unsigned char t15, t16;
+    unsigned char t15;
+    unsigned char t16;
     struct NoDice_the_level_generator *gen = NoDice_the_level.generators;
     unsigned char *ptr = _PRG_FakeScratch;
 
     // If you want the SMB3 engine to load it, you absolutely need the header!
     // If this is just for the sake of an undo layer, you don't!
-    if (need_header)
+    if (need_header) {
         rom_pack_level_header(&ptr);
+    }
 
     // Now to repack the generators...
     while (gen != NULL) {
@@ -2175,8 +2235,9 @@ const unsigned char *NoDice_pack_level(int *size, int need_header) {
                 // now! Stock SMB3 only ever had one additional parameter when
                 // it came up, but I'm trying to write this so that you could
                 // potentially have more ...
-                for (t15 = 3; t15 < gen->size; t15++)
+                for (t15 = 3; t15 < gen->size; t15++) {
                     *ptr++ = gen->p[t15 - 2];
+                }
 
                 break;
 
@@ -2208,8 +2269,9 @@ const unsigned char *NoDice_pack_level(int *size, int need_header) {
     *ptr++ = 0xFF;
 
     // Return size, if you want it
-    if (size != NULL)
+    if (size != NULL) {
         *size = (int) (ptr - _PRG_FakeScratch);
+    }
 
     /*
     {
@@ -2243,21 +2305,23 @@ const unsigned char *NoDice_pack_level(int *size, int need_header) {
 // otherwise it loads the feed from "undo_data" plus a header from the
 // currently loaded level; this is mainly for use in an undo system.
 void NoDice_load_level_raw_data(const unsigned char *data, int size, int has_header) {
-    if (data == NULL)
+    if (data == NULL) {
         // Pack the level, include the header, don't care about size
         NoDice_pack_level(NULL, 1);
-    else {
+    } else {
         unsigned char *ptr = _PRG_FakeScratch;
 
         // We have raw data...
 
         // Do we need to supply the header?
-        if (!has_header)
+        if (!has_header) {
             rom_pack_level_header(&ptr);
+        }
 
         // Push the data in!
-        while (size-- > 0)
+        while (size-- > 0) {
             *ptr++ = *data++;
+        }
 
         /*
         {
@@ -2291,8 +2355,9 @@ void NoDice_load_level_raw_data(const unsigned char *data, int size, int has_hea
 
 const unsigned char *NoDice_get_raw_CHR_bank(unsigned char bank) {
     // If you pick an out of range bank, wrap to nearest valid bank
-    if (bank >= CHR_banks)
+    if (bank >= CHR_banks) {
         bank %= CHR_banks;
+    }
 
     // Each bank contains 64 tiles, and each tile is 64 bytes in our
     // decoded form, so return...
@@ -2306,8 +2371,9 @@ int NoDice_get_tilebank_free_space(unsigned char tileset) {
     int bank_offset;
 
     // Get bank for tileset
-    if ((PAGE_A000_ByTileset = NoDice_get_addr_for_label("PAGE_A000_ByTileset")) == 0xFFFF)
+    if ((PAGE_A000_ByTileset = NoDice_get_addr_for_label("PAGE_A000_ByTileset")) == 0xFFFF) {
         return 0;
+    }
 
     bank_for_tileset = Rd6502(PAGE_A000_ByTileset + Level_Tileset);
 
@@ -2321,8 +2387,9 @@ int NoDice_get_tilebank_free_space(unsigned char tileset) {
     // to determine where the last 0xFF is to get an idea how many
     // bytes are "free" in the bank for this tileset...
     for (bank_offset = MMC3_BANKSIZE - 1; bank_offset >= 0; bank_offset--) {
-        if (_PRG_tileset[bank_offset] != 0xFF)
+        if (_PRG_tileset[bank_offset] != 0xFF) {
             break;
+        }
     }
 
     // Based on the value of bank_offset, we can determine the bytes free
@@ -2351,8 +2418,11 @@ int NoDice_get_music_context(
     const char *SEL_name,
     unsigned char music_index) {
     unsigned char segment;
-    unsigned short Music_Starts, Music_Ends, Music_Loops;
-    unsigned short Music_IndexOffs, Music_Headers;
+    unsigned short Music_Starts;
+    unsigned short Music_Ends;
+    unsigned short Music_Loops;
+    unsigned short Music_IndexOffs;
+    unsigned short Music_Headers;
 
     // Start/End/Loop index (into Music_xxx_IndexOffs) values per music_index:
     // Music_xxx_Starts
@@ -2379,8 +2449,9 @@ int NoDice_get_music_context(
         return 0;
     }
 
-    if ((context->rest_table = NoDice_get_rest_table()) == NULL)
+    if ((context->rest_table = NoDice_get_rest_table()) == NULL) {
         return 0;
+    }
 
     // Starts/Ends/Loops CAN be missing, this indicates a music set
     // of only single segments per index (i.e. Set 1) which will

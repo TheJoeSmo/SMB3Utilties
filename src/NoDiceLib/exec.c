@@ -83,16 +83,18 @@ int NoDice_exec_build(void (*buffer_callback)(const char *)) {
             }
 
             // In any case, call callback with buffer
-            if (buffer_callback != NULL)
+            if (buffer_callback != NULL) {
                 buffer_callback(exec_buffer);
+            }
         }
 
         // Wait for child to finish
         waitpid(pid, &status, 0);
 
         // If configured for return code, check return code for non-zero
-        if (NoDice_config.buildinfo.builderr == BUILDERR_RETURNCODE)
+        if (NoDice_config.buildinfo.builderr == BUILDERR_RETURNCODE) {
             result = WEXITSTATUS(status) == 0;
+        }
     }
 
     return result;

@@ -147,12 +147,13 @@ static gpointer run_6502_timeout_thread(gpointer optr) {
     // g_cond_timed_wait returns FALSE if it timed out
     // If condition is signalled however (i.e. 6502 core
     // completed in a timely manner), then we don't do anything.
-    if (g_cond_wait_until(&run_6502_timeout_thread_cond, &unused_mutex, time) == FALSE)
+    if (g_cond_wait_until(&run_6502_timeout_thread_cond, &unused_mutex, time) == FALSE) {
         // Timeout occurred; assume 6502 is frozen!
         NoDice_Run6502_Stop = RUN6502_TIMEOUT;
-    else
+    } else {
         // Acknowledge condition (if that's how we exited)
         run_6502_timeout_thread_cond_ack = TRUE;
+    }
 
     g_mutex_unlock(&unused_mutex);
 
@@ -217,8 +218,9 @@ static GtkWidget *menu_find_item(GtkWidget *menu, const char *path) {
     GList *list;
 
     // Skip beginning slash
-    if (*path == '/')
+    if (*path == '/') {
         path++;
+    }
 
     // See if we match on this layer...
     list = GTK_MENU_SHELL(menu)->children;
@@ -228,18 +230,20 @@ static GtkWidget *menu_find_item(GtkWidget *menu, const char *path) {
         int len;
         const char *c = strchr(path, '/');
 
-        if (GTK_IS_IMAGE_MENU_ITEM(item))
+        if (GTK_IS_IMAGE_MENU_ITEM(item)) {
             item_name = gtk_label_get_label(GTK_LABEL(gtk_bin_get_child(GTK_BIN(item))));
-        else
+        } else {
             item_name = gtk_menu_item_get_label(item);
+        }
 
         if (item_name != NULL) {
-            if (c == NULL)
+            if (c == NULL) {
                 // Length of last path component
                 len = strlen(path);
-            else
+            } else {
                 // Length of current path component
                 len = c - path;
+            }
 
             // printf("%s vs %s\n", path, item_name);
 
@@ -247,11 +251,13 @@ static GtkWidget *menu_find_item(GtkWidget *menu, const char *path) {
                 // If we haven't hit the last path, recurse
                 if (c != NULL) {
                     GtkWidget *sec = gtk_menu_item_get_submenu(GTK_MENU_ITEM(list->data));
-                    if (sec != NULL)
+                    if (sec != NULL) {
                         return menu_find_item(GTK_WIDGET(sec), c + 1);
-                } else
+                    }
+                } else {
                     // Winner
                     return GTK_WIDGET(item);
+                }
             }
         }
 
@@ -265,8 +271,9 @@ static void menu_edit_undo(GtkWidget *w, gpointer data) {
     edit_revert();
 
     // Requires a redraw for map tiles
-    if (gui_start_widgets.edit_notebook_page == ENPAGE_TILES)
+    if (gui_start_widgets.edit_notebook_page == ENPAGE_TILES) {
         gtk_widget_queue_draw(gui_fixed_view);
+    }
 }
 
 static void menu_edit_delete(GtkWidget *w, gpointer data) {
@@ -311,7 +318,8 @@ static void menu_edit_arrange(GtkWidget *w, gpointer data) {
 }
 
 static void gui_fixed_calc_size() {
-    int w, h;
+    int w;
+    int h;
 
     if (NoDice_the_level.tiles == NULL) {
         // No level loaded, no size!
@@ -363,22 +371,26 @@ static void gui_obj_overlay_calc_allocation(const struct NoDice_the_level_object
     const struct NoDice_objects *this_obj = &NoDice_config.game.objects[object->id];
     int x = (object->col * TILESIZE);
     int y = (object->row * TILESIZE);
-    int off_x, off_y, w, h;
+    int off_x;
+    int off_y;
+    int w;
+    int h;
 
-    if (this_obj->special_options.options_list_count == 0)
+    if (this_obj->special_options.options_list_count == 0) {
         // Non-special objects get size based on their sprite
         ppu_sprite_get_offset(object->id, &off_x, &off_y, &w, &h);
-    else {
+    } else {
         // Special objects are as tall as the view area
         y = 0;
         off_x = 0;
         off_y = 0;
         w = TILESIZE;
 
-        if (!NoDice_the_level.header.is_vert)
+        if (!NoDice_the_level.header.is_vert) {
             h = (SCREEN_BYTESIZE / SCREEN_WIDTH) * TILESIZE;
-        else
+        } else {
             h = SCREEN_VHEIGHT * SCREEN_VCOUNT * TILESIZE;
+        }
     }
 
     x += off_x;
@@ -405,10 +417,11 @@ static void gui_menu_view_zoom_foreach_callback(GtkWidget *widget, gpointer unus
     GtkSelectableOverlay *selectable_overlay = GTK_SELECTABLE_OVERLAY(widget);
 
     // Calculate new allocation
-    if (selectable_overlay->gen != NULL)
+    if (selectable_overlay->gen != NULL) {
         gui_gen_overlay_calc_allocation(selectable_overlay->gen, &overlay_alloc);
-    else if (selectable_overlay->obj != NULL)
+    } else if (selectable_overlay->obj != NULL) {
         gui_obj_overlay_calc_allocation(selectable_overlay->obj, &overlay_alloc);
+    }
 
     // Move the widget to the correct adjusted position
     gtk_fixed_move(GTK_FIXED(widget->parent), widget, overlay_alloc.x, overlay_alloc.y);
@@ -435,13 +448,14 @@ static int gui_level_calc_size() {
 static void gui_statusbar_update() {
     int actual_size;
 
-    if (NoDice_the_level.tiles == NULL || gui_start_widgets.state > 0)
+    if (NoDice_the_level.tiles == NULL || gui_start_widgets.state > 0) {
         return;
+    }
 
     gui_level_new_size = gui_level_calc_size();
     actual_size = gui_bank_free_space - (gui_level_new_size - gui_level_base_size);
 
-    if (NoDice_the_level.tileset->id > 0)
+    if (NoDice_the_level.tileset->id > 0) {
         snprintf(
             path_buffer,
             PATH_MAX,
@@ -449,7 +463,7 @@ static void gui_statusbar_update() {
             NoDice_the_level.object_count,
             OBJS_MAX,
             actual_size);
-    else
+    } else {
         snprintf(
             path_buffer,
             PATH_MAX,
@@ -458,6 +472,7 @@ static void gui_statusbar_update() {
             OBJS_MAX,
             NoDice_the_level.map_link_count,
             MAX_MAP_LINKS);
+    }
 
     gtk_label_set_text(GTK_LABEL(GTK_STATUSBAR(gui_status_bar)->label), path_buffer);
 
@@ -528,8 +543,9 @@ static void menu_file_save(GtkWidget *widget, gpointer callback_data) {
 
         // cairo_pattern_set_filter(cairo_get_source (cr), CAIRO_FILTER_NEAREST);
 
-        if (vert_pos > vert_max)
+        if (vert_pos > vert_max) {
             vert_pos = vert_max;
+        }
 
         cairo_translate(cr, 0, -vert_pos / 2);
 
@@ -749,8 +765,11 @@ gboolean gui_PPU_portal_expose_event_callback(GtkWidget *widget, GdkEventExpose 
     }
 
     // If we're in start spot mode, draw over the screen space
-    if ((gui_start_widgets.edit_notebook_page == ENPAGE_STARTS)) {
-        int rx, ry, rw, rh;
+    if (gui_start_widgets.edit_notebook_page == ENPAGE_STARTS) {
+        int rx;
+        int ry;
+        int rw;
+        int rh;
 
         if (!NoDice_the_level.header.is_vert) {
             ry = 0;
@@ -842,8 +861,9 @@ static void gui_select_handler(const GtkSelectableOverlay *selectable_overlay) {
         gui_selected_obj = selectable_overlay->obj;
 
         // Only select the non-special objects
-        if (this_obj->special_options.options_list_count == 0)
+        if (this_obj->special_options.options_list_count == 0) {
             gui_listbox_set_index(gui_objects_listbox, gui_selected_obj->id);
+        }
     } else if (selectable_overlay->link != NULL) {
         gui_selected_link = selectable_overlay->link;
     }
@@ -857,8 +877,9 @@ static void gui_select_map_object_handler(const GtkSelectableOverlay *selectable
     gui_selected_obj = selectable_overlay->obj;
 
     // Set map object in listbox
-    if (gui_listbox_get_index(gui_map_objects_listbox) != index)
+    if (gui_listbox_get_index(gui_map_objects_listbox) != index) {
         gui_listbox_set_index(gui_map_objects_listbox, index);
+    }
 }
 
 static gboolean gui_map_object_selchange(GtkTreeView *treeview, gpointer user_data) {
@@ -885,7 +906,8 @@ static void gui_map_object_properties(GtkButton *button, gpointer user_data) {
     }
 
     if (op != SPECOBJ_DELETE) {
-        struct NoDice_the_level_object object_backup, *object_to_edit;
+        struct NoDice_the_level_object object_backup;
+        struct NoDice_the_level_object *object_to_edit;
 
         object_to_edit = &NoDice_the_level.objects[index];
         memcpy(&object_backup, object_to_edit, sizeof(struct NoDice_the_level_object));
@@ -893,9 +915,10 @@ static void gui_map_object_properties(GtkButton *button, gpointer user_data) {
         // Modify object
         if (gui_map_obj_properties(object_to_edit)) {
             gui_update_for_generators();
-        } else
+        } else {
             // Restore backup
             memcpy(object_to_edit, &object_backup, sizeof(struct NoDice_the_level_object));
+        }
     } else {
         // We don't really "delete" a map object so much as reset it to an off-screen empty
         edit_map_obj_clear(&NoDice_the_level.objects[index]);
@@ -965,9 +988,10 @@ void gui_update_for_generators() {
         gui_fixed_calc_size();
 
         // Set default screen list
-        if (gui_start_widgets.screen == 0)
+        if (gui_start_widgets.screen == 0) {
             // FIXME: Hackish, sidestep bug from already being no screen 0
             gui_combobox_simple_set_selected(gui_start_widgets.screen_list, 1);
+        }
 
         gui_combobox_simple_set_selected(gui_start_widgets.screen_list, 0);
 
@@ -1002,9 +1026,10 @@ void gui_update_for_generators() {
             const struct NoDice_objects *this_obj = &NoDice_config.game.objects[object->id];
             int is_special = (this_obj->special_options.options_list_count != 0);
 
-            if (is_special)
+            if (is_special) {
                 // Add all special objects to the special object list
                 gui_listbox_additem(model, i, this_obj->name);
+            }
 
             gui_obj_overlay_calc_allocation(object, &overlay_alloc);
 
@@ -1078,9 +1103,10 @@ void gui_update_for_generators() {
     gtk_widget_set_sensitive(menu_find_item(gui_menu, "/_View"), enable_for_load);
     gtk_widget_set_sensitive(menu_find_item(gui_menu, "/_File/_Save Level to ROM"), enable_for_load);
 
-    if (enable_for_load)
+    if (enable_for_load) {
         // World map has no use for the Tile Hints
         gtk_widget_set_sensitive(menu_find_item(gui_menu, "/_View/Tile Hints"), (NoDice_the_level.tileset->id != 0));
+    }
 
     gui_statusbar_update();
 
@@ -1104,8 +1130,9 @@ void gui_refesh_for_level() {
     }
 
     // Load specific hints
-    for (i = 0; i < NoDice_the_level.tileset->tilehint_count; i++)
+    for (i = 0; i < NoDice_the_level.tileset->tilehint_count; i++) {
         gui_load_tile_hint(&NoDice_the_level.tileset->tilehints[i], FALSE);
+    }
 
     // Clear all list items
     gtk_list_store_clear(model);
@@ -1136,23 +1163,25 @@ static void gui_overlay_select_index_foreach_callback(GtkWidget *widget, gpointe
 
         gtk_selectable_overlay_select(selectable_overlay);
 
-        if (this_obj->special_options.options_list_count == 0)
+        if (this_obj->special_options.options_list_count == 0) {
             // Non-special objects can be arbitrarily inserted
             gui_selected_obj = selectable_overlay->obj;
-        else
+        } else {
             // Special objects just become visible
             gtk_widget_show(GTK_WIDGET(selectable_overlay));
+        }
     } else if (selectable_overlay->selected == TRUE) {
         // This one should NOT be selected!
         selectable_overlay->selected = FALSE;
 
         if ((selectable_overlay->obj != NULL) &&
-            (NoDice_config.game.objects[selectable_overlay->obj->id].special_options.options_list_count != 0))
+            (NoDice_config.game.objects[selectable_overlay->obj->id].special_options.options_list_count != 0)) {
             // Special object should be hidden
             gtk_widget_hide(GTK_WIDGET(selectable_overlay));
-        else
+        } else {
             // Otherwise, draw the overlay (update for de-selection)
             gtk_widget_queue_draw(widget);
+        }
     }
 }
 
@@ -1166,8 +1195,8 @@ void gui_overlay_select_index(int index) {
 static gboolean gui_fixed_view_button_hander(GtkWidget *widget, GdkEventButton *event) {
     if (event->type == GDK_BUTTON_PRESS) {
         // Insert generator or object here!
-        int row = (int) ((double) event->y / gui_draw_info.zoom / TILESIZE),
-            col = (int) ((double) event->x / gui_draw_info.zoom / TILESIZE);
+        int row = (int) ((double) event->y / gui_draw_info.zoom / TILESIZE);
+        int col = (int) ((double) event->x / gui_draw_info.zoom / TILESIZE);
 
         // If user clicked left button, and we're seeing it, that means
         // they clicked outside of any generator/object, so deselect!!
@@ -1190,9 +1219,10 @@ static gboolean gui_fixed_view_button_hander(GtkWidget *widget, GdkEventButton *
                     int i;
                     unsigned char parameters[GEN_MAX_PARAMS];
 
-                    for (i = 0; i < GEN_MAX_PARAMS; i++)
+                    for (i = 0; i < GEN_MAX_PARAMS; i++) {
                         parameters[i] =
                             (unsigned char) gtk_spin_button_get_value(GTK_SPIN_BUTTON(gui_parameter_widgets[i].spin));
+                    }
 
                     edit_gen_insert_generator(gui_selected_insert_gen, row, col, parameters);
                 }
@@ -1259,8 +1289,9 @@ static gboolean gui_generator_selchange(GtkTreeView *treeview, gpointer user_dat
     // Deselect everything because we don't support changing the generator
     if (gui_selected_gen != NULL) {
         if (gui_selected_insert_gen->id != gui_selected_gen->id ||
-            gui_selected_insert_gen->type != gui_selected_gen->type)
+            gui_selected_insert_gen->type != gui_selected_gen->type) {
             gui_overlay_select_index(-1);  // An impossible index will deselect and not select anything!
+        }
     }
 
     return TRUE;
@@ -1275,8 +1306,9 @@ static gboolean gui_object_selchange(GtkTreeView *treeview, gpointer user_data) 
 
         // Deselect everything because we don't support changing the object
         if (gui_selected_obj != NULL) {
-            if ((gui_selected_insert_obj - NoDice_config.game.objects) != gui_selected_obj->id)
+            if ((gui_selected_insert_obj - NoDice_config.game.objects) != gui_selected_obj->id) {
                 gui_overlay_select_index(-1);  // An impossible index will deselect and not select anything!
+            }
         }
     }
 
@@ -1320,11 +1352,12 @@ static void gui_parameter_spin_val_change(GtkSpinButton *spinbutton, gpointer us
         long index = (long) user_data;
 
         for (i = 0; i < GEN_MAX_PARAMS; i++) {
-            if (i != index)
+            if (i != index) {
                 parameters[i] = gui_selected_gen->p[i];
-            else
+            } else {
                 parameters[i] =
                     (unsigned char) gtk_spin_button_get_value(GTK_SPIN_BUTTON(gui_parameter_widgets[i].spin));
+            }
         }
 
         edit_gen_set_parameters(gui_selected_gen, parameters);
@@ -1344,8 +1377,9 @@ const char *gui_make_image_path(const struct NoDice_tileset *tileset, const stru
         level->objectlabel);
 
     for (i = strlen(SUBDIR_ICON_LEVELS) + 1; path_buffer[i] != '\0'; i++) {
-        if (!isdigit(path_buffer[i]) && !isalpha(path_buffer[i]))
+        if (!isdigit(path_buffer[i]) && !isalpha(path_buffer[i])) {
             path_buffer[i] = '_';
+        }
     }
 
     strcat(path_buffer, ".png");
@@ -1394,7 +1428,8 @@ static void gui_screen_list_change(GtkComboBox *widget, gpointer user_data) {
 
 static void gui_starts_button_next(GtkButton *button, gpointer user_data) {
     long is_cancel = (long) user_data;
-    GtkTextIter start, end;
+    GtkTextIter start;
+    GtkTextIter end;
     GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(gui_start_widgets.textbox_desc));
 
     if (gui_start_widgets.state == 0) {
@@ -1549,12 +1584,13 @@ static void gui_starts_properties_option_toggle_change(GtkToggleButton *togglebu
     const struct NoDice_header_options *option_list = &NoDice_config.game.jct_options.options_list[option_list_index];
     unsigned char *jct_y = &gui_start_widgets.jct_data;
 
-    if (!gtk_toggle_button_get_active(togglebutton))
+    if (!gtk_toggle_button_get_active(togglebutton)) {
         // Mask out the old value in the junction byte
         *jct_y &= ~option_list->mask;
-    else
+    } else {
         // Set the new value
         *jct_y |= option_list->mask;
+    }
 }
 
 static void gui_starts_properties_option_spin_change(GtkSpinButton *spinbutton, gpointer user_data) {
@@ -1580,7 +1616,8 @@ static void gui_starts_properties_option_spin_change(GtkSpinButton *spinbutton, 
 static gint gui_object_list_sort(GtkTreeModel *model, GtkTreeIter *a, GtkTreeIter *b, gpointer user_data) {
     int result;
 
-    GValue value_a = {0}, value_b = {0};
+    GValue value_a = {0};
+    GValue value_b = {0};
 
     gtk_tree_model_get_value(model, a, 0, &value_a);
     gtk_tree_model_get_value(model, b, 0, &value_b);
@@ -1610,7 +1647,8 @@ static void gui_special_objs_properties(GtkButton *button, gpointer user_data) {
     if (op != SPECOBJ_DELETE) {
         // If editing properties or adding anew...
 
-        struct NoDice_the_level_object object_backup, *object_to_edit;
+        struct NoDice_the_level_object object_backup;
+        struct NoDice_the_level_object *object_to_edit;
 
         if (op == SPECOBJ_ADD) {
             // Adding new...
@@ -1632,9 +1670,9 @@ static void gui_special_objs_properties(GtkButton *button, gpointer user_data) {
 
         // Add/Modify object
         if (gui_special_obj_properties(object_to_edit)) {
-            if (op == SPECOBJ_ADD)
+            if (op == SPECOBJ_ADD) {
                 edit_obj_insert_object(&NoDice_config.game.objects[object_to_edit->id], object_to_edit->row, 0);
-            else {
+            } else {
                 int row_diff = object_to_edit->row - object_backup.row;
                 int col_diff = object_to_edit->col - object_backup.col;
 
@@ -1644,9 +1682,10 @@ static void gui_special_objs_properties(GtkButton *button, gpointer user_data) {
                 // Force a translation to update the object with proper undo
                 edit_obj_translate(object_to_edit, row_diff, col_diff);
             }
-        } else
+        } else {
             // Restore backup
             memcpy(object_to_edit, &object_backup, sizeof(struct NoDice_the_level_object));
+        }
     } else {
         edit_obj_remove(&NoDice_the_level.objects[index]);
     }
@@ -1656,7 +1695,10 @@ static void gui_map_tiles_size_change(GtkWidget *widget, GdkRectangle *allocatio
     GtkFixed *fixed = GTK_FIXED(user_data);
     int tile_size = TILESIZE * 2;
     int col_span = allocation->width / tile_size;
-    int col, tile = 0, x = 0, y = 0;
+    int col;
+    int tile = 0;
+    int x = 0;
+    int y = 0;
 
     if (col_span != map_tile_buttons.col_size) {
         map_tile_buttons.col_size = col_span;
@@ -1667,8 +1709,9 @@ static void gui_map_tiles_size_change(GtkWidget *widget, GdkRectangle *allocatio
             for (col = 0; col < col_span; col++) {
                 gtk_fixed_move(fixed, map_tile_buttons.buttons[tile++], x, y);
 
-                if (tile == 255)
+                if (tile == 255) {
                     return;
+                }
 
                 x += tile_size;
             }
@@ -1680,7 +1723,8 @@ static void gui_map_tiles_size_change(GtkWidget *widget, GdkRectangle *allocatio
 
 static gboolean gui_map_tiles_expose_event_callback(GtkWidget *widget, GdkEventExpose *event, gpointer data) {
     int zoom = 2;
-    int tile = GPOINTER_TO_INT(data), tile_size = (TILESIZE * zoom);
+    int tile = GPOINTER_TO_INT(data);
+    int tile_size = (TILESIZE * zoom);
 
     cairo_t *cr;
 
@@ -1710,8 +1754,9 @@ static gboolean gui_map_tiles_expose_event_callback(GtkWidget *widget, GdkEventE
 static void gui_map_tiles_toggled(GtkToggleButton *togglebutton, gpointer user_data) {
     int tile = GPOINTER_TO_INT(user_data);
 
-    if (gtk_toggle_button_get_active(togglebutton))
+    if (gtk_toggle_button_get_active(togglebutton)) {
         gui_selected_map_tile = (unsigned char) tile;
+    }
 }
 
 static void gui_map_link_properties_clicked(GtkButton *button, gpointer user_data) {
@@ -1721,13 +1766,15 @@ static void gui_map_link_properties_clicked(GtkButton *button, gpointer user_dat
         // Back up in case of cancel
         memcpy(&map_link_backup, gui_selected_link, sizeof(struct NoDice_map_link));
 
-        if (gui_map_link_properties(gui_selected_link))
+        if (gui_map_link_properties(gui_selected_link)) {
             edit_link_adjust(gui_selected_link, &map_link_backup);
-        else
+        } else {
             // Restore on cancel
             memcpy(gui_selected_link, &map_link_backup, sizeof(struct NoDice_map_link));
-    } else
+        }
+    } else {
         gui_display_message(TRUE, "You must select a map link first!");
+    }
 }
 
 void gui_boot(int argc, char *argv[]) {
@@ -1812,8 +1859,9 @@ static void gui_create_right_pane(GtkWidget *vbox) {
         for (i = 0; i < 256; i++) {
             struct NoDice_objects *this_obj = &NoDice_config.game.regular_objects[i];
 
-            if (this_obj->name != NULL && this_obj->special_options.options_list_count == 0)
+            if (this_obj->name != NULL && this_obj->special_options.options_list_count == 0) {
                 gui_listbox_additem(model, i, this_obj->name);
+            }
         }
 
         {
@@ -1946,11 +1994,12 @@ static void gui_create_right_pane(GtkWidget *vbox) {
         GtkWidget *scrolled_window = gtk_scrolled_window_new(NULL, NULL);
 
         for (tile = 0; tile < 255; tile++) {
-            if (tile == 0)
+            if (tile == 0) {
                 map_tile_buttons.buttons[0] = gtk_radio_button_new(NULL);
-            else
+            } else {
                 map_tile_buttons.buttons[tile] =
                     gtk_radio_button_new_from_widget(GTK_RADIO_BUTTON(map_tile_buttons.buttons[tile - 1]));
+            }
 
             gtk_widget_set_size_request(map_tile_buttons.buttons[tile], TILESIZE * 2, TILESIZE * 2);
 
@@ -2137,8 +2186,9 @@ int gui_init() {
     // Preload global tile hints
     {
         int i;
-        for (i = 0; i < NoDice_config.game.tilehint_count; i++)
+        for (i = 0; i < NoDice_config.game.tilehint_count; i++) {
             gui_load_tile_hint(&NoDice_config.game.tilehints[i], TRUE);
+        }
     }
 
     return 1;
@@ -2178,8 +2228,9 @@ void gui_disable_empty_objs(int is_empty) {
                 "Level is using empty object set; object editing is disabled.  To add objects to this level, change to "
                 "a new object set.");
             gtk_widget_set_sensitive(gtk_notebook_get_nth_page(GTK_NOTEBOOK(gui_notebook), ENPAGE_OBJS), FALSE);
-        } else
+        } else {
             gtk_widget_set_sensitive(gtk_notebook_get_nth_page(GTK_NOTEBOOK(gui_notebook), ENPAGE_OBJS), TRUE);
+        }
     } else {
         // Disable object editing on warp zone map
         if (!strcmp(NoDice_the_level.level->layoutlabel, NoDice_config.game.options.warpzone)) {
@@ -2188,8 +2239,9 @@ void gui_disable_empty_objs(int is_empty) {
                 "This is the defined Warp Zone map; object editing is disabled.  This setting is defined in "
                 "game.xml.\n\nAlso, all map links only set destination worlds.");
             gtk_widget_set_sensitive(gtk_notebook_get_nth_page(GTK_NOTEBOOK(gui_notebook), ENPAGE_MOBJS), FALSE);
-        } else
+        } else {
             gtk_widget_set_sensitive(gtk_notebook_get_nth_page(GTK_NOTEBOOK(gui_notebook), ENPAGE_MOBJS), TRUE);
+        }
     }
 }
 

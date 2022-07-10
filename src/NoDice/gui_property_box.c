@@ -32,8 +32,9 @@ static void showif_handler_count_foreach_callback(gpointer data, gpointer user_d
         (struct showif_handler_foreach_callback_data *) user_data;
 
     // If this is the widget we're looking for, specify the found option
-    if (showif_foreach_data->changed_control == context->widget)
+    if (showif_foreach_data->changed_control == context->widget) {
         showif_foreach_data->changed_control_option = context->option_list;
+    }
 }
 
 static void showif_handler_foreach_callback(gpointer data, gpointer user_data) {
@@ -49,7 +50,8 @@ static void showif_handler_foreach_callback(gpointer data, gpointer user_data) {
     // if this control is referencing the check control's ID
     if ((context->widget != showif_foreach_data->changed_control) && (context->option_list->showif_id != NULL) &&
         (!strcasecmp(showif_foreach_data->changed_control_option->id, context->option_list->showif_id))) {
-        gboolean vis_current, vis_target;
+        gboolean vis_current;
+        gboolean vis_target;
 
         // At this point, we know that "check_control" references the id of
         // "changed_control", now we just need to see if the value matches;
@@ -59,12 +61,13 @@ static void showif_handler_foreach_callback(gpointer data, gpointer user_data) {
         // Get value of control we're checking
         unsigned char value = 0;
 
-        if (GTK_IS_COMBO_BOX(changed_control))
+        if (GTK_IS_COMBO_BOX(changed_control)) {
             value = (unsigned char) gui_combobox_simple_get_index(changed_control);
-        else if (GTK_IS_SPIN_BUTTON(changed_control))
+        } else if (GTK_IS_SPIN_BUTTON(changed_control)) {
             value = (unsigned char) gtk_spin_button_get_value(GTK_SPIN_BUTTON(changed_control));
-        else if (GTK_IS_TOGGLE_BUTTON(changed_control))
+        } else if (GTK_IS_TOGGLE_BUTTON(changed_control)) {
             value = (unsigned char) gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(changed_control)) ? 1 : 0;
+        }
 
         vis_current = gtk_widget_get_visible(context->widget);
         vis_target = (value == context->option_list->showif_val);
@@ -81,12 +84,13 @@ static void showif_handler_foreach_callback(gpointer data, gpointer user_data) {
             // current value in the mask is valid on switch and
             // probably wouldn't be useful even if it was...
             if (vis_target) {
-                if (GTK_IS_COMBO_BOX(target_widget))
+                if (GTK_IS_COMBO_BOX(target_widget)) {
                     gui_combobox_simple_set_selected(target_widget, context->option_list->options[0].value);
-                else if (GTK_IS_SPIN_BUTTON(target_widget))
+                } else if (GTK_IS_SPIN_BUTTON(target_widget)) {
                     gtk_spin_button_set_value(GTK_SPIN_BUTTON(target_widget), 0);
-                else if (GTK_IS_TOGGLE_BUTTON(target_widget))
+                } else if (GTK_IS_TOGGLE_BUTTON(target_widget)) {
                     gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(target_widget), 0);
+                }
 
                 // Force change signal just in case the above doesn't actually change it
                 g_signal_emit_by_name(target_widget, context->widget_signal_name, context->widget_signal_data);
@@ -178,13 +182,14 @@ void gui_generate_option_controls(
                 G_CALLBACK(showif_handler_spin),
                 (gpointer) *context);
 
-            if (spin_change != NULL)
+            if (spin_change != NULL) {
                 // Connect change signal
                 g_signal_connect(
                     G_OBJECT(option_spin),
                     context_obj->widget_signal_name,
                     G_CALLBACK(spin_change),
                     GINT_TO_POINTER(context_obj->widget_signal_data));
+            }
 
         } else if ((option_list->options_count == 1) && (option_list->display != NULL)) {
             // Boolean flag; use a checkbox rather than a list
@@ -211,13 +216,14 @@ void gui_generate_option_controls(
                 G_CALLBACK(showif_handler_toggle),
                 (gpointer) *context);
 
-            if (toggle_change != NULL)
+            if (toggle_change != NULL) {
                 // Connect change signal
                 g_signal_connect(
                     option_checkbox,
                     context_obj->widget_signal_name,
                     G_CALLBACK(toggle_change),
                     GINT_TO_POINTER(context_obj->widget_signal_data));
+            }
         } else if (option_list->options_count > 1) {
             int selected_index = -1;
 
@@ -244,8 +250,9 @@ void gui_generate_option_controls(
                 gui_combobox_simple_add_item(option_combobox, option->value, option->display);
 
                 // If this is the currently selected property value, hang on to it!
-                if (option->value == relative_value)
+                if (option->value == relative_value) {
                     selected_index = option->value;
+                }
             }
 
             // Set proper selection
@@ -263,17 +270,19 @@ void gui_generate_option_controls(
                 G_CALLBACK(showif_handler_list),
                 (gpointer) *context);
 
-            if (list_change != NULL)
+            if (list_change != NULL) {
                 // Connect change signal
                 g_signal_connect(
                     option_combobox,
                     context_obj->widget_signal_name,
                     G_CALLBACK(list_change),
                     GINT_TO_POINTER(context_obj->widget_signal_data));
+            }
         }
 
-        if (option_hbox != NULL)
+        if (option_hbox != NULL) {
             gtk_box_pack_start(GTK_BOX(vbox), option_hbox, FALSE, FALSE, 5);
+        }
     }
 }
 
