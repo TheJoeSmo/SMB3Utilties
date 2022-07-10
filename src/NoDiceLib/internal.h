@@ -8,4 +8,4 @@ int _rom_load();
 void _rom_free_level_list();
 void _rom_shutdown();
 
-#endif // _INTERNAL_H
+#endif  // _INTERNAL_H

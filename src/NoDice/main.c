@@ -6,42 +6,34 @@
 #include <windows.h>
 #endif
 
-
 void menu_file_save(void *widget, void *callback_data);
 
-int main(int argc, char *argv[])
-{
-	gui_boot(argc, argv);
+int main(int argc, char *argv[]) {
+    gui_boot(argc, argv);
 
-	if(!NoDice_Init())
-	{
-		gui_display_message(1, NoDice_Error());
+    if (!NoDice_Init()) {
+        gui_display_message(1, NoDice_Error());
 
-		NoDice_Shutdown();
+        NoDice_Shutdown();
 
-		return 1;
-	}
+        return 1;
+    }
 
-	gui_init();
+    gui_init();
 
-	ppu_init();
+    ppu_init();
 
-	gui_loop();
+    gui_loop();
 
-	ppu_shutdown();
+    ppu_shutdown();
 
-	NoDice_Shutdown();
+    NoDice_Shutdown();
 
-	return 0;
+    return 0;
 }
 
-
-
 #ifdef _WIN32
-int APIENTRY WinMain( HINSTANCE hInstance,
-                     HINSTANCE hPrevInstance,
-                     LPSTR lpCmdLine, int nCmdShow)
-{
-	return main( __argc, __argv );
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+    return main(__argc, __argv);
 }
 #endif

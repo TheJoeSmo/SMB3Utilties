@@ -17,42 +17,38 @@
 ** Hereby donated to public domain.
 */
 
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 #include "stristr.h"
 
-#define NUL	'\0'
+#define NUL '\0'
 
 typedef unsigned int uint;
 
+char *stristr(const char *String, const char *Pattern) {
+    char *pptr, *sptr, *start;
 
-char *stristr(const char *String, const char *Pattern)
-{
-      char *pptr, *sptr, *start;
+    for (start = (char *) String; *start != NUL; start++) {
+        /* find start of pattern in string */
+        for (; ((*start != NUL) && (toupper(*start) != toupper(*Pattern))); start++)
+            ;
+        if (NUL == *start)
+            return NULL;
 
-      for (start = (char *)String; *start != NUL; start++)
-      {
-            /* find start of pattern in string */
-            for ( ; ((*start!=NUL) && (toupper(*start) != toupper(*Pattern))); start++)
-                  ;
-            if (NUL == *start)
-                  return NULL;
+        pptr = (char *) Pattern;
+        sptr = (char *) start;
 
-            pptr = (char *)Pattern;
-            sptr = (char *)start;
+        while (toupper(*sptr) == toupper(*pptr)) {
+            sptr++;
+            pptr++;
 
-            while (toupper(*sptr) == toupper(*pptr))
-            {
-                  sptr++;
-                  pptr++;
+            /* if end of pattern then pattern was found */
 
-                  /* if end of pattern then pattern was found */
-
-                  if (NUL == *pptr)
-                        return (start);
-            }
-      }
-      return NULL;
+            if (NUL == *pptr)
+                return (start);
+        }
+    }
+    return NULL;
 }

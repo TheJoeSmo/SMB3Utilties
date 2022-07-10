@@ -8,34 +8,33 @@
 /** Copyright (C) Marat Fayzullin 1996-2007                 **/
 /**               Alex Krasivsky  1996                      **/
 /**     You are not allowed to distribute this software     **/
-/**     commercially. Please, notify me, if you make any    **/   
+/**     commercially. Please, notify me, if you make any    **/
 /**     changes to this file.                               **/
 /*************************************************************/
 #ifndef M6502_H
 #define M6502_H
 
 void NoDice_load_level_by_addr(unsigned char tileset, unsigned short address, unsigned short object_address);
-                               /* Compilation options:       */
-/* #define FAST_RDOP */        /* Separate Op6502()/Rd6502() */
-/* #define DEBUG */            /* Compile debugging version  */
-/* #define LSB_FIRST */        /* Compile for low-endian CPU */
+/* Compilation options:       */
+/* #define FAST_RDOP */ /* Separate Op6502()/Rd6502() */
+/* #define DEBUG */     /* Compile debugging version  */
+/* #define LSB_FIRST */ /* Compile for low-endian CPU */
 
-                               /* Loop6502() returns:        */
-#define INT_NONE  0            /* No interrupt required      */
-#define INT_IRQ	  1            /* Standard IRQ interrupt     */
-#define INT_NMI	  2            /* Non-maskable interrupt     */
-#define INT_QUIT  3            /* Exit the emulation         */
+/* Loop6502() returns:        */
+#define INT_NONE 0 /* No interrupt required      */
+#define INT_IRQ 1  /* Standard IRQ interrupt     */
+#define INT_NMI 2  /* Non-maskable interrupt     */
+#define INT_QUIT 3 /* Exit the emulation         */
 
-                               /* 6502 status flags:         */
-#define	C_FLAG	  0x01         /* 1: Carry occured           */
-#define	Z_FLAG	  0x02         /* 1: Result is zero          */
-#define	I_FLAG	  0x04         /* 1: Interrupts disabled     */
-#define	D_FLAG	  0x08         /* 1: Decimal mode            */
-#define	B_FLAG	  0x10         /* Break [0 on stk after int] */
-#define	R_FLAG	  0x20         /* Always 1                   */
-#define	V_FLAG	  0x40         /* 1: Overflow occured        */
-#define	N_FLAG	  0x80         /* 1: Result is negative      */
-
+/* 6502 status flags:         */
+#define C_FLAG 0x01 /* 1: Carry occured           */
+#define Z_FLAG 0x02 /* 1: Result is zero          */
+#define I_FLAG 0x04 /* 1: Interrupts disabled     */
+#define D_FLAG 0x08 /* 1: Decimal mode            */
+#define B_FLAG 0x10 /* Break [0 on stk after int] */
+#define R_FLAG 0x20 /* Always 1                   */
+#define V_FLAG 0x40 /* 1: Overflow occured        */
+#define N_FLAG 0x80 /* 1: Result is negative      */
 
 /** Simple Datatypes *****************************************/
 /** NOTICE: sizeof(byte)=1 and sizeof(word)=2               **/
@@ -50,27 +49,27 @@ typedef unsigned short word;
 #endif
 typedef signed char offset;
 
-typedef union
-{
-  struct { byte h,l; } B;
-  word W;
+typedef union {
+    struct {
+        byte h, l;
+    } B;
+    word W;
 } pair;
 
-typedef struct
-{
-  byte A,P,X,Y,S;     /* CPU registers and program counter   */
-  pair PC;
+typedef struct {
+    byte A, P, X, Y, S; /* CPU registers and program counter   */
+    pair PC;
 
-  int IPeriod,ICount; /* Set IPeriod to number of CPU cycles */
-                      /* between calls to Loop6502()         */
-  byte IRequest;      /* Set to the INT_IRQ when pending IRQ */
-  byte AfterCLI;      /* Private, don't touch                */
-  int IBackup;        /* Private, don't touch                */
-  byte IAutoReset;    /* Set to 1 to autom. reset IRequest   */
-  byte TrapBadOps;    /* Set to 1 to warn of illegal opcodes */
-  word Trap;          /* Set Trap to address to trace from   */
-  byte Trace;         /* Set Trace=1 to start tracing        */
-  void *User;         /* Arbitrary user data (ID,RAM*,etc.)  */
+    int IPeriod, ICount; /* Set IPeriod to number of CPU cycles */
+                         /* between calls to Loop6502()         */
+    byte IRequest;       /* Set to the INT_IRQ when pending IRQ */
+    byte AfterCLI;       /* Private, don't touch                */
+    int IBackup;         /* Private, don't touch                */
+    byte IAutoReset;     /* Set to 1 to autom. reset IRequest   */
+    byte TrapBadOps;     /* Set to 1 to warn of illegal opcodes */
+    word Trap;           /* Set Trap to address to trace from   */
+    byte Trace;          /* Set Trace=1 to start tracing        */
+    void *User;          /* Arbitrary user data (ID,RAM*,etc.)  */
 } M6502;
 
 /** Reset6502() **********************************************/
@@ -86,7 +85,7 @@ void Reset6502(register M6502 *R);
 /** negative, and current register values in R.             **/
 /*************************************************************/
 #ifdef EXEC6502
-int Exec6502(register M6502 *R,register int RunCycles);
+int Exec6502(register M6502 *R, register int RunCycles);
 #endif
 
 /** Int6502() ************************************************/
@@ -94,7 +93,7 @@ int Exec6502(register M6502 *R,register int RunCycles);
 /** INT_NMI will cause a non-maskable interrupt. INT_IRQ    **/
 /** will cause a normal interrupt, unless I_FLAG set in R.  **/
 /*************************************************************/
-void Int6502(register M6502 *R,register byte Type);
+void Int6502(register M6502 *R, register byte Type);
 
 /** Run6502() ************************************************/
 /** This function will run 6502 code until Loop6502() call  **/
@@ -112,7 +111,7 @@ word Run6502(register M6502 *R);
 /** checks can be skipped to make it fast. It is only       **/
 /** required if there is a #define FAST_RDOP.               **/
 /************************************ TO BE WRITTEN BY USER **/
-void Wr6502(register word Addr,register byte Value);
+void Wr6502(register word Addr, register byte Value);
 byte Rd6502(register word Addr);
 byte Op6502(register word Addr);
 
@@ -140,54 +139,37 @@ byte Loop6502(register M6502 *R);
 /** function should return 1 if the exception was handled,  **/
 /** or 0 if the opcode was truly illegal.                   **/
 /************************************ TO BE WRITTEN BY USER **/
-byte Patch6502(register byte Op,register M6502 *R);
+byte Patch6502(register byte Op, register M6502 *R);
 
-static const byte Cycles[256] =
-{
-  7,6,2,8,3,3,5,5,3,2,2,2,4,4,6,6,
-  2,5,2,8,4,4,6,6,2,4,2,7,5,5,7,7,
-  6,6,2,8,3,3,5,5,4,2,2,2,4,4,6,6,
-  2,5,2,8,4,4,6,6,2,4,2,7,5,5,7,7,
-  6,6,2,8,3,3,5,5,3,2,2,2,3,4,6,6,
-  2,5,2,8,4,4,6,6,2,4,2,7,5,5,7,7,
-  6,6,2,8,3,3,5,5,4,2,2,2,5,4,6,6,
-  2,5,2,8,4,4,6,6,2,4,2,7,5,5,7,7,
-  2,6,2,6,3,3,3,3,2,2,2,2,4,4,4,4,
-  2,6,2,6,4,4,4,4,2,5,2,5,5,5,5,5,
-  2,6,2,6,3,3,3,3,2,2,2,2,4,4,4,4,
-  2,5,2,5,4,4,4,4,2,4,2,5,4,4,4,4,
-  2,6,2,8,3,3,5,5,2,2,2,2,4,4,6,6,
-  2,5,2,8,4,4,6,6,2,4,2,7,5,5,7,7,
-  2,6,2,8,3,3,5,5,2,2,2,2,4,4,6,6,
-  2,5,2,8,4,4,6,6,2,4,2,7,5,5,7,7
-};
+static const byte Cycles[256] = {
+    7, 6, 2, 8, 3, 3, 5, 5, 3, 2, 2, 2, 4, 4, 6, 6, 2, 5, 2, 8, 4, 4, 6, 6, 2, 4, 2, 7, 5, 5, 7, 7, 6, 6, 2, 8, 3,
+    3, 5, 5, 4, 2, 2, 2, 4, 4, 6, 6, 2, 5, 2, 8, 4, 4, 6, 6, 2, 4, 2, 7, 5, 5, 7, 7, 6, 6, 2, 8, 3, 3, 5, 5, 3, 2,
+    2, 2, 3, 4, 6, 6, 2, 5, 2, 8, 4, 4, 6, 6, 2, 4, 2, 7, 5, 5, 7, 7, 6, 6, 2, 8, 3, 3, 5, 5, 4, 2, 2, 2, 5, 4, 6,
+    6, 2, 5, 2, 8, 4, 4, 6, 6, 2, 4, 2, 7, 5, 5, 7, 7, 2, 6, 2, 6, 3, 3, 3, 3, 2, 2, 2, 2, 4, 4, 4, 4, 2, 6, 2, 6,
+    4, 4, 4, 4, 2, 5, 2, 5, 5, 5, 5, 5, 2, 6, 2, 6, 3, 3, 3, 3, 2, 2, 2, 2, 4, 4, 4, 4, 2, 5, 2, 5, 4, 4, 4, 4, 2,
+    4, 2, 5, 4, 4, 4, 4, 2, 6, 2, 8, 3, 3, 5, 5, 2, 2, 2, 2, 4, 4, 6, 6, 2, 5, 2, 8, 4, 4, 6, 6, 2, 4, 2, 7, 5, 5,
+    7, 7, 2, 6, 2, 8, 3, 3, 5, 5, 2, 2, 2, 2, 4, 4, 6, 6, 2, 5, 2, 8, 4, 4, 6, 6, 2, 4, 2, 7, 5, 5, 7, 7};
 
-static const byte ZNTable[256] =
-{
-  Z_FLAG,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
-  N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,N_FLAG,
+static const byte ZNTable[256] = {
+    Z_FLAG, 0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,
+    0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,
+    0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,
+    0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,
+    0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,
+    0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,
+    0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,
+    0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,
+    0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,
+    0,      0,      N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG,
+    N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG,
+    N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG,
+    N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG,
+    N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG,
+    N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG,
+    N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG,
+    N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG,
+    N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG, N_FLAG,
+    N_FLAG, N_FLAG, N_FLAG, N_FLAG,
 };
 
 #ifdef __cplusplus

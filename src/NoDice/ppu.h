@@ -3,10 +3,10 @@
 #define PPU_H
 
 // PPU stuff
-#define PPU_PORTAL_X	272
-#define PPU_PORTAL_Y	44
+#define PPU_PORTAL_X 272
+#define PPU_PORTAL_Y 44
 
-//extern BITMAP *PPU_portal;
+// extern BITMAP *PPU_portal;
 void ppu_init();
 void ppu_set_BG_bank(unsigned char bank, unsigned char to0800);
 void ppu_configure_for_level();

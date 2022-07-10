@@ -25,32 +25,32 @@
 #ifndef _EZXML_H
 #define _EZXML_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
 #include <fcntl.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define EZXML_BUFSIZE 1024 // size of internal memory buffers
-#define EZXML_NAMEM   0x80 // name is malloced
-#define EZXML_TXTM    0x40 // txt is malloced
-#define EZXML_DUP     0x20 // attribute name and value are strduped
+#define EZXML_BUFSIZE 1024  // size of internal memory buffers
+#define EZXML_NAMEM 0x80    // name is malloced
+#define EZXML_TXTM 0x40     // txt is malloced
+#define EZXML_DUP 0x20      // attribute name and value are strduped
 
 typedef struct ezxml *ezxml_t;
 struct ezxml {
-    char *name;      // tag name
-    char **attr;     // tag attributes { name, value, name, value, ... NULL }
-    char *txt;       // tag character content, empty string if none
-    size_t off;      // tag offset from start of parent tag character content
-    ezxml_t next;    // next tag with same name in this section at this depth
-    ezxml_t sibling; // next tag with different name in same section and depth
-    ezxml_t ordered; // next tag, same section and depth, in original order
-    ezxml_t child;   // head of sub tag list, NULL if none
-    ezxml_t parent;  // parent tag, NULL if current tag is root tag
-    short flags;     // additional information
+    char *name;       // tag name
+    char **attr;      // tag attributes { name, value, name, value, ... NULL }
+    char *txt;        // tag character content, empty string if none
+    size_t off;       // tag offset from start of parent tag character content
+    ezxml_t next;     // next tag with same name in this section at this depth
+    ezxml_t sibling;  // next tag with different name in same section and depth
+    ezxml_t ordered;  // next tag, same section and depth, in original order
+    ezxml_t child;    // head of sub tag list, NULL if none
+    ezxml_t parent;   // parent tag, NULL if current tag is root tag
+    short flags;      // additional information
 };
 
 // Given a string of xml data and its length, parses it and creates an ezxml
@@ -66,7 +66,7 @@ ezxml_t ezxml_parse_fd(int fd);
 
 // a wrapper for ezxml_parse_fd() that accepts a file name
 ezxml_t ezxml_parse_file(const char *file);
-    
+
 // Wrapper for ezxml_parse_str() that accepts a file stream. Reads the entire
 // stream into memory and then parses it. For xml files, use ezxml_parse_file()
 // or ezxml_parse_fd()
@@ -95,7 +95,7 @@ const char *ezxml_attr(ezxml_t xml, const char *attr);
 
 // Traverses the ezxml sturcture to retrieve a specific subtag. Takes a
 // variable length list of tag names and indexes. The argument list must be
-// terminated by either an index of -1 or an empty string tag name. Example: 
+// terminated by either an index of -1 or an empty string tag name. Example:
 // title = ezxml_get(library, "shelf", 0, "book", 2, "title", -1);
 // This retrieves the title of the 3rd book on the 1st shelf of library.
 // Returns NULL if not found.
@@ -111,7 +111,7 @@ const char **ezxml_pi(ezxml_t xml, const char *target);
 
 // frees the memory allocated for an ezxml structure
 void ezxml_free(ezxml_t xml);
-    
+
 // returns parser error message or empty string if none
 const char *ezxml_error(ezxml_t xml);
 
@@ -126,23 +126,20 @@ ezxml_t ezxml_new(const char *name);
 ezxml_t ezxml_add_child(ezxml_t xml, const char *name, size_t off);
 
 // wrapper for ezxml_add_child() that strdup()s name
-#define ezxml_add_child_d(xml, name, off) \
-    ezxml_set_flag(ezxml_add_child(xml, strdup(name), off), EZXML_NAMEM)
+#define ezxml_add_child_d(xml, name, off) ezxml_set_flag(ezxml_add_child(xml, strdup(name), off), EZXML_NAMEM)
 
 // sets the character content for the given tag and returns the tag
 ezxml_t ezxml_set_txt(ezxml_t xml, const char *txt);
 
 // wrapper for ezxml_set_txt() that strdup()s txt
-#define ezxml_set_txt_d(xml, txt) \
-    ezxml_set_flag(ezxml_set_txt(xml, strdup(txt)), EZXML_TXTM)
+#define ezxml_set_txt_d(xml, txt) ezxml_set_flag(ezxml_set_txt(xml, strdup(txt)), EZXML_TXTM)
 
 // Sets the given tag attribute or adds a new attribute if not found. A value
 // of NULL will remove the specified attribute. Returns the tag given.
 ezxml_t ezxml_set_attr(ezxml_t xml, const char *name, const char *value);
 
 // Wrapper for ezxml_set_attr() that strdup()s name/value. Value cannot be NULL
-#define ezxml_set_attr_d(xml, name, value) \
-    ezxml_set_attr(ezxml_set_flag(xml, EZXML_DUP), strdup(name), strdup(value))
+#define ezxml_set_attr_d(xml, name, value) ezxml_set_attr(ezxml_set_flag(xml, EZXML_DUP), strdup(name), strdup(value))
 
 // sets a flag for the given tag and returns the tag
 ezxml_t ezxml_set_flag(ezxml_t xml, short flag);
@@ -164,4 +161,4 @@ ezxml_t ezxml_insert(ezxml_t xml, ezxml_t dest, size_t off);
 }
 #endif
 
-#endif // _EZXML_H
+#endif  // _EZXML_H

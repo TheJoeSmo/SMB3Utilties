@@ -5,30 +5,28 @@
 
 // GUI controls
 enum EDIT_NOTEBOOK_PAGES {
-	ENPAGE_GENS,	// Regular level generators
-	ENPAGE_OBJS,	// Regular level objects
-	ENPAGE_STARTS,	// Regular level start positions
-	ENPAGE_TILES,	// World map tiles
-	ENPAGE_MOBJS,	// World map objects
-	ENPAGE_LINKS,	// World map links
-	ENPAGE_TOTAL
+    ENPAGE_GENS,    // Regular level generators
+    ENPAGE_OBJS,    // Regular level objects
+    ENPAGE_STARTS,  // Regular level start positions
+    ENPAGE_TILES,   // World map tiles
+    ENPAGE_MOBJS,   // World map objects
+    ENPAGE_LINKS,   // World map links
+    ENPAGE_TOTAL
 };
 
 // Not going to expose Cairo surface, but reserved in case we need a "real" type
 typedef void gui_surface_t;
 
 // Publicizes info about the current drawing surface to the virtual PPU
-extern struct _gui_draw_info
-{
-	double tilehint_alpha;
-	double zoom;
-	void *context;	// Holds pointer to context for Cairo; typeless so it can be exposed
+extern struct _gui_draw_info {
+    double tilehint_alpha;
+    double zoom;
+    void *context;  // Holds pointer to context for Cairo; typeless so it can be exposed
 } gui_draw_info;
 
-extern struct _gui_tilehints
-{
-	gui_surface_t *hint;	// Tile hint graphic
-	int is_global;			// TRUE means this is from the global <tilehints /> collection, so no need to free/reload
+extern struct _gui_tilehints {
+    gui_surface_t *hint;  // Tile hint graphic
+    int is_global;        // TRUE means this is from the global <tilehints /> collection, so no need to free/reload
 } gui_tilehints[256];
 
 void gui_boot(int argc, char *argv[]);

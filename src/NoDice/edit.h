@@ -3,9 +3,11 @@
 #ifndef NODICE_EDIT_H
 #define NODICE_EDIT_H
 
-const struct NoDice_the_levels *edit_level_find(unsigned char tileset_id, unsigned short layout_addr, unsigned short objects_addr);
+const struct NoDice_the_levels *edit_level_find(
+    unsigned char tileset_id, unsigned short layout_addr, unsigned short objects_addr);
 int edit_level_save(int save_layout, int save_objects);
-void edit_level_save_new_check(const char *tileset_path, const char *layoutfile, int *save_layout, const char *objectfile, int *save_objects);
+void edit_level_save_new_check(
+    const char *tileset_path, const char *layoutfile, int *save_layout, const char *objectfile, int *save_objects);
 int edit_level_add_labels(const struct NoDice_the_levels *level, int add_layout, int add_objects);
 void edit_level_load(unsigned char tileset, const struct NoDice_the_levels *level);
 void edit_gen_remove(struct NoDice_the_level_generator *gen);

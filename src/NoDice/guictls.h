@@ -1,21 +1,14 @@
-#include <gtk/gtk.h>
 #include <cairo.h>
+#include <gtk/gtk.h>
 
 #include "gui.h"
 #include "gui_combobox_simple.h"
+#include "gui_overlay.h"
 #include "gui_popups.h"
 #include "gui_property_box.h"
-#include "gui_overlay.h"
 
 #ifndef GUICTLS_H_INCLUDED
 #define GUICTLS_H_INCLUDED
-
-
-
-
-
-
-
 
 // Pseudo-listbox
 GtkWidget *gui_listbox_new(GCallback sel_change_callback, gpointer user_data);
@@ -27,4 +20,4 @@ int gui_listbox_get_index(GtkWidget *listbox);
 void gui_listbox_set_index(GtkWidget *listbox, int index);
 void gui_listbox_set_first(GtkWidget *listbox);
 
-#endif // GUICTLS_H_INCLUDED
+#endif  // GUICTLS_H_INCLUDED
