@@ -1,9 +1,10 @@
+#include <gtk/gtk.h>
 #include <string.h>
 #include <stdlib.h>
-#include <gtk/gtk.h>
+
 #include "../NoDiceLib/NoDiceLib.h"
 #include "NoDice.h"
-#include "guictls.h"
+#include "gui_property_box.h"
 
 struct gui_generate_option_controls_context
 {

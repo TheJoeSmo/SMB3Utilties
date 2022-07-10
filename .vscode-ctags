@@ -84,12 +84,15 @@ GEN_WIDTH	src/NoDiceLib/rom.c	194;"	d	file:
 GEN_WIDTH_V	src/NoDiceLib/rom.c	196;"	d	file:
 GTKCFLAGS	projects/Linux/Makefile	/^GTKCFLAGS = $(shell pkg-config gtk+-2.0 --cflags)$/;"	m
 GTKLIBS	projects/Linux/Makefile	/^GTKLIBS = $(shell pkg-config gtk+-2.0 --libs)$/;"	m
-GTK_IS_SELECTABLE_OVERLAY	src/NoDice/guictls.h	13;"	d
-GTK_SELECTABLE_OVERLAY	src/NoDice/guictls.h	11;"	d
-GTK_SELECTABLE_OVERLAY_CLASS	src/NoDice/guictls.h	12;"	d
-GUICTLS_H_INCLUDED	src/NoDice/guictls.h	7;"	d
-GtkSelectableOverlay	src/NoDice/guictls.h	/^typedef struct _GtkSelectableOverlay GtkSelectableOverlay;$/;"	t	typeref:struct:_GtkSelectableOverlay
-GtkSelectableOverlayClass	src/NoDice/guictls.h	/^typedef struct _GtkSelectableOverlayClass GtkSelectableOverlayClass;$/;"	t	typeref:struct:_GtkSelectableOverlayClass
+GTK_IS_SELECTABLE_OVERLAY	src/NoDice/gui_overlay.h	10;"	d
+GTK_SELECTABLE_OVERLAY	src/NoDice/gui_overlay.h	8;"	d
+GTK_SELECTABLE_OVERLAY_CLASS	src/NoDice/gui_overlay.h	9;"	d
+GUICTLS_H_INCLUDED	src/NoDice/guictls.h	11;"	d
+GUI_COMBOBOX_SIMPLE_H	src/NoDice/gui_combobox_simple.h	4;"	d
+GUI_OVERLAY_H	src/NoDice/gui_overlay.h	4;"	d
+GUI_PROPERTY_BOX_H	src/NoDice/gui_property_box.h	4;"	d
+GtkSelectableOverlay	src/NoDice/gui_overlay.h	/^typedef struct _GtkSelectableOverlay GtkSelectableOverlay;$/;"	t	typeref:struct:_GtkSelectableOverlay
+GtkSelectableOverlayClass	src/NoDice/gui_overlay.h	/^typedef struct _GtkSelectableOverlayClass GtkSelectableOverlayClass;$/;"	t	typeref:struct:_GtkSelectableOverlayClass
 HIGH	src/NoDiceLib/rom.c	134;"	d	file:
 I	src/M6502/Codes.h	/^  M_POP(I);$/;"	v
 I	src/M6502/Codes.h	/^case 0x01: MR_Ix(I);M_ORA(I);break;       \/* ORA ($ss,x) INDEXINDIR *\/$/;"	v
@@ -200,10 +203,10 @@ M6502_H	src/M6502/M6502.h	15;"	d
 MADV_NORMAL	src/NoDiceLib/ezxml.c	42;"	d	file:
 MADV_SEQUENTIAL	src/NoDiceLib/ezxml.c	46;"	d	file:
 MAKE16	src/NoDiceLib/rom.c	135;"	d	file:
-MAPLINKIDX_PACK	src/NoDice/gui_popups.c	770;"	d	file:
-MAPLINK_UNPACK_MAPLINK_IDX	src/NoDice/gui_popups.c	774;"	d	file:
-MAPLINK_UNPACK_OVRTYPE	src/NoDice/gui_popups.c	772;"	d	file:
-MAPLINK_UNPACK_SPECTILE_IDX	src/NoDice/gui_popups.c	773;"	d	file:
+MAPLINKIDX_PACK	src/NoDice/gui_popups.c	772;"	d	file:
+MAPLINK_UNPACK_MAPLINK_IDX	src/NoDice/gui_popups.c	776;"	d	file:
+MAPLINK_UNPACK_OVRTYPE	src/NoDice/gui_popups.c	774;"	d	file:
+MAPLINK_UNPACK_SPECTILE_IDX	src/NoDice/gui_popups.c	775;"	d	file:
 MAP_LAYOUT_BANK	src/NoDiceLib/rom.c	192;"	d	file:
 MAP_OBJECTS_ID	src/NoDiceLib/ram.h	/^	MAP_OBJECTS_ID,$/;"	e	enum:SMB3RAM
 MAP_OBJECTS_ITM	src/NoDiceLib/ram.h	/^	MAP_OBJECTS_ITM,$/;"	e	enum:SMB3RAM
@@ -517,8 +520,8 @@ Zy	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix
 _CHR	src/NoDiceLib/rom.c	/^static rom_t _PRG = NULL, _CHR = NULL;$/;"	v	file:
 _EZXML_H	src/MusConv/ezxml.h	26;"	d
 _EZXML_H	src/NoDiceLib/ezxml.h	26;"	d
-_GtkSelectableOverlay	src/NoDice/guictls.h	/^struct _GtkSelectableOverlay$/;"	s
-_GtkSelectableOverlayClass	src/NoDice/guictls.h	/^struct _GtkSelectableOverlayClass {$/;"	s
+_GtkSelectableOverlay	src/NoDice/gui_overlay.h	/^struct _GtkSelectableOverlay$/;"	s
+_GtkSelectableOverlayClass	src/NoDice/gui_overlay.h	/^struct _GtkSelectableOverlayClass {$/;"	s
 _INTERNAL_H	src/NoDiceLib/internal.h	5;"	d
 _MUSCONV_H	src/MusConv/MusConv.h	2;"	d
 _NODICELIB_H	src/NoDiceLib/NoDiceLib.h	5;"	d
@@ -555,7 +558,7 @@ _rom_free_level_list	src/NoDiceLib/rom.c	/^void _rom_free_level_list()$/;"	f
 _rom_load	src/NoDiceLib/rom.c	/^int _rom_load()$/;"	f
 _rom_load_symbols	src/NoDiceLib/rom.c	/^static int _rom_load_symbols() {$/;"	f	file:
 _rom_shutdown	src/NoDiceLib/rom.c	/^void _rom_shutdown()$/;"	f
-_translation_data	src/NoDice/guictls.h	/^	struct _translation_data$/;"	s	struct:_GtkSelectableOverlay
+_translation_data	src/NoDice/gui_overlay.h	/^	struct _translation_data$/;"	s	struct:_GtkSelectableOverlay
 addr_end	src/NoDiceLib/NoDiceLib.h	/^	unsigned short addr_start, addr_end;$/;"	m	struct:NoDice_level
 addr_max	src/NoDiceLib/NoDiceLib.h	/^		unsigned short addr_max;		\/\/ Maximum tile RAM address used$/;"	m	struct:NoDice_level::NoDice_the_level_generator
 addr_min	src/NoDiceLib/NoDiceLib.h	/^		unsigned short addr_min;		\/\/ Minimum tile RAM address used$/;"	m	struct:NoDice_level::NoDice_the_level_generator
@@ -721,7 +724,7 @@ g_list_free_full	src/NoDice/gui.c	/^void g_list_free_full(GList *list, GDestroyN
 game	src/NoDiceLib/config.h	/^	} game;$/;"	m	struct:NoDice_configuration	typeref:struct:NoDice_configuration::NoDice_game
 game_dir	src/NoDiceLib/config.h	/^	const char *game_dir;$/;"	m	struct:NoDice_configuration
 game_xml	src/NoDiceLib/config.c	/^static ezxml_t config_xml, game_xml;$/;"	v	file:
-gen	src/NoDice/guictls.h	/^	struct NoDice_the_level_generator *gen;		\/\/ The generator this represents (if applicable)$/;"	m	struct:_GtkSelectableOverlay	typeref:struct:_GtkSelectableOverlay::NoDice_the_level_generator
+gen	src/NoDice/gui_overlay.h	/^	struct NoDice_the_level_generator *gen;		\/\/ The generator this represents (if applicable)$/;"	m	struct:_GtkSelectableOverlay	typeref:struct:_GtkSelectableOverlay::NoDice_the_level_generator
 gen_count	src/NoDiceLib/config.h	/^			int 	gen_count;		\/\/ Count of generators$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
 generators	src/NoDiceLib/NoDiceLib.h	/^	}	*generators;		\/\/ All generators$/;"	m	struct:NoDice_level	typeref:struct:NoDice_level::NoDice_the_level_generator
 generators	src/NoDiceLib/config.h	/^			}	*generators;		\/\/ Variable and Fixed-size block generators$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
@@ -951,7 +954,7 @@ level_reload	src/NoDice/edit.c	/^static void level_reload(int expected_generator
 level_reload_with_selection	src/NoDice/edit.c	/^static void level_reload_with_selection(int expected_generator_count, int old_sel_index)$/;"	f	file:
 levels	src/NoDiceLib/config.h	/^				*levels;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
 levels_count	src/NoDiceLib/config.h	/^			int levels_count;		\/\/ Count of levels$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
-link	src/NoDice/guictls.h	/^	struct NoDice_map_link *link;				\/\/ The map link this represents (if applicable)$/;"	m	struct:_GtkSelectableOverlay	typeref:struct:_GtkSelectableOverlay::NoDice_map_link
+link	src/NoDice/gui_overlay.h	/^	struct NoDice_map_link *link;				\/\/ The map link this represents (if applicable)$/;"	m	struct:_GtkSelectableOverlay	typeref:struct:_GtkSelectableOverlay::NoDice_map_link
 low	src/NoDiceLib/config.h	/^				struct NoDice_headers low;	\/\/ Low byte options$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override::NoDice_headers
 m	src/NoDiceLib/ezxml.c	/^    char *m;              \/\/ original xml string$/;"	m	struct:ezxml_root	file:
 main	src/MusConv/main.c	/^int main(int argc, char *argv[])$/;"	f
@@ -992,8 +995,8 @@ midi_write_setup	src/MusConv/export.c	/^static void midi_write_setup(struct smb3
 midi_write_sysex	src/MusConv/export.c	/^static void midi_write_sysex(struct smb3_track *track, const char *sysex)$/;"	f	file:
 midi_write_sysex_track0	src/MusConv/export.c	/^static void midi_write_sysex_track0(FILE *midi, unsigned int time, const char *sysex)$/;"	f	file:
 min	src/NoDiceLib/config.h	/^					unsigned char min;	\/\/ Minimum value$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator::NoDice_generator_parameter
-mouse_origin_x	src/NoDice/guictls.h	/^		double mouse_origin_x, mouse_origin_y;		\/\/ Origin of mouse when dragging began$/;"	m	struct:_GtkSelectableOverlay::_translation_data
-mouse_origin_y	src/NoDice/guictls.h	/^		double mouse_origin_x, mouse_origin_y;		\/\/ Origin of mouse when dragging began$/;"	m	struct:_GtkSelectableOverlay::_translation_data
+mouse_origin_x	src/NoDice/gui_overlay.h	/^		double mouse_origin_x, mouse_origin_y;		\/\/ Origin of mouse when dragging began$/;"	m	struct:_GtkSelectableOverlay::_translation_data
+mouse_origin_y	src/NoDice/gui_overlay.h	/^		double mouse_origin_x, mouse_origin_y;		\/\/ Origin of mouse when dragging began$/;"	m	struct:_GtkSelectableOverlay::_translation_data
 mthd	src/MusConv/import.c	/^} mthd;$/;"	v	typeref:struct:MTHD_CHUNK	file:
 music_event_list	src/MusConv/import.c	/^static struct music_event_list$/;"	s	file:
 music_event_list_add	src/MusConv/import.c	/^static void music_event_list_add(enum MUSICTRACK track, unsigned int time, enum MUSICEVENT event, unsigned char data)$/;"	f	file:
@@ -1022,7 +1025,7 @@ next	src/NoDiceLib/NoDiceLib.h	/^		struct NoDice_the_level_generator *next;		\/\
 next	src/NoDiceLib/ezxml.h	/^    ezxml_t next;    \/\/ next tag with same name in this section at this depth$/;"	m	struct:ezxml
 next	src/NoDiceLib/rom.c	/^	struct ROM_label *next;$/;"	m	struct:ROM_label	typeref:struct:ROM_label::ROM_label	file:
 nmenu_items	src/NoDice/gui.c	/^static gint nmenu_items = sizeof (menu_items) \/ sizeof (menu_items[0]);$/;"	v	file:
-obj	src/NoDice/guictls.h	/^	struct NoDice_the_level_object *obj;		\/\/ The object this represents (if applicable)$/;"	m	struct:_GtkSelectableOverlay	typeref:struct:_GtkSelectableOverlay::NoDice_the_level_object
+obj	src/NoDice/gui_overlay.h	/^	struct NoDice_the_level_object *obj;		\/\/ The object this represents (if applicable)$/;"	m	struct:_GtkSelectableOverlay	typeref:struct:_GtkSelectableOverlay::NoDice_the_level_object
 object	src/NoDice/gui_popups.c	/^	struct NoDice_the_level_object *object;$/;"	m	struct:gui_special_obj_properties_data	typeref:struct:gui_special_obj_properties_data::NoDice_the_level_object	file:
 object_addr	src/NoDiceLib/NoDiceLib.h	/^		unsigned short object_addr;	\/\/ Object address (except Spade\/Toad panels)$/;"	m	struct:NoDice_level::NoDice_map_link
 object_count	src/NoDiceLib/NoDiceLib.h	/^	int object_count;$/;"	m	struct:NoDice_level
@@ -1051,8 +1054,8 @@ options_list	src/NoDiceLib/config.h	/^			} *options_list;$/;"	m	struct:NoDice_co
 options_list_count	src/NoDiceLib/config.h	/^			int options_list_count;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers
 ordered	src/MusConv/ezxml.h	/^    ezxml_t ordered; \/\/ next tag, same section and depth, in original order$/;"	m	struct:ezxml
 ordered	src/NoDiceLib/ezxml.h	/^    ezxml_t ordered; \/\/ next tag, same section and depth, in original order$/;"	m	struct:ezxml
-origin_x	src/NoDice/guictls.h	/^		int origin_x, origin_y;					\/\/ Origin X\/Y$/;"	m	struct:_GtkSelectableOverlay::_translation_data
-origin_y	src/NoDice/guictls.h	/^		int origin_x, origin_y;					\/\/ Origin X\/Y$/;"	m	struct:_GtkSelectableOverlay::_translation_data
+origin_x	src/NoDice/gui_overlay.h	/^		int origin_x, origin_y;					\/\/ Origin X\/Y$/;"	m	struct:_GtkSelectableOverlay::_translation_data
+origin_y	src/NoDice/gui_overlay.h	/^		int origin_x, origin_y;					\/\/ Origin X\/Y$/;"	m	struct:_GtkSelectableOverlay::_translation_data
 original_dir	src/NoDiceLib/config.h	/^	char original_dir[PATH_MAX];	\/\/ Maintain original CWD in case of configuration reload$/;"	m	struct:NoDice_configuration
 overlay	src/NoDiceLib/config.h	/^			const char *overlay;	\/\/ Overlay graphic file$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tilehint
 override_object	src/NoDiceLib/config.h	/^			} override_tile, override_object;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override
@@ -1064,7 +1067,7 @@ palette	src/NoDiceLib/config.h	/^				unsigned char palette;$/;"	m	struct:NoDice_
 parameters	src/NoDiceLib/config.h	/^				} parameters[GEN_MAX_PARAMS];$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator::NoDice_generator_parameter
 parent	src/MusConv/ezxml.h	/^    ezxml_t parent;  \/\/ parent tag, NULL if current tag is root tag$/;"	m	struct:ezxml
 parent	src/NoDiceLib/ezxml.h	/^    ezxml_t parent;  \/\/ parent tag, NULL if current tag is root tag$/;"	m	struct:ezxml
-parent_class	src/NoDice/guictls.h	/^  GtkWidgetClass parent_class;$/;"	m	struct:_GtkSelectableOverlayClass
+parent_class	src/NoDice/gui_overlay.h	/^  GtkWidgetClass parent_class;$/;"	m	struct:_GtkSelectableOverlayClass
 parse_generators	src/NoDiceLib/config.c	/^static void parse_generators(ezxml_t root, struct NoDice_generator *generator, int base_index, int gen_type) {$/;"	f	file:
 parse_header_options	src/NoDiceLib/config.c	/^static void parse_header_options(ezxml_t root, struct NoDice_headers *header) {$/;"	f	file:
 parse_levels	src/NoDiceLib/config.c	/^static void parse_levels(ezxml_t root, struct NoDice_the_levels **level, int *lev_count) {$/;"	f	file:
@@ -1125,8 +1128,8 @@ segment_add_data	src/MusConv/import.c	/^static void segment_add_data(struct musi
 segment_data	src/MusConv/import.c	/^	unsigned char segment_data[256];	\/\/ Data belonging to segment$/;"	m	struct:music_segment	file:
 segment_data	src/NoDiceLib/NoDiceLib.h	/^		const unsigned char *segment_data;	\/\/ Data belonging to segment$/;"	m	struct:NoDice_music_context::NoDice_music_segment
 segment_data_size	src/MusConv/import.c	/^	unsigned short segment_data_size;	\/\/ Actual size of data ("short" so we can acknowledge size 256)$/;"	m	struct:music_segment	file:
-select_handler	src/NoDice/guictls.h	/^	void (* select_handler)(const GtkSelectableOverlay *selectable_overlay);$/;"	m	struct:_GtkSelectableOverlay
-selected	src/NoDice/guictls.h	/^	gboolean selected;						\/\/ This item is selected$/;"	m	struct:_GtkSelectableOverlay
+select_handler	src/NoDice/gui_overlay.h	/^	void (* select_handler)(const GtkSelectableOverlay *selectable_overlay);$/;"	m	struct:_GtkSelectableOverlay
+selected	src/NoDice/gui_overlay.h	/^	gboolean selected;						\/\/ This item is selected$/;"	m	struct:_GtkSelectableOverlay
 selected_level	src/NoDice/gui_popups.c	/^	const struct NoDice_the_levels *selected_level;$/;"	m	struct:_gui_open_level_popup_desc_widgets	typeref:struct:_gui_open_level_popup_desc_widgets::NoDice_the_levels	file:
 selected_level_tileset	src/NoDice/gui_popups.c	/^	unsigned char selected_level_tileset;$/;"	m	struct:_gui_open_level_popup_desc_widgets	file:
 shift	src/NoDiceLib/config.h	/^				unsigned char shift;	\/\/ Shift value$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
@@ -1189,7 +1192,7 @@ track_end_time	src/MusConv/import.c	/^		unsigned int track_end_time;	\/\/ Termin
 track_start	src/MusConv/import.c	/^		unsigned char track_start;		\/\/ Start offsets for this tracks$/;"	m	struct:music_segment::music_segment_track	file:
 track_starts	src/NoDiceLib/NoDiceLib.h	/^		unsigned char track_starts[MUSICTRACK_TOTAL];	\/\/ Start offsets for all tracks$/;"	m	struct:NoDice_music_context::NoDice_music_segment
 tracks	src/MusConv/import.c	/^	} tracks[MUSICTRACK_TOTAL];$/;"	m	struct:music_segment	typeref:struct:music_segment::music_segment_track	file:
-translation_data	src/NoDice/guictls.h	/^	} translation_data;		\/\/ Data used to translate a generator$/;"	m	struct:_GtkSelectableOverlay	typeref:struct:_GtkSelectableOverlay::_translation_data
+translation_data	src/NoDice/gui_overlay.h	/^	} translation_data;		\/\/ Data used to translate a generator$/;"	m	struct:_GtkSelectableOverlay	typeref:struct:_GtkSelectableOverlay::_translation_data
 txt	src/MusConv/ezxml.h	/^    char *txt;       \/\/ tag character content, empty string if none$/;"	m	struct:ezxml
 txt	src/NoDiceLib/ezxml.h	/^    char *txt;       \/\/ tag character content, empty string if none$/;"	m	struct:ezxml
 type	src/NoDiceLib/NoDiceLib.h	/^		unsigned char type;		\/\/ Type of generator$/;"	m	struct:NoDice_level::NoDice_the_level_generator
@@ -1217,8 +1220,8 @@ vram_virtual_x_v	src/NoDiceLib/rom.c	/^static unsigned short vram_virtual_x_v(un
 vram_virtual_y	src/NoDiceLib/rom.c	/^static unsigned short vram_virtual_y(unsigned short addr)$/;"	f	file:
 vram_virtual_y_v	src/NoDiceLib/rom.c	/^static unsigned short vram_virtual_y_v(unsigned short addr)$/;"	f	file:
 warpzone	src/NoDiceLib/config.h	/^			const char *warpzone;			\/\/ Warp Zone layout label definition$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_options
+widget	src/NoDice/gui_overlay.h	/^	GtkWidget widget;$/;"	m	struct:_GtkSelectableOverlay
 widget	src/NoDice/gui_property_box.c	/^	GtkWidget *widget;				\/\/ Widget in property box$/;"	m	struct:gui_generate_option_controls_context	file:
-widget	src/NoDice/guictls.h	/^	GtkWidget widget;$/;"	m	struct:_GtkSelectableOverlay
 widget_signal_data	src/NoDice/gui_property_box.c	/^	guint widget_signal_data;		\/\/ Signal data to pass on emission (for initial visibility of Show-If controls)$/;"	m	struct:gui_generate_option_controls_context	file:
 widget_signal_name	src/NoDice/gui_property_box.c	/^	const char *widget_signal_name;	\/\/ Signal name to emit (for initial visibility of Show-If controls)$/;"	m	struct:gui_generate_option_controls_context	file:
 width	src/NoDice/ppu.c	/^	int width, height;$/;"	m	struct:_PPU_SPR	file:

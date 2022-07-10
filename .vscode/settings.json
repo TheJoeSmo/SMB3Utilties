@@ -10,7 +10,8 @@
         "guictls.h": "c",
         "gui_popups.h": "c",
         "gui.h": "c",
-        "ppu.h": "c"
+        "ppu.h": "c",
+        "gui_combobox_simple.h": "c"
     },
     "C_Cpp.default.cStandard": "c11",
     "C_Cpp.default.compileCommands": ""

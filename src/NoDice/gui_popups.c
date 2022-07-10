@@ -5,7 +5,9 @@
 
 #include "../NoDiceLib/NoDiceLib.h"
 
+#include "gui.h"
 #include "gui_popups.h"
+#include "guictls.h"
 
 
 extern GtkWidget *gui_main_window;

@@ -5,13 +5,13 @@ all: compile
 compile: bin/nesasm
 
 # Generate the main file to run
-bin/nesasm: o/M6502/M6502.o o/NoDice/edit.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o
-	gcc -std=c11 -g -o $@ o/M6502/M6502.o o/NoDice/edit.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o `pkg-config --cflags gtk+-2.0`  `pkg-config --libs gtk+-2.0`
+bin/nesasm: o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o
+	gcc -std=c11 -g -o $@ o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o `pkg-config --cflags gtk+-2.0`  `pkg-config --libs gtk+-2.0`
 
 o/NoDice/main.o: src/NoDice/main.c
 	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 
-o/NoDice/NoDice.o: src/NoDice/edit.c src/NoDice/NoDice.h
+o/NoDice/NoDice.o: src/NoDice/NoDice.c src/NoDice/NoDice.h
 	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 
 o/NoDice/ppu.o: src/NoDice/ppu.c src/NoDice/ppu.h
@@ -23,7 +23,16 @@ o/NoDice/edit.o: src/NoDice/edit.c src/NoDice/edit.h
 o/NoDice/gui_popups.o: src/NoDice/gui_popups.c src/NoDice/gui_popups.h
 	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 
+o/NoDice/gui_overlay.o: src/NoDice/gui_overlay.c src/NoDice/gui_overlay.h
+	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
+
+o/NoDice/gui_property_box.o: src/NoDice/gui_property_box.c src/NoDice/gui_property_box.h
+	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
+
 o/NoDice/gui.o: src/NoDice/gui.c src/NoDice/gui.h
+	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
+
+o/NoDice/gui_combobox_simple.o: src/NoDice/gui_combobox_simple.c src/NoDice/gui_combobox_simple.h
 	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
 
 o/NoDice/guictls.o: src/NoDice/gui_listbox.c src/NoDice/guictls.h
