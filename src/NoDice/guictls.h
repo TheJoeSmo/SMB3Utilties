@@ -1,8 +1,10 @@
-#ifndef GUICTLS_H_INCLUDED
-#define GUICTLS_H_INCLUDED
-
 #include <gtk/gtk.h>
 #include <cairo.h>
+
+#include "gui_popups.h"
+
+#ifndef GUICTLS_H_INCLUDED
+#define GUICTLS_H_INCLUDED
 
 G_BEGIN_DECLS
 
@@ -62,25 +64,7 @@ void gui_combobox_simple_clear_items(GtkWidget *widget);
 void gui_combobox_simple_set_selected(GtkWidget *widget, int index);
 int gui_combobox_simple_get_index(GtkWidget *widget);
 
-// Popups
-enum OPEN_LEVEL_POPUP
-{
-	OLP_FORBROWSE = 1,			// Browsing for level, not intending to load
-	OLP_NIBBLE_TILESETS_ONLY = 2,	// Only list levels that fit in a tileset 4-bits wide
-};
-
-int gui_new_level_popup();
-int gui_open_level_popup(enum OPEN_LEVEL_POPUP popup_options, unsigned char *tileset, const struct NoDice_the_levels **level);
-void gui_level_properties(struct NoDice_the_level_generator *selected_gen);
 void gui_generate_option_controls(GList **context, GtkWidget *vbox, unsigned short header_byte, unsigned char header_val, const struct NoDice_headers *header, GCallback list_change, GCallback toggle_change, GCallback spin_change);
 void gui_update_option_controls(GList *context);
-int gui_special_obj_properties(struct NoDice_the_level_object *object);
-int gui_map_obj_properties(struct NoDice_the_level_object *object);
-int gui_map_link_properties(struct NoDice_map_link *link);
-
-// Compatibility with older GLib versions
-#if !GLIB_CHECK_VERSION(2,28,0)
-void g_list_free_full(GList *list, GDestroyNotify  free_func);
-#endif
 
 #endif // GUICTLS_H_INCLUDED

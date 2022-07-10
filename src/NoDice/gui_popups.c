@@ -1,14 +1,16 @@
+
+#include <gtk/gtk.h>
 #include <stdlib.h>
 #include <string.h>
-#include <gtk/gtk.h>
+
 #include "../NoDiceLib/NoDiceLib.h"
-#include "NoDice.h"
-#include "guictls.h"
+
+#include "gui_popups.h"
+
 
 extern GtkWidget *gui_main_window;
 
-void gui_display_6502_error(enum RUN6502_STOP_REASON reason)
-{
+void gui_display_6502_error(enum RUN6502_STOP_REASON reason) {
 	GtkWidget *dialog;
 	const char *s3 = "";
 	const char *revertReasons[] =
@@ -40,8 +42,7 @@ void gui_display_6502_error(enum RUN6502_STOP_REASON reason)
 }
 
 
-void gui_display_message(int is_error, const char *err_str)
-{
+void gui_display_message(int is_error, const char *err_str) {
 	GtkWidget *dialog = gtk_message_dialog_new (GTK_WINDOW(gui_main_window),
 							   GTK_DIALOG_DESTROY_WITH_PARENT,
 							   is_error ? GTK_MESSAGE_ERROR : GTK_MESSAGE_INFO,
@@ -398,8 +399,7 @@ static void gui_level_properties_browse_click(GtkButton *button, gpointer user_d
 }
 
 
-void gui_level_properties(struct NoDice_the_level_generator *selected_gen)
-{
+void gui_level_properties(struct NoDice_the_level_generator *selected_gen) {
 	GList *property_context = NULL;
 	GtkAllocation alloc;
 	unsigned char option_backup[LEVEL_HEADER_COUNT];

@@ -7,6 +7,7 @@
 
 #include "ezxml.h"
 #include "internal.h"
+#include "config.h"
 
 #define CONFIG_XML	"config.xml"
 #define GAME_XML	"game.xml"
@@ -14,8 +15,7 @@
 static ezxml_t config_xml, game_xml;
 struct NoDice_configuration NoDice_config;
 
-static ezxml_t required_child(ezxml_t root, const char *item)
-{
+static ezxml_t required_child(ezxml_t root, const char *item) {
 	ezxml_t child = NULL;
 
 	if((child = ezxml_child(root, item)) == NULL)
@@ -27,8 +27,7 @@ static ezxml_t required_child(ezxml_t root, const char *item)
 }
 
 
-static int count_children(ezxml_t xml, const char *child)
-{
+static int count_children(ezxml_t xml, const char *child) {
 	ezxml_t node;
 	int count = 0;
 
@@ -39,8 +38,7 @@ static int count_children(ezxml_t xml, const char *child)
 }
 
 
-static int attr_to_int(ezxml_t node, const char *attr_name, int default_val)
-{
+static int attr_to_int(ezxml_t node, const char *attr_name, int default_val) {
 	const char *attr_value = ezxml_attr(node, attr_name);
 
 	if(attr_value != NULL)
@@ -50,14 +48,12 @@ static int attr_to_int(ezxml_t node, const char *attr_name, int default_val)
 }
 
 
-static unsigned char attr_to_byte(ezxml_t node, const char *attr_name, unsigned char default_val)
-{
+static unsigned char attr_to_byte(ezxml_t node, const char *attr_name, unsigned char default_val) {
 	return (unsigned char)attr_to_int(node, attr_name, default_val);
 }
 
 
-static void parse_generators(ezxml_t root, struct NoDice_generator *generator, int base_index, int gen_type)
-{
+static void parse_generators(ezxml_t root, struct NoDice_generator *generator, int base_index, int gen_type) {
 	int cur_gen = base_index, i;
 	ezxml_t node, pnode;
 
@@ -88,8 +84,7 @@ static void parse_generators(ezxml_t root, struct NoDice_generator *generator, i
 }
 
 
-static void parse_levels(ezxml_t root, struct NoDice_the_levels **level, int *lev_count)
-{
+static void parse_levels(ezxml_t root, struct NoDice_the_levels **level, int *lev_count) {
 	struct NoDice_the_levels *lev = NULL;
 
 	// Get count of levels
@@ -122,8 +117,7 @@ static void parse_levels(ezxml_t root, struct NoDice_the_levels **level, int *le
 }
 
 
-static void parse_tilehints(ezxml_t root, struct NoDice_tilehint **tilehints, int *tilehint_count)
-{
+static void parse_tilehints(ezxml_t root, struct NoDice_tilehint **tilehints, int *tilehint_count) {
 	struct NoDice_tilehint *hints = NULL;
 
 	// Get count of levels
@@ -153,8 +147,7 @@ static void parse_tilehints(ezxml_t root, struct NoDice_tilehint **tilehints, in
 
 
 // Turn string of bit zeroes and ones into byte value
-static unsigned char mask_bits_to_byte(const char *mask)
-{
+static unsigned char mask_bits_to_byte(const char *mask) {
 	unsigned char mask_value = 0;
 
 	while(*mask != '\0')
@@ -163,8 +156,7 @@ static unsigned char mask_bits_to_byte(const char *mask)
 	return mask_value;
 }
 
-static void parse_header_options(ezxml_t root, struct NoDice_headers *header)
-{
+static void parse_header_options(ezxml_t root, struct NoDice_headers *header) {
 	int cur_options = 0;
 	ezxml_t node, pnode;
 
@@ -232,8 +224,7 @@ static void parse_header_options(ezxml_t root, struct NoDice_headers *header)
 }
 
 
-static void parse_objects(ezxml_t root, struct NoDice_objects *objects)
-{
+static void parse_objects(ezxml_t root, struct NoDice_objects *objects) {
 	ezxml_t node;
 
 	// For all <object /> blocks...
@@ -279,8 +270,7 @@ static void parse_objects(ezxml_t root, struct NoDice_objects *objects)
 
 
 // Comparison function for qsort to alphabetically order the generators
-static int sort_gens_compare (const void * a, const void * b)
-{
+static int sort_gens_compare (const void * a, const void * b) {
 	const struct NoDice_generator *ga = (struct NoDice_generator *)a;
 	const struct NoDice_generator *gb = (struct NoDice_generator *)b;
 
@@ -295,8 +285,7 @@ static int sort_gens_compare (const void * a, const void * b)
 }
 
 
-int _config_init()
-{
+int _config_init() {
 	// Clear configuration structure
 	memset(&NoDice_config, 0, sizeof(struct NoDice_configuration));
 
@@ -651,8 +640,7 @@ int _config_init()
 	return 1;
 }
 
-void _config_shutdown()
-{
+void _config_shutdown() {
 	// Clean up configuration structure
 	int i;
 
@@ -785,8 +773,7 @@ void _config_shutdown()
 
 // Add a level entry to a particular tileset
 // Returns non-NULL string on error
-const char *NoDice_config_game_add_level_entry(unsigned char tileset, const char *name, const char *layoutfile, const char *layoutlabel, const char *objectfile, const char *objectlabel, const char *desc)
-{
+const char *NoDice_config_game_add_level_entry(unsigned char tileset, const char *name, const char *layoutfile, const char *layoutlabel, const char *objectfile, const char *objectlabel, const char *desc) {
 	ezxml_t game_node, node;
 
 	// Parse <tilesets />

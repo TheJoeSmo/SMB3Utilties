@@ -4,24 +4,24 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-A	src/M6502/M6502.h	/^  byte A,P,X,Y,S;     \/* CPU registers and program counter   *\/$/;"	m	struct:__anon6
+A	src/M6502/M6502.h	/^  byte A,P,X,Y,S;     \/* CPU registers and program counter   *\/$/;"	m	struct:__anon9
 AR	projects/Linux/Makefile	/^AR := ar$/;"	m
 ARFLAGS	projects/Linux/Makefile	/^ARFLAGS := rcs$/;"	m
 Ab	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
 Ac	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
 AddressingModes	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	g	file:
 Ads	src/M6502/Debug.c	/^static const byte Ads[512]=$/;"	v	file:
-AfterCLI	src/M6502/M6502.h	/^  byte AfterCLI;      \/* Private, don't touch                *\/$/;"	m	struct:__anon6
+AfterCLI	src/M6502/M6502.h	/^  byte AfterCLI;      \/* Private, don't touch                *\/$/;"	m	struct:__anon9
 Ax	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
 Ay	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
-B	src/M6502/M6502.h	/^  struct { byte l,h; } B;$/;"	m	union:__anon4	typeref:struct:__anon4::__anon5
-BUFFER_LEN	src/NoDiceLib/internal.h	5;"	d
-BUILDERR	src/NoDiceLib/NoDiceLib.h	/^enum BUILDERR$/;"	g
-BUILDERR_RETURNCODE	src/NoDiceLib/NoDiceLib.h	/^	BUILDERR_RETURNCODE,	\/\/ Check if assembler returns non-zero code$/;"	e	enum:BUILDERR
-BUILDERR_TEXTERROR	src/NoDiceLib/NoDiceLib.h	/^	BUILDERR_TEXTERROR,		\/\/ Check if assembler output includes word "error"$/;"	e	enum:BUILDERR
-BUILDERR_TOTAL	src/NoDiceLib/NoDiceLib.h	/^	BUILDERR_TOTAL$/;"	e	enum:BUILDERR
-BYTE_TYPE_DEFINED	src/M6502/M6502.h	46;"	d
-B_FLAG	src/M6502/M6502.h	37;"	d
+B	src/M6502/M6502.h	/^  struct { byte h,l; } B;$/;"	m	union:__anon7	typeref:struct:__anon7::__anon8
+BUFFER_LEN	src/NoDiceLib/ram.h	6;"	d
+BUILDERR	src/NoDiceLib/config.h	/^enum BUILDERR$/;"	g
+BUILDERR_RETURNCODE	src/NoDiceLib/config.h	/^	BUILDERR_RETURNCODE,	\/\/ Check if assembler returns non-zero code$/;"	e	enum:BUILDERR
+BUILDERR_TEXTERROR	src/NoDiceLib/config.h	/^	BUILDERR_TEXTERROR,		\/\/ Check if assembler output includes word "error"$/;"	e	enum:BUILDERR
+BUILDERR_TOTAL	src/NoDiceLib/config.h	/^	BUILDERR_TOTAL$/;"	e	enum:BUILDERR
+BYTE_TYPE_DEFINED	src/M6502/M6502.h	44;"	d
+B_FLAG	src/M6502/M6502.h	34;"	d
 CFLAGS	projects/Linux/Makefile	/^CFLAGS := -O3 -I ..\/..\/src\/NoDiceLib -DLSB_FIRST$/;"	m
 CHR_banks	src/NoDiceLib/rom.c	/^static unsigned short CHR_banks;$/;"	v	file:
 CLR_BACK	src/M6502/ConDebug.c	36;"	d	file:
@@ -30,35 +30,35 @@ CLR_PC	src/M6502/ConDebug.c	39;"	d	file:
 CLR_SP	src/M6502/ConDebug.c	40;"	d	file:
 CLR_TEXT	src/M6502/ConDebug.c	37;"	d	file:
 CONFIG_XML	src/MusConv/config.c	9;"	d	file:
-CONFIG_XML	src/NoDiceLib/config.c	11;"	d	file:
+CONFIG_XML	src/NoDiceLib/config.c	12;"	d	file:
 CPU_Context	src/NoDiceLib/rom.c	/^static M6502 CPU_Context;$/;"	v	file:
-C_FLAG	src/M6502/M6502.h	33;"	d
+C_FLAG	src/M6502/M6502.h	30;"	d
 ChrDump	src/M6502/ConDebug.c	/^static byte ChrDump(byte C)$/;"	f	file:
 Cycles	src/M6502/M6502.h	/^static const byte Cycles[256] =$/;"	v
 DAsm	src/M6502/Debug.c	/^static int DAsm(char *S,word A)$/;"	f	file:
-D_FLAG	src/M6502/M6502.h	36;"	d
+D_FLAG	src/M6502/M6502.h	33;"	d
 Debug6502	src/M6502/ConDebug.c	/^byte Debug6502(M6502 *R)$/;"	f
 Debug6502	src/M6502/ConDebug.c	32;"	d	file:
 Debug6502	src/M6502/ConDebug.c	34;"	d	file:
 Debug6502	src/M6502/Debug.c	/^byte Debug6502(M6502 *R)$/;"	f
 Division	src/MusConv/import.c	/^   unsigned short Division;$/;"	m	struct:MTHD_CHUNK	file:
-EDIT_NOTEBOOK_PAGES	src/NoDice/NoDice.h	/^enum EDIT_NOTEBOOK_PAGES$/;"	g
-ENPAGE_GENS	src/NoDice/NoDice.h	/^	ENPAGE_GENS,	\/\/ Regular level generators$/;"	e	enum:EDIT_NOTEBOOK_PAGES
-ENPAGE_LINKS	src/NoDice/NoDice.h	/^	ENPAGE_LINKS,	\/\/ World map links$/;"	e	enum:EDIT_NOTEBOOK_PAGES
-ENPAGE_MOBJS	src/NoDice/NoDice.h	/^	ENPAGE_MOBJS,	\/\/ World map objects$/;"	e	enum:EDIT_NOTEBOOK_PAGES
-ENPAGE_OBJS	src/NoDice/NoDice.h	/^	ENPAGE_OBJS,	\/\/ Regular level objects$/;"	e	enum:EDIT_NOTEBOOK_PAGES
-ENPAGE_STARTS	src/NoDice/NoDice.h	/^	ENPAGE_STARTS,	\/\/ Regular level start positions$/;"	e	enum:EDIT_NOTEBOOK_PAGES
-ENPAGE_TILES	src/NoDice/NoDice.h	/^	ENPAGE_TILES,	\/\/ World map tiles$/;"	e	enum:EDIT_NOTEBOOK_PAGES
-ENPAGE_TOTAL	src/NoDice/NoDice.h	/^	ENPAGE_TOTAL$/;"	e	enum:EDIT_NOTEBOOK_PAGES
-ERROR_MSG_LEN	src/NoDiceLib/internal.h	4;"	d
+EDIT_NOTEBOOK_PAGES	src/NoDice/gui.h	/^enum EDIT_NOTEBOOK_PAGES {$/;"	g
+ENPAGE_GENS	src/NoDice/gui.h	/^	ENPAGE_GENS,	\/\/ Regular level generators$/;"	e	enum:EDIT_NOTEBOOK_PAGES
+ENPAGE_LINKS	src/NoDice/gui.h	/^	ENPAGE_LINKS,	\/\/ World map links$/;"	e	enum:EDIT_NOTEBOOK_PAGES
+ENPAGE_MOBJS	src/NoDice/gui.h	/^	ENPAGE_MOBJS,	\/\/ World map objects$/;"	e	enum:EDIT_NOTEBOOK_PAGES
+ENPAGE_OBJS	src/NoDice/gui.h	/^	ENPAGE_OBJS,	\/\/ Regular level objects$/;"	e	enum:EDIT_NOTEBOOK_PAGES
+ENPAGE_STARTS	src/NoDice/gui.h	/^	ENPAGE_STARTS,	\/\/ Regular level start positions$/;"	e	enum:EDIT_NOTEBOOK_PAGES
+ENPAGE_TILES	src/NoDice/gui.h	/^	ENPAGE_TILES,	\/\/ World map tiles$/;"	e	enum:EDIT_NOTEBOOK_PAGES
+ENPAGE_TOTAL	src/NoDice/gui.h	/^	ENPAGE_TOTAL$/;"	e	enum:EDIT_NOTEBOOK_PAGES
+ERROR_MSG_LEN	src/NoDiceLib/ram.h	5;"	d
 EVENT_LOOP	src/MusConv/import.c	/^	EVENT_LOOP		\/\/ Special "LOOP" SysEx$/;"	e	enum:MUSICEVENT	file:
 EVENT_NOTEOFF	src/MusConv/import.c	/^	EVENT_NOTEOFF,$/;"	e	enum:MUSICEVENT	file:
 EVENT_NOTEON	src/MusConv/import.c	/^	EVENT_NOTEON,$/;"	e	enum:MUSICEVENT	file:
 EVENT_PROGRAMCHANGE	src/MusConv/import.c	/^	EVENT_PROGRAMCHANGE,$/;"	e	enum:MUSICEVENT	file:
-EXEC_BUF_LINE_LEN	src/NoDiceLib/NoDiceLib.h	392;"	d
-EXT_ASM	src/NoDiceLib/NoDiceLib.h	16;"	d
-EXT_ROM	src/NoDiceLib/NoDiceLib.h	14;"	d
-EXT_SYMBOLS	src/NoDiceLib/NoDiceLib.h	15;"	d
+EXEC_BUF_LINE_LEN	src/NoDiceLib/exec.h	6;"	d
+EXT_ASM	src/NoDiceLib/NoDiceLib.h	12;"	d
+EXT_ROM	src/NoDiceLib/NoDiceLib.h	10;"	d
+EXT_SYMBOLS	src/NoDiceLib/NoDiceLib.h	11;"	d
 EZXML_BUFSIZE	src/MusConv/ezxml.h	37;"	d
 EZXML_BUFSIZE	src/NoDiceLib/ezxml.h	37;"	d
 EZXML_DUP	src/MusConv/ezxml.h	40;"	d
@@ -71,28 +71,26 @@ EZXML_TXTM	src/MusConv/ezxml.h	39;"	d
 EZXML_TXTM	src/NoDiceLib/ezxml.h	39;"	d
 EZXML_WS	src/NoDiceLib/ezxml.c	37;"	d	file:
 Exec6502	src/M6502/M6502.c	/^int Exec6502(M6502 *R,int RunCycles)$/;"	f
-FALSE	src/NoDice/NoDice.h	13;"	d
-FAST_RDOP	src/M6502/M6502.c	35;"	d	file:
 Format	src/MusConv/import.c	/^   unsigned short Format;$/;"	m	struct:MTHD_CHUNK	file:
-GAME_XML	src/NoDiceLib/config.c	12;"	d	file:
+GAME_XML	src/NoDiceLib/config.c	13;"	d	file:
 GCC	projects/Linux/Makefile	/^GCC := gcc$/;"	m
 GENTYPE_FIXED	src/NoDiceLib/NoDiceLib.h	/^	GENTYPE_FIXED		\/\/ Fixed-size generator$/;"	e	enum:__anon2
 GENTYPE_JCTSTART	src/NoDiceLib/NoDiceLib.h	/^	GENTYPE_JCTSTART,	\/\/ Junction start generator$/;"	e	enum:__anon2
 GENTYPE_VARIABLE	src/NoDiceLib/NoDiceLib.h	/^	GENTYPE_VARIABLE,	\/\/ Variable-size generator$/;"	e	enum:__anon2
-GEN_HEIGHT	src/NoDiceLib/rom.c	71;"	d	file:
-GEN_HEIGHT_V	src/NoDiceLib/rom.c	73;"	d	file:
-GEN_MAX_PARAMS	src/NoDiceLib/NoDiceLib.h	53;"	d
-GEN_WIDTH	src/NoDiceLib/rom.c	70;"	d	file:
-GEN_WIDTH_V	src/NoDiceLib/rom.c	72;"	d	file:
+GEN_HEIGHT	src/NoDiceLib/rom.c	195;"	d	file:
+GEN_HEIGHT_V	src/NoDiceLib/rom.c	197;"	d	file:
+GEN_MAX_PARAMS	src/NoDiceLib/config.h	17;"	d
+GEN_WIDTH	src/NoDiceLib/rom.c	194;"	d	file:
+GEN_WIDTH_V	src/NoDiceLib/rom.c	196;"	d	file:
 GTKCFLAGS	projects/Linux/Makefile	/^GTKCFLAGS = $(shell pkg-config gtk+-2.0 --cflags)$/;"	m
 GTKLIBS	projects/Linux/Makefile	/^GTKLIBS = $(shell pkg-config gtk+-2.0 --libs)$/;"	m
-GTK_IS_SELECTABLE_OVERLAY	src/NoDice/guictls.h	11;"	d
-GTK_SELECTABLE_OVERLAY	src/NoDice/guictls.h	9;"	d
-GTK_SELECTABLE_OVERLAY_CLASS	src/NoDice/guictls.h	10;"	d
-GUICTLS_H_INCLUDED	src/NoDice/guictls.h	2;"	d
+GTK_IS_SELECTABLE_OVERLAY	src/NoDice/guictls.h	13;"	d
+GTK_SELECTABLE_OVERLAY	src/NoDice/guictls.h	11;"	d
+GTK_SELECTABLE_OVERLAY_CLASS	src/NoDice/guictls.h	12;"	d
+GUICTLS_H_INCLUDED	src/NoDice/guictls.h	7;"	d
 GtkSelectableOverlay	src/NoDice/guictls.h	/^typedef struct _GtkSelectableOverlay GtkSelectableOverlay;$/;"	t	typeref:struct:_GtkSelectableOverlay
 GtkSelectableOverlayClass	src/NoDice/guictls.h	/^typedef struct _GtkSelectableOverlayClass GtkSelectableOverlayClass;$/;"	t	typeref:struct:_GtkSelectableOverlayClass
-HIGH	src/NoDiceLib/rom.c	9;"	d	file:
+HIGH	src/NoDiceLib/rom.c	134;"	d	file:
 I	src/M6502/Codes.h	/^  M_POP(I);$/;"	v
 I	src/M6502/Codes.h	/^case 0x01: MR_Ix(I);M_ORA(I);break;       \/* ORA ($ss,x) INDEXINDIR *\/$/;"	v
 I	src/M6502/Codes.h	/^case 0x05: MR_Zp(I);M_ORA(I);break;       \/* ORA $ss ZP *\/$/;"	v
@@ -150,118 +148,118 @@ I	src/M6502/Codes.h	/^case 0xF1: MR_Iy(I);M_SBC(I);break;       \/* SBC ($ss),y 
 I	src/M6502/Codes.h	/^case 0xF5: MR_Zx(I);M_SBC(I);break;       \/* SBC $ss,x ZP,x *\/$/;"	v
 I	src/M6502/Codes.h	/^case 0xF9: MR_Ay(I);M_SBC(I);break;       \/* SBC $ssss,y ABS,y *\/$/;"	v
 I	src/M6502/Codes.h	/^case 0xFD: MR_Ax(I);M_SBC(I);break;       \/* SBC $ssss,x ABS,x *\/$/;"	v
-IAutoReset	src/M6502/M6502.h	/^  byte IAutoReset;    \/* Set to 1 to autom. reset IRequest   *\/$/;"	m	struct:__anon6
-IBackup	src/M6502/M6502.h	/^  int IBackup;        \/* Private, don't touch                *\/$/;"	m	struct:__anon6
-ICount	src/M6502/M6502.h	/^  int IPeriod,ICount; \/* Set IPeriod to number of CPU cycles *\/$/;"	m	struct:__anon6
+IAutoReset	src/M6502/M6502.h	/^  byte IAutoReset;    \/* Set to 1 to autom. reset IRequest   *\/$/;"	m	struct:__anon9
+IBackup	src/M6502/M6502.h	/^  int IBackup;        \/* Private, don't touch                *\/$/;"	m	struct:__anon9
+ICount	src/M6502/M6502.h	/^  int IPeriod,ICount; \/* Set IPeriod to number of CPU cycles *\/$/;"	m	struct:__anon9
 ID	src/MusConv/import.c	/^   char           ID[4];  \/\/ This will be 'M','T','h','d' $/;"	m	struct:MTHD_CHUNK	file:
 INLINE	src/M6502/M6502.c	25;"	d	file:
 INLINE	src/M6502/M6502.c	27;"	d	file:
-INT_IRQ	src/M6502/M6502.h	28;"	d
-INT_NMI	src/M6502/M6502.h	29;"	d
-INT_NONE	src/M6502/M6502.h	27;"	d
-INT_QUIT	src/M6502/M6502.h	30;"	d
-IPeriod	src/M6502/M6502.h	/^  int IPeriod,ICount; \/* Set IPeriod to number of CPU cycles *\/$/;"	m	struct:__anon6
-IRequest	src/M6502/M6502.h	/^  byte IRequest;      \/* Set to the INT_IRQ when pending IRQ *\/$/;"	m	struct:__anon6
-I_FLAG	src/M6502/M6502.h	35;"	d
+INT_IRQ	src/M6502/M6502.h	25;"	d
+INT_NMI	src/M6502/M6502.h	26;"	d
+INT_NONE	src/M6502/M6502.h	24;"	d
+INT_QUIT	src/M6502/M6502.h	27;"	d
+IPeriod	src/M6502/M6502.h	/^  int IPeriod,ICount; \/* Set IPeriod to number of CPU cycles *\/$/;"	m	struct:__anon9
+IRequest	src/M6502/M6502.h	/^  byte IRequest;      \/* Set to the INT_IRQ when pending IRQ *\/$/;"	m	struct:__anon9
+I_FLAG	src/M6502/M6502.h	32;"	d
 Il	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
 Im	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
 In	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
-Int6502	src/M6502/M6502.c	/^void Int6502(M6502 *R,byte Type)$/;"	f
+Int6502	src/NoDiceLib/rom.c	/^void Int6502(M6502 *R,byte Type)$/;"	f
 Ix	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
 Iy	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
 K	src/M6502/Codes.h	/^  M_LDWORD(K);$/;"	v
 K	src/M6502/Codes.h	/^case 0x4C: M_LDWORD(K);R->PC=K;break;$/;"	v
-LEVEL_7VERTICAL	src/NoDiceLib/internal.h	/^	LEVEL_7VERTICAL,$/;"	e	enum:SMB3RAM
-LEVEL_ALTTILESET	src/NoDiceLib/internal.h	/^	LEVEL_ALTTILESET,$/;"	e	enum:SMB3RAM
-LEVEL_BG_PAGE1_2	src/NoDiceLib/internal.h	/^	LEVEL_BG_PAGE1_2,$/;"	e	enum:SMB3RAM
-LEVEL_HEADER_COUNT	src/NoDiceLib/NoDiceLib.h	56;"	d
-LEVEL_JCT_STARTS	src/NoDiceLib/NoDiceLib.h	58;"	d
-LEVEL_LAYPTR_ADDRH	src/NoDiceLib/internal.h	/^	LEVEL_LAYPTR_ADDRH,$/;"	e	enum:SMB3RAM
-LEVEL_LAYPTR_ADDRL	src/NoDiceLib/internal.h	/^	LEVEL_LAYPTR_ADDRL,$/;"	e	enum:SMB3RAM
-LEVEL_TILESET	src/NoDiceLib/internal.h	/^	LEVEL_TILESET,$/;"	e	enum:SMB3RAM
-LEVEL_WIDTH	src/NoDiceLib/internal.h	/^	LEVEL_WIDTH,$/;"	e	enum:SMB3RAM
-LL_SHAPEDEF	src/NoDiceLib/internal.h	/^	LL_SHAPEDEF,$/;"	e	enum:SMB3RAM
-LL_ShapeDef	src/NoDiceLib/rom.c	53;"	d	file:
-LOW	src/NoDiceLib/rom.c	8;"	d	file:
+LEVEL_7VERTICAL	src/NoDiceLib/ram.h	/^	LEVEL_7VERTICAL,$/;"	e	enum:SMB3RAM
+LEVEL_ALTTILESET	src/NoDiceLib/ram.h	/^	LEVEL_ALTTILESET,$/;"	e	enum:SMB3RAM
+LEVEL_BG_PAGE1_2	src/NoDiceLib/ram.h	/^	LEVEL_BG_PAGE1_2,$/;"	e	enum:SMB3RAM
+LEVEL_HEADER_COUNT	src/NoDiceLib/config.h	20;"	d
+LEVEL_JCT_STARTS	src/NoDiceLib/NoDiceLib.h	43;"	d
+LEVEL_LAYPTR_ADDRH	src/NoDiceLib/ram.h	/^	LEVEL_LAYPTR_ADDRH,$/;"	e	enum:SMB3RAM
+LEVEL_LAYPTR_ADDRL	src/NoDiceLib/ram.h	/^	LEVEL_LAYPTR_ADDRL,$/;"	e	enum:SMB3RAM
+LEVEL_TILESET	src/NoDiceLib/ram.h	/^	LEVEL_TILESET,$/;"	e	enum:SMB3RAM
+LEVEL_WIDTH	src/NoDiceLib/ram.h	/^	LEVEL_WIDTH,$/;"	e	enum:SMB3RAM
+LL_SHAPEDEF	src/NoDiceLib/ram.h	/^	LL_SHAPEDEF,$/;"	e	enum:SMB3RAM
+LL_ShapeDef	src/NoDiceLib/rom.c	177;"	d	file:
+LOW	src/NoDiceLib/rom.c	133;"	d	file:
 Length	src/MusConv/import.c	/^   unsigned int  Length; \/\/ This will be 6 $/;"	m	struct:MTHD_CHUNK	file:
 LeveLoad_FixedSizeGens	src/NoDiceLib/rom.c	/^static unsigned short LoadLevel_StoreJctStart, LeveLoad_Generators, LeveLoad_FixedSizeGens;$/;"	v	file:
 LeveLoad_Generators	src/NoDiceLib/rom.c	/^static unsigned short LoadLevel_StoreJctStart, LeveLoad_Generators, LeveLoad_FixedSizeGens;$/;"	v	file:
-Level_7Vertical	src/NoDiceLib/rom.c	51;"	d	file:
-Level_AltTileset	src/NoDiceLib/rom.c	61;"	d	file:
-Level_BG_Page1_2	src/NoDiceLib/rom.c	62;"	d	file:
+Level_7Vertical	src/NoDiceLib/rom.c	175;"	d	file:
+Level_AltTileset	src/NoDiceLib/rom.c	185;"	d	file:
+Level_BG_Page1_2	src/NoDiceLib/rom.c	186;"	d	file:
 Level_JctXLHStart	src/NoDiceLib/NoDiceLib.h	/^	unsigned char Level_JctXLHStart[LEVEL_JCT_STARTS], Level_JctYLHStart[LEVEL_JCT_STARTS];$/;"	m	struct:NoDice_level
 Level_JctYLHStart	src/NoDiceLib/NoDiceLib.h	/^	unsigned char Level_JctXLHStart[LEVEL_JCT_STARTS], Level_JctYLHStart[LEVEL_JCT_STARTS];$/;"	m	struct:NoDice_level
-Level_LayPtr_AddrH	src/NoDiceLib/rom.c	47;"	d	file:
-Level_LayPtr_AddrL	src/NoDiceLib/rom.c	46;"	d	file:
-Level_Tileset	src/NoDiceLib/rom.c	54;"	d	file:
-Level_Width	src/NoDiceLib/rom.c	45;"	d	file:
+Level_LayPtr_AddrH	src/NoDiceLib/rom.c	171;"	d	file:
+Level_LayPtr_AddrL	src/NoDiceLib/rom.c	170;"	d	file:
+Level_Tileset	src/NoDiceLib/rom.c	178;"	d	file:
+Level_Width	src/NoDiceLib/rom.c	169;"	d	file:
 LoadLevel_StoreJctStart	src/NoDiceLib/rom.c	/^static unsigned short LoadLevel_StoreJctStart, LeveLoad_Generators, LeveLoad_FixedSizeGens;$/;"	v	file:
 Loop6502	src/NoDiceLib/rom.c	/^byte Loop6502(register M6502 *R)$/;"	f
-M6502	src/M6502/M6502.h	/^} M6502;$/;"	t	typeref:struct:__anon6
+M6502	src/M6502/M6502.h	/^} M6502;$/;"	t	typeref:struct:__anon9
 M6502_H	src/M6502/M6502.h	15;"	d
 MADV_NORMAL	src/NoDiceLib/ezxml.c	42;"	d	file:
 MADV_SEQUENTIAL	src/NoDiceLib/ezxml.c	46;"	d	file:
-MAKE16	src/NoDiceLib/rom.c	10;"	d	file:
+MAKE16	src/NoDiceLib/rom.c	135;"	d	file:
 MAPLINKIDX_PACK	src/NoDice/gui_popups.c	770;"	d	file:
 MAPLINK_UNPACK_MAPLINK_IDX	src/NoDice/gui_popups.c	774;"	d	file:
 MAPLINK_UNPACK_OVRTYPE	src/NoDice/gui_popups.c	772;"	d	file:
 MAPLINK_UNPACK_SPECTILE_IDX	src/NoDice/gui_popups.c	773;"	d	file:
-MAP_LAYOUT_BANK	src/NoDiceLib/rom.c	68;"	d	file:
-MAP_OBJECTS_ID	src/NoDiceLib/internal.h	/^	MAP_OBJECTS_ID,$/;"	e	enum:SMB3RAM
-MAP_OBJECTS_ITM	src/NoDiceLib/internal.h	/^	MAP_OBJECTS_ITM,$/;"	e	enum:SMB3RAM
-MAP_OBJECTS_XHI	src/NoDiceLib/internal.h	/^	MAP_OBJECTS_XHI,$/;"	e	enum:SMB3RAM
-MAP_OBJECTS_XLO	src/NoDiceLib/internal.h	/^	MAP_OBJECTS_XLO,$/;"	e	enum:SMB3RAM
-MAP_OBJECTS_Y	src/NoDiceLib/internal.h	/^	MAP_OBJECTS_Y,$/;"	e	enum:SMB3RAM
-MAP_OBJECT_BASE_ROW	src/NoDiceLib/NoDiceLib.h	43;"	d
-MAP_TILE_ADDRH	src/NoDiceLib/internal.h	/^	MAP_TILE_ADDRH,$/;"	e	enum:SMB3RAM
-MAP_TILE_ADDRL	src/NoDiceLib/internal.h	/^	MAP_TILE_ADDRL,$/;"	e	enum:SMB3RAM
-MAX_MAP_LINKS	src/NoDiceLib/NoDiceLib.h	44;"	d
+MAP_LAYOUT_BANK	src/NoDiceLib/rom.c	192;"	d	file:
+MAP_OBJECTS_ID	src/NoDiceLib/ram.h	/^	MAP_OBJECTS_ID,$/;"	e	enum:SMB3RAM
+MAP_OBJECTS_ITM	src/NoDiceLib/ram.h	/^	MAP_OBJECTS_ITM,$/;"	e	enum:SMB3RAM
+MAP_OBJECTS_XHI	src/NoDiceLib/ram.h	/^	MAP_OBJECTS_XHI,$/;"	e	enum:SMB3RAM
+MAP_OBJECTS_XLO	src/NoDiceLib/ram.h	/^	MAP_OBJECTS_XLO,$/;"	e	enum:SMB3RAM
+MAP_OBJECTS_Y	src/NoDiceLib/ram.h	/^	MAP_OBJECTS_Y,$/;"	e	enum:SMB3RAM
+MAP_OBJECT_BASE_ROW	src/NoDiceLib/NoDiceLib.h	39;"	d
+MAP_TILE_ADDRH	src/NoDiceLib/ram.h	/^	MAP_TILE_ADDRH,$/;"	e	enum:SMB3RAM
+MAP_TILE_ADDRL	src/NoDiceLib/ram.h	/^	MAP_TILE_ADDRL,$/;"	e	enum:SMB3RAM
+MAX_MAP_LINKS	src/NoDiceLib/NoDiceLib.h	40;"	d
 MAX_MIDI_EVENTS	src/MusConv/export.c	8;"	d	file:
-MAX_SPECIAL_TILES	src/NoDiceLib/NoDiceLib.h	45;"	d
+MAX_SPECIAL_TILES	src/NoDiceLib/NoDiceLib.h	41;"	d
 MAX_TEMPO_CHANGES	src/MusConv/import.c	115;"	d	file:
 MCBIN	projects/Linux/Makefile	/^MCBIN := ..\/..\/bin\/MusConv$/;"	m
 MCOBJPATH	projects/Linux/Makefile	/^MCOBJPATH := obj\/MusConv\/$/;"	m
 MCOBJS	projects/Linux/Makefile	/^MCOBJS := $(patsubst $(MCSRCPATH)%, $(MCOBJPATH)%, $(patsubst %.c,%.o,$(MCSOURCES)))$/;"	m
 MCSOURCES	projects/Linux/Makefile	/^MCSOURCES := $(shell find $(MCSRCPATH) -type f -name '*.c')$/;"	m
 MCSRCPATH	projects/Linux/Makefile	/^MCSRCPATH := ..\/..\/src\/MusConv\/$/;"	m
-MC_Ab	src/M6502/M6502.c	58;"	d	file:
-MC_Ax	src/M6502/M6502.c	62;"	d	file:
-MC_Ay	src/M6502/M6502.c	63;"	d	file:
-MC_Ix	src/M6502/M6502.c	64;"	d	file:
-MC_Iy	src/M6502/M6502.c	66;"	d	file:
-MC_Zp	src/M6502/M6502.c	59;"	d	file:
-MC_Zx	src/M6502/M6502.c	60;"	d	file:
-MC_Zy	src/M6502/M6502.c	61;"	d	file:
-MEM_A_END	src/NoDiceLib/rom.c	13;"	d	file:
-MEM_A_START	src/NoDiceLib/rom.c	12;"	d	file:
-MEM_B_END	src/NoDiceLib/rom.c	15;"	d	file:
-MEM_B_START	src/NoDiceLib/rom.c	14;"	d	file:
+MC_Ab	src/NoDiceLib/rom.c	14;"	d	file:
+MC_Ax	src/NoDiceLib/rom.c	18;"	d	file:
+MC_Ay	src/NoDiceLib/rom.c	19;"	d	file:
+MC_Ix	src/NoDiceLib/rom.c	20;"	d	file:
+MC_Iy	src/NoDiceLib/rom.c	22;"	d	file:
+MC_Zp	src/NoDiceLib/rom.c	15;"	d	file:
+MC_Zx	src/NoDiceLib/rom.c	16;"	d	file:
+MC_Zy	src/NoDiceLib/rom.c	17;"	d	file:
+MEM_A_END	src/NoDiceLib/rom.c	138;"	d	file:
+MEM_A_START	src/NoDiceLib/rom.c	137;"	d	file:
+MEM_B_END	src/NoDiceLib/rom.c	140;"	d	file:
+MEM_B_START	src/NoDiceLib/rom.c	139;"	d	file:
 MLIO_OBJH	src/NoDice/gui_popups.c	/^	MLIO_OBJH = 3$/;"	e	enum:OVERRIDE_TYPE	file:
 MLIO_OBJL	src/NoDice/gui_popups.c	/^	MLIO_OBJL = 2,$/;"	e	enum:OVERRIDE_TYPE	file:
 MLIO_TILEH	src/NoDice/gui_popups.c	/^	MLIO_TILEH = 1,$/;"	e	enum:OVERRIDE_TYPE	file:
 MLIO_TILEL	src/NoDice/gui_popups.c	/^	MLIO_TILEL = 0,$/;"	e	enum:OVERRIDE_TYPE	file:
-MMC3PAGE_A000	src/NoDiceLib/internal.h	/^	MMC3PAGE_A000,$/;"	e	enum:SMB3RAM
-MMC3PAGE_C000	src/NoDiceLib/internal.h	/^	MMC3PAGE_C000,$/;"	e	enum:SMB3RAM
-MMC3_8K_TO_PRG_A000	src/NoDiceLib/rom.c	33;"	d	file:
-MMC3_8K_TO_PRG_C000	src/NoDiceLib/rom.c	32;"	d	file:
-MMC3_BANKSIZE	src/NoDiceLib/rom.c	38;"	d	file:
-MMC3_COMMAND	src/NoDiceLib/rom.c	35;"	d	file:
+MMC3PAGE_A000	src/NoDiceLib/ram.h	/^	MMC3PAGE_A000,$/;"	e	enum:SMB3RAM
+MMC3PAGE_C000	src/NoDiceLib/ram.h	/^	MMC3PAGE_C000,$/;"	e	enum:SMB3RAM
+MMC3_8K_TO_PRG_A000	src/NoDiceLib/rom.c	158;"	d	file:
+MMC3_8K_TO_PRG_C000	src/NoDiceLib/rom.c	157;"	d	file:
+MMC3_BANKSIZE	src/NoDiceLib/rom.c	163;"	d	file:
+MMC3_COMMAND	src/NoDiceLib/rom.c	160;"	d	file:
 MMC3_Command	src/NoDiceLib/rom.c	/^static unsigned char MMC3_Command = 0x00;$/;"	v	file:
-MMC3_PAGE	src/NoDiceLib/rom.c	36;"	d	file:
-MM_Ab	src/M6502/M6502.c	98;"	d	file:
-MM_Ax	src/M6502/M6502.c	101;"	d	file:
-MM_Zp	src/M6502/M6502.c	99;"	d	file:
-MM_Zx	src/M6502/M6502.c	100;"	d	file:
-MOBJS_MAX	src/NoDiceLib/NoDiceLib.h	42;"	d
-MR_Ab	src/M6502/M6502.c	73;"	d	file:
-MR_Ax	src/M6502/M6502.c	78;"	d	file:
-MR_Ay	src/M6502/M6502.c	79;"	d	file:
-MR_Im	src/M6502/M6502.c	74;"	d	file:
-MR_Ix	src/M6502/M6502.c	80;"	d	file:
-MR_Iy	src/M6502/M6502.c	81;"	d	file:
-MR_Zp	src/M6502/M6502.c	75;"	d	file:
-MR_Zx	src/M6502/M6502.c	76;"	d	file:
-MR_Zy	src/M6502/M6502.c	77;"	d	file:
+MMC3_PAGE	src/NoDiceLib/rom.c	161;"	d	file:
+MM_Ab	src/NoDiceLib/rom.c	54;"	d	file:
+MM_Ax	src/NoDiceLib/rom.c	57;"	d	file:
+MM_Zp	src/NoDiceLib/rom.c	55;"	d	file:
+MM_Zx	src/NoDiceLib/rom.c	56;"	d	file:
+MOBJS_MAX	src/NoDiceLib/NoDiceLib.h	38;"	d
+MR_Ab	src/NoDiceLib/rom.c	29;"	d	file:
+MR_Ax	src/NoDiceLib/rom.c	34;"	d	file:
+MR_Ay	src/NoDiceLib/rom.c	35;"	d	file:
+MR_Im	src/NoDiceLib/rom.c	30;"	d	file:
+MR_Ix	src/NoDiceLib/rom.c	36;"	d	file:
+MR_Iy	src/NoDiceLib/rom.c	37;"	d	file:
+MR_Zp	src/NoDiceLib/rom.c	31;"	d	file:
+MR_Zx	src/NoDiceLib/rom.c	32;"	d	file:
+MR_Zy	src/NoDiceLib/rom.c	33;"	d	file:
 MTHD_CHUNK	src/MusConv/import.c	/^static struct MTHD_CHUNK$/;"	s	file:
 MUSICEVENT	src/MusConv/import.c	/^enum MUSICEVENT$/;"	g	file:
 MUSICTRACK	src/NoDiceLib/NoDiceLib.h	/^enum MUSICTRACK$/;"	g
@@ -271,65 +269,63 @@ MUSICTRACK_SQUARE1	src/NoDiceLib/NoDiceLib.h	/^	MUSICTRACK_SQUARE1,$/;"	e	enum:M
 MUSICTRACK_SQUARE2	src/NoDiceLib/NoDiceLib.h	/^	MUSICTRACK_SQUARE2,$/;"	e	enum:MUSICTRACK
 MUSICTRACK_TOTAL	src/NoDiceLib/NoDiceLib.h	/^	MUSICTRACK_TOTAL$/;"	e	enum:MUSICTRACK
 MUSICTRACK_TRIANGLE	src/NoDiceLib/NoDiceLib.h	/^	MUSICTRACK_TRIANGLE,$/;"	e	enum:MUSICTRACK
-MW_Ab	src/M6502/M6502.c	86;"	d	file:
-MW_Ax	src/M6502/M6502.c	90;"	d	file:
-MW_Ay	src/M6502/M6502.c	91;"	d	file:
-MW_Ix	src/M6502/M6502.c	92;"	d	file:
-MW_Iy	src/M6502/M6502.c	93;"	d	file:
-MW_Zp	src/M6502/M6502.c	87;"	d	file:
-MW_Zx	src/M6502/M6502.c	88;"	d	file:
-MW_Zy	src/M6502/M6502.c	89;"	d	file:
-M_ADC	src/M6502/M6502.c	115;"	d	file:
-M_ADC	src/M6502/M6502.c	132;"	d	file:
-M_AND	src/M6502/M6502.c	180;"	d	file:
+MW_Ab	src/NoDiceLib/rom.c	42;"	d	file:
+MW_Ax	src/NoDiceLib/rom.c	46;"	d	file:
+MW_Ay	src/NoDiceLib/rom.c	47;"	d	file:
+MW_Ix	src/NoDiceLib/rom.c	48;"	d	file:
+MW_Iy	src/NoDiceLib/rom.c	49;"	d	file:
+MW_Zp	src/NoDiceLib/rom.c	43;"	d	file:
+MW_Zx	src/NoDiceLib/rom.c	44;"	d	file:
+MW_Zy	src/NoDiceLib/rom.c	45;"	d	file:
+M_ADC	src/NoDiceLib/rom.c	71;"	d	file:
+M_AND	src/NoDiceLib/rom.c	117;"	d	file:
 M_ASL	src/M6502/Codes.h	/^case 0x06: MM_Zp(M_ASL);break;            \/* ASL $ss ZP *\/$/;"	v
 M_ASL	src/M6502/Codes.h	/^case 0x0E: MM_Ab(M_ASL);break;            \/* ASL $ssss ABS *\/$/;"	v
 M_ASL	src/M6502/Codes.h	/^case 0x16: MM_Zx(M_ASL);break;            \/* ASL $ss,x ZP,x *\/$/;"	v
 M_ASL	src/M6502/Codes.h	/^case 0x1E: MM_Ax(M_ASL);break;            \/* ASL $ssss,x ABS,x *\/$/;"	v
-M_ASL	src/M6502/M6502.c	186;"	d	file:
-M_BIT	src/M6502/M6502.c	176;"	d	file:
-M_CMP	src/M6502/M6502.c	172;"	d	file:
+M_ASL	src/NoDiceLib/rom.c	123;"	d	file:
+M_BIT	src/NoDiceLib/rom.c	113;"	d	file:
+M_CMP	src/NoDiceLib/rom.c	109;"	d	file:
 M_DEC	src/M6502/Codes.h	/^case 0xC6: MM_Zp(M_DEC);break;            \/* DEC $ss ZP *\/$/;"	v
 M_DEC	src/M6502/Codes.h	/^case 0xCE: MM_Ab(M_DEC);break;            \/* DEC $ssss ABS *\/$/;"	v
 M_DEC	src/M6502/Codes.h	/^case 0xD6: MM_Zx(M_DEC);break;            \/* DEC $ss,x ZP,x *\/$/;"	v
 M_DEC	src/M6502/Codes.h	/^case 0xDE: MM_Ax(M_DEC);break;            \/* DEC $ssss,x ABS,x *\/$/;"	v
-M_DEC	src/M6502/M6502.c	184;"	d	file:
-M_EOR	src/M6502/M6502.c	182;"	d	file:
-M_FL	src/M6502/M6502.c	106;"	d	file:
+M_DEC	src/NoDiceLib/rom.c	121;"	d	file:
+M_EOR	src/NoDiceLib/rom.c	119;"	d	file:
+M_FL	src/NoDiceLib/rom.c	62;"	d	file:
 M_INC	src/M6502/Codes.h	/^case 0xE6: MM_Zp(M_INC);break;            \/* INC $ss ZP *\/$/;"	v
 M_INC	src/M6502/Codes.h	/^case 0xEE: MM_Ab(M_INC);break;            \/* INC $ssss ABS *\/$/;"	v
 M_INC	src/M6502/Codes.h	/^case 0xF6: MM_Zx(M_INC);break;            \/* INC $ss,x ZP,x *\/$/;"	v
 M_INC	src/M6502/Codes.h	/^case 0xFE: MM_Ax(M_INC);break;            \/* INC $ssss,x ABS,x *\/$/;"	v
-M_INC	src/M6502/M6502.c	183;"	d	file:
-M_JR	src/M6502/M6502.c	111;"	d	file:
-M_LDWORD	src/M6502/M6502.c	107;"	d	file:
+M_INC	src/NoDiceLib/rom.c	120;"	d	file:
+M_JR	src/NoDiceLib/rom.c	68;"	d	file:
+M_LDWORD	src/NoDiceLib/rom.c	63;"	d	file:
 M_LSR	src/M6502/Codes.h	/^case 0x46: MM_Zp(M_LSR);break;            \/* LSR $ss ZP *\/$/;"	v
 M_LSR	src/M6502/Codes.h	/^case 0x4E: MM_Ab(M_LSR);break;            \/* LSR $ssss ABS *\/$/;"	v
 M_LSR	src/M6502/Codes.h	/^case 0x56: MM_Zx(M_LSR);break;            \/* LSR $ss,x ZP,x *\/$/;"	v
 M_LSR	src/M6502/Codes.h	/^case 0x5E: MM_Ax(M_LSR);break;            \/* LSR $ssss,x ABS,x *\/$/;"	v
-M_LSR	src/M6502/M6502.c	187;"	d	file:
-M_ORA	src/M6502/M6502.c	181;"	d	file:
-M_POP	src/M6502/M6502.c	110;"	d	file:
-M_PUSH	src/M6502/M6502.c	109;"	d	file:
+M_LSR	src/NoDiceLib/rom.c	124;"	d	file:
+M_ORA	src/NoDiceLib/rom.c	118;"	d	file:
+M_POP	src/NoDiceLib/rom.c	67;"	d	file:
+M_PUSH	src/NoDiceLib/rom.c	66;"	d	file:
 M_ROL	src/M6502/Codes.h	/^case 0x26: MM_Zp(M_ROL);break;            \/* ROL $ss ZP *\/$/;"	v
 M_ROL	src/M6502/Codes.h	/^case 0x2E: MM_Ab(M_ROL);break;            \/* ROL $ssss ABS *\/$/;"	v
 M_ROL	src/M6502/Codes.h	/^case 0x36: MM_Zx(M_ROL);break;            \/* ROL $ss,x ZP,x *\/$/;"	v
 M_ROL	src/M6502/Codes.h	/^case 0x3E: MM_Ax(M_ROL);break;            \/* ROL $ssss,x ABS,x *\/$/;"	v
-M_ROL	src/M6502/M6502.c	188;"	d	file:
+M_ROL	src/NoDiceLib/rom.c	125;"	d	file:
 M_ROR	src/M6502/Codes.h	/^case 0x66: MM_Zp(M_ROR);break;            \/* ROR $ss ZP *\/$/;"	v
 M_ROR	src/M6502/Codes.h	/^case 0x6E: MM_Ab(M_ROR);break;            \/* ROR $ssss ABS *\/$/;"	v
 M_ROR	src/M6502/Codes.h	/^case 0x76: MM_Zx(M_ROR);break;            \/* ROR $ss,x ZP,x *\/$/;"	v
 M_ROR	src/M6502/Codes.h	/^case 0x7E: MM_Ax(M_ROR);break;            \/* ROR $ssss,x ABS,x *\/$/;"	v
-M_ROR	src/M6502/M6502.c	191;"	d	file:
-M_SBC	src/M6502/M6502.c	123;"	d	file:
-M_SBC	src/M6502/M6502.c	151;"	d	file:
-Map_Objects_ID	src/NoDiceLib/rom.c	66;"	d	file:
-Map_Objects_Itm	src/NoDiceLib/rom.c	60;"	d	file:
-Map_Objects_XHi	src/NoDiceLib/rom.c	65;"	d	file:
-Map_Objects_XLo	src/NoDiceLib/rom.c	64;"	d	file:
-Map_Objects_Y	src/NoDiceLib/rom.c	63;"	d	file:
-Map_Tile_AddrH	src/NoDiceLib/rom.c	49;"	d	file:
-Map_Tile_AddrL	src/NoDiceLib/rom.c	48;"	d	file:
+M_ROR	src/NoDiceLib/rom.c	128;"	d	file:
+M_SBC	src/NoDiceLib/rom.c	90;"	d	file:
+Map_Objects_ID	src/NoDiceLib/rom.c	190;"	d	file:
+Map_Objects_Itm	src/NoDiceLib/rom.c	184;"	d	file:
+Map_Objects_XHi	src/NoDiceLib/rom.c	189;"	d	file:
+Map_Objects_XLo	src/NoDiceLib/rom.c	188;"	d	file:
+Map_Objects_Y	src/NoDiceLib/rom.c	187;"	d	file:
+Map_Tile_AddrH	src/NoDiceLib/rom.c	173;"	d	file:
+Map_Tile_AddrL	src/NoDiceLib/rom.c	172;"	d	file:
 MusConv_Export	src/MusConv/export.c	/^int MusConv_Export(const char *midi_out_filename, const char *header_index_name, const char *SEL_name, unsigned char music_index)$/;"	f
 MusConv_Import	src/MusConv/import.c	/^int MusConv_Import(const char *input_midi_name, const char *output_asm_name)$/;"	f
 NDBIN	projects/Linux/Makefile	/^NDBIN := ..\/..\/bin\/NoDice$/;"	m
@@ -342,9 +338,16 @@ NDOBJPATH	projects/Linux/Makefile	/^NDOBJPATH := o\/NoDice\/$/;"	m
 NDOBJS	projects/Linux/Makefile	/^NDOBJS := $(patsubst $(NDSRCPATH)%, $(NDOBJPATH)%, $(patsubst %.c,%.o,$(NDSOURCES)))$/;"	m
 NDSOURCES	projects/Linux/Makefile	/^NDSOURCES := $(shell find $(NDSRCPATH) -type f -name '*.c')$/;"	m
 NDSRCPATH	projects/Linux/Makefile	/^NDSRCPATH := ..\/..\/src\/NoDice\/$/;"	m
+NODICE_CONFIG_H	src/NoDiceLib/config.h	9;"	d
+NODICE_EDIT_H	src/NoDice/edit.h	4;"	d
+NODICE_EXEC_H	src/NoDiceLib/exec.h	3;"	d
+NODICE_GUI_H	src/NoDice/gui.h	4;"	d
+NODICE_GUI_POPUPS_H	src/NoDice/gui_popups.h	4;"	d
 NODICE_MUSICMIDI_TIMESCALE	src/MusConv/export.c	7;"	d	file:
-NUL	src/NoDiceLib/stristr.c	24;"	d	file:
-N_FLAG	src/M6502/M6502.h	40;"	d
+NODICE_RAM_H	src/NoDiceLib/ram.h	3;"	d
+NODICE_STRISTR_H	src/NoDiceLib/stristr.h	3;"	d
+NUL	src/NoDiceLib/stristr.c	26;"	d	file:
+N_FLAG	src/M6502/M6502.h	37;"	d
 No	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
 NoDice_DoBuild	src/NoDiceLib/nodice.c	/^const char *NoDice_DoBuild()$/;"	f
 NoDice_Error	src/NoDiceLib/nodice.c	/^const char *NoDice_Error()$/;"	f
@@ -353,77 +356,77 @@ NoDice_PRG_refresh	src/NoDiceLib/rom.c	/^int NoDice_PRG_refresh()$/;"	f
 NoDice_Run6502_Stop	src/NoDiceLib/rom.c	/^volatile enum RUN6502_STOP_REASON NoDice_Run6502_Stop = RUN6502_STOP_NOTSTOPPED;$/;"	v	typeref:enum:RUN6502_STOP_REASON
 NoDice_Shutdown	src/NoDiceLib/nodice.c	/^void NoDice_Shutdown()$/;"	f
 NoDice_config	src/NoDiceLib/config.c	/^struct NoDice_configuration NoDice_config;$/;"	v	typeref:struct:NoDice_configuration
-NoDice_config_game_add_level_entry	src/NoDiceLib/config.c	/^const char *NoDice_config_game_add_level_entry(unsigned char tileset, const char *name, const char *layoutfile, const char *layoutlabel, const char *objectfile, const char *objectlabel, const char *desc)$/;"	f
-NoDice_configuration	src/NoDiceLib/NoDiceLib.h	/^extern struct NoDice_configuration$/;"	s
+NoDice_config_game_add_level_entry	src/NoDiceLib/config.c	/^const char *NoDice_config_game_add_level_entry(unsigned char tileset, const char *name, const char *layoutfile, const char *layoutlabel, const char *objectfile, const char *objectlabel, const char *desc) {$/;"	f
+NoDice_configuration	src/NoDiceLib/config.h	/^extern struct NoDice_configuration$/;"	s
 NoDice_exec_build	src/NoDiceLib/exec.c	/^int NoDice_exec_build(void (*buffer_callback)(const char *))$/;"	f
-NoDice_game	src/NoDiceLib/NoDiceLib.h	/^	struct NoDice_game$/;"	s	struct:NoDice_configuration
-NoDice_generator	src/NoDiceLib/NoDiceLib.h	/^			struct NoDice_generator$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_tileset
-NoDice_generator_parameter	src/NoDiceLib/NoDiceLib.h	/^				struct NoDice_generator_parameter$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
+NoDice_game	src/NoDiceLib/config.h	/^	struct NoDice_game$/;"	s	struct:NoDice_configuration
+NoDice_generator	src/NoDiceLib/config.h	/^			struct NoDice_generator$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_tileset
+NoDice_generator_parameter	src/NoDiceLib/config.h	/^				struct NoDice_generator_parameter$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
 NoDice_get_addr_for_label	src/NoDiceLib/rom.c	/^unsigned short NoDice_get_addr_for_label(const char *label)$/;"	f
 NoDice_get_music_context	src/NoDiceLib/rom.c	/^int NoDice_get_music_context(struct NoDice_music_context *context, const char *header_index_name, const char *SEL_name, unsigned char music_index)$/;"	f
 NoDice_get_raw_CHR_bank	src/NoDiceLib/rom.c	/^const unsigned char *NoDice_get_raw_CHR_bank(unsigned char bank)$/;"	f
 NoDice_get_rest_table	src/NoDiceLib/rom.c	/^const unsigned char *NoDice_get_rest_table()$/;"	f
 NoDice_get_tilebank_free_space	src/NoDiceLib/rom.c	/^int NoDice_get_tilebank_free_space(unsigned char tileset)$/;"	f
-NoDice_header_options	src/NoDiceLib/NoDiceLib.h	/^			struct NoDice_header_options$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_headers
-NoDice_headers	src/NoDiceLib/NoDiceLib.h	/^		struct NoDice_headers$/;"	s	struct:NoDice_configuration::NoDice_game
+NoDice_header_options	src/NoDiceLib/config.h	/^			struct NoDice_header_options$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_headers
+NoDice_headers	src/NoDiceLib/config.h	/^		struct NoDice_headers$/;"	s	struct:NoDice_configuration::NoDice_game
 NoDice_level	src/NoDiceLib/NoDiceLib.h	/^extern struct NoDice_level$/;"	s
 NoDice_level_header	src/NoDiceLib/NoDiceLib.h	/^	struct NoDice_level_header$/;"	s	struct:NoDice_level
 NoDice_load_level	src/NoDiceLib/rom.c	/^void NoDice_load_level(unsigned char tileset, const char *level_layout, const char *object_layout)$/;"	f
 NoDice_load_level_by_addr	src/NoDiceLib/rom.c	/^void NoDice_load_level_by_addr(unsigned char tileset, unsigned short address, unsigned short object_address)$/;"	f
 NoDice_load_level_raw_data	src/NoDiceLib/rom.c	/^void NoDice_load_level_raw_data(const unsigned char *data, int size, int has_header)$/;"	f
 NoDice_map_link	src/NoDiceLib/NoDiceLib.h	/^	struct NoDice_map_link$/;"	s	struct:NoDice_level
-NoDice_map_object_item	src/NoDiceLib/NoDiceLib.h	/^		struct NoDice_map_object_item$/;"	s	struct:NoDice_configuration::NoDice_game
-NoDice_map_special_tile	src/NoDiceLib/NoDiceLib.h	/^		struct NoDice_map_special_tile$/;"	s	struct:NoDice_configuration::NoDice_game
-NoDice_map_special_tile_override	src/NoDiceLib/NoDiceLib.h	/^			struct NoDice_map_special_tile_override$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile
+NoDice_map_object_item	src/NoDiceLib/config.h	/^		struct NoDice_map_object_item$/;"	s	struct:NoDice_configuration::NoDice_game
+NoDice_map_special_tile	src/NoDiceLib/config.h	/^		struct NoDice_map_special_tile$/;"	s	struct:NoDice_configuration::NoDice_game
+NoDice_map_special_tile_override	src/NoDiceLib/config.h	/^			struct NoDice_map_special_tile_override$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile
 NoDice_music_context	src/NoDiceLib/NoDiceLib.h	/^struct NoDice_music_context$/;"	s
 NoDice_music_segment	src/NoDiceLib/NoDiceLib.h	/^	struct NoDice_music_segment$/;"	s	struct:NoDice_music_context
-NoDice_object_sprites	src/NoDiceLib/NoDiceLib.h	/^			struct NoDice_object_sprites$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_objects
-NoDice_objects	src/NoDiceLib/NoDiceLib.h	/^		struct NoDice_objects$/;"	s	struct:NoDice_configuration::NoDice_game
-NoDice_option	src/NoDiceLib/NoDiceLib.h	/^				struct NoDice_option$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
-NoDice_options	src/NoDiceLib/NoDiceLib.h	/^		struct NoDice_options$/;"	s	struct:NoDice_configuration::NoDice_game
+NoDice_object_sprites	src/NoDiceLib/config.h	/^			struct NoDice_object_sprites$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_objects
+NoDice_objects	src/NoDiceLib/config.h	/^		struct NoDice_objects$/;"	s	struct:NoDice_configuration::NoDice_game
+NoDice_option	src/NoDiceLib/config.h	/^				struct NoDice_option$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
+NoDice_options	src/NoDiceLib/config.h	/^		struct NoDice_options$/;"	s	struct:NoDice_configuration::NoDice_game
 NoDice_pack_level	src/NoDiceLib/rom.c	/^const unsigned char *NoDice_pack_level(int *size, int need_header)$/;"	f
 NoDice_the_level	src/NoDiceLib/rom.c	/^struct NoDice_level NoDice_the_level = { { 0 } };$/;"	v	typeref:struct:NoDice_level
 NoDice_the_level_generator	src/NoDiceLib/NoDiceLib.h	/^	struct NoDice_the_level_generator$/;"	s	struct:NoDice_level
 NoDice_the_level_object	src/NoDiceLib/NoDiceLib.h	/^	struct NoDice_the_level_object$/;"	s	struct:NoDice_level
-NoDice_the_levels	src/NoDiceLib/NoDiceLib.h	/^			struct NoDice_the_levels$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_tileset
+NoDice_the_levels	src/NoDiceLib/config.h	/^			struct NoDice_the_levels$/;"	s	struct:NoDice_configuration::NoDice_game::NoDice_tileset
 NoDice_tile_test	src/NoDiceLib/rom.c	/^void NoDice_tile_test()$/;"	f
-NoDice_tilehint	src/NoDiceLib/NoDiceLib.h	/^		struct NoDice_tilehint$/;"	s	struct:NoDice_configuration::NoDice_game
-NoDice_tileset	src/NoDiceLib/NoDiceLib.h	/^		struct NoDice_tileset$/;"	s	struct:NoDice_configuration::NoDice_game
+NoDice_tilehint	src/NoDiceLib/config.h	/^		struct NoDice_tilehint$/;"	s	struct:NoDice_configuration::NoDice_game
+NoDice_tileset	src/NoDiceLib/config.h	/^		struct NoDice_tileset$/;"	s	struct:NoDice_configuration::NoDice_game
 NumTracks	src/MusConv/import.c	/^   unsigned short NumTracks;$/;"	m	struct:MTHD_CHUNK	file:
-OBJS_MAX	src/NoDiceLib/NoDiceLib.h	41;"	d
-OBJ_BANK	src/NoDiceLib/NoDiceLib.h	40;"	d
-OLP_FORBROWSE	src/NoDice/guictls.h	/^	OLP_FORBROWSE = 1,			\/\/ Browsing for level, not intending to load$/;"	e	enum:OPEN_LEVEL_POPUP
-OLP_NIBBLE_TILESETS_ONLY	src/NoDice/guictls.h	/^	OLP_NIBBLE_TILESETS_ONLY = 2,	\/\/ Only list levels that fit in a tileset 4-bits wide$/;"	e	enum:OPEN_LEVEL_POPUP
-OPEN_LEVEL_POPUP	src/NoDice/guictls.h	/^enum OPEN_LEVEL_POPUP$/;"	g
-OPTION_STRING_LEN	src/NoDice/edit.c	29;"	d	file:
+OBJS_MAX	src/NoDiceLib/NoDiceLib.h	37;"	d
+OBJ_BANK	src/NoDiceLib/NoDiceLib.h	36;"	d
+OLP_FORBROWSE	src/NoDice/gui_popups.h	/^	OLP_FORBROWSE = 1,			\/\/ Browsing for level, not intending to load$/;"	e	enum:OPEN_LEVEL_POPUP
+OLP_NIBBLE_TILESETS_ONLY	src/NoDice/gui_popups.h	/^	OLP_NIBBLE_TILESETS_ONLY = 2,	\/\/ Only list levels that fit in a tileset 4-bits wide$/;"	e	enum:OPEN_LEVEL_POPUP
+OPEN_LEVEL_POPUP	src/NoDice/gui_popups.h	/^enum OPEN_LEVEL_POPUP$/;"	g
+OPTION_STRING_LEN	src/NoDice/edit.c	33;"	d	file:
 OVERRIDE_TYPE	src/NoDice/gui_popups.c	/^enum OVERRIDE_TYPE$/;"	g	file:
-Op6502	src/M6502/M6502.c	/^INLINE byte Op6502(register word A)$/;"	f
-Op6502	src/M6502/M6502.c	52;"	d	file:
+Op6502	src/NoDiceLib/rom.c	9;"	d	file:
 Ops	src/M6502/Debug.c	/^static const byte *Ops[]=$/;"	v	file:
-P	src/M6502/M6502.h	/^  byte A,P,X,Y,S;     \/* CPU registers and program counter   *\/$/;"	m	struct:__anon6
-PAGE_A000	src/NoDiceLib/rom.c	56;"	d	file:
-PAGE_C000	src/NoDiceLib/rom.c	55;"	d	file:
-PALSEL_OBJ_COLORS	src/NoDiceLib/internal.h	/^	PALSEL_OBJ_COLORS,$/;"	e	enum:SMB3RAM
-PALSEL_TILE_COLORS	src/NoDiceLib/internal.h	/^	PALSEL_TILE_COLORS,$/;"	e	enum:SMB3RAM
-PATH_MAX	src/NoDiceLib/NoDiceLib.h	5;"	d
-PC	src/M6502/M6502.h	/^  pair PC;$/;"	m	struct:__anon6
+P	src/M6502/M6502.h	/^  byte A,P,X,Y,S;     \/* CPU registers and program counter   *\/$/;"	m	struct:__anon9
+PAGE_A000	src/NoDiceLib/rom.c	180;"	d	file:
+PAGE_C000	src/NoDiceLib/rom.c	179;"	d	file:
+PALSEL_OBJ_COLORS	src/NoDiceLib/ram.h	/^	PALSEL_OBJ_COLORS,$/;"	e	enum:SMB3RAM
+PALSEL_TILE_COLORS	src/NoDiceLib/ram.h	/^	PALSEL_TILE_COLORS,$/;"	e	enum:SMB3RAM
+PATH_MAX	src/NoDiceLib/config.h	5;"	d
+PC	src/M6502/M6502.h	/^  pair PC;$/;"	m	struct:__anon9
 PPU_BG_VROM	src/NoDice/ppu.c	/^static gui_surface_t *PPU_BG_VROM[4];$/;"	v	file:
-PPU_PORTAL_X	src/NoDice/NoDice.h	5;"	d
-PPU_PORTAL_Y	src/NoDice/NoDice.h	6;"	d
+PPU_H	src/NoDice/ppu.h	3;"	d
+PPU_PORTAL_X	src/NoDice/ppu.h	6;"	d
+PPU_PORTAL_Y	src/NoDice/ppu.h	7;"	d
 PPU_SPR	src/NoDice/ppu.c	/^	*PPU_SPR = NULL;$/;"	v	typeref:struct:_PPU_SPR	file:
 PPU_SPR_mobjects	src/NoDice/ppu.c	/^	PPU_SPR_mobjects[256] = { { 0, 0, 0, 0, NULL } },$/;"	v	typeref:struct:_PPU_SPR	file:
 PPU_SPR_objects	src/NoDice/ppu.c	/^} 	PPU_SPR_objects[256] = { { 0, 0, 0, 0, NULL } },$/;"	v	typeref:struct:_PPU_SPR	file:
-PRG_A_END	src/NoDiceLib/rom.c	18;"	d	file:
-PRG_A_START	src/NoDiceLib/rom.c	17;"	d	file:
-PRG_B_END	src/NoDiceLib/rom.c	20;"	d	file:
-PRG_B_START	src/NoDiceLib/rom.c	19;"	d	file:
-PRG_C_END	src/NoDiceLib/rom.c	22;"	d	file:
-PRG_C_START	src/NoDiceLib/rom.c	21;"	d	file:
-PRG_D_END	src/NoDiceLib/rom.c	24;"	d	file:
-PRG_D_START	src/NoDiceLib/rom.c	23;"	d	file:
+PRG_A_END	src/NoDiceLib/rom.c	143;"	d	file:
+PRG_A_START	src/NoDiceLib/rom.c	142;"	d	file:
+PRG_B_END	src/NoDiceLib/rom.c	145;"	d	file:
+PRG_B_START	src/NoDiceLib/rom.c	144;"	d	file:
+PRG_C_END	src/NoDiceLib/rom.c	147;"	d	file:
+PRG_C_START	src/NoDiceLib/rom.c	146;"	d	file:
+PRG_D_END	src/NoDiceLib/rom.c	149;"	d	file:
+PRG_D_START	src/NoDiceLib/rom.c	148;"	d	file:
 PRG_size	src/NoDiceLib/rom.c	/^static int PRG_size;$/;"	v	file:
-PalSel_Obj_Colors	src/NoDiceLib/rom.c	59;"	d	file:
-PalSel_Tile_Colors	src/NoDiceLib/rom.c	58;"	d	file:
+PalSel_Obj_Colors	src/NoDiceLib/rom.c	183;"	d	file:
+PalSel_Tile_Colors	src/NoDiceLib/rom.c	182;"	d	file:
 Patch6502	src/NoDiceLib/rom.c	/^byte Patch6502(register byte Op,register M6502 *R)$/;"	f
 RDWORD	src/M6502/Debug.c	27;"	d	file:
 ROM_label	src/NoDiceLib/rom.c	/^static struct ROM_label$/;"	s	file:
@@ -437,76 +440,77 @@ RUN6502_STOP_END	src/NoDiceLib/NoDiceLib.h	/^	RUN6502_STOP_END,			\/\/ Ended$/;"
 RUN6502_STOP_NOTSTOPPED	src/NoDiceLib/NoDiceLib.h	/^	RUN6502_STOP_NOTSTOPPED,		\/\/ 6502 still running!$/;"	e	enum:RUN6502_STOP_REASON
 RUN6502_STOP_REASON	src/NoDiceLib/NoDiceLib.h	/^enum RUN6502_STOP_REASON$/;"	g
 RUN6502_TIMEOUT	src/NoDiceLib/NoDiceLib.h	/^	RUN6502_TIMEOUT,			\/\/ Timeout hit (external source must make this happen)$/;"	e	enum:RUN6502_STOP_REASON
-R_FLAG	src/M6502/M6502.h	38;"	d
+R_FLAG	src/M6502/M6502.h	35;"	d
 Rd6502	src/NoDiceLib/rom.c	/^byte Rd6502(register word Addr)$/;"	f
 ReadVarLen	src/MusConv/import.c	/^unsigned int ReadVarLen(FILE *infile)$/;"	f
 Reset6502	src/M6502/M6502.c	/^void Reset6502(M6502 *R)$/;"	f
+Reset6502	src/NoDiceLib/rom.c	/^void Reset6502(M6502 *R)$/;"	f
 Rl	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
 Run6502	src/M6502/M6502.c	/^word Run6502(M6502 *R)$/;"	f
-S	src/M6502/M6502.h	/^  byte A,P,X,Y,S;     \/* CPU registers and program counter   *\/$/;"	m	struct:__anon6
-SCRATCH_END	src/NoDiceLib/rom.c	29;"	d	file:
-SCRATCH_START	src/NoDiceLib/rom.c	28;"	d	file:
-SCREEN_BYTESIZE	src/NoDiceLib/NoDiceLib.h	28;"	d
-SCREEN_BYTESIZE_M	src/NoDiceLib/NoDiceLib.h	35;"	d
-SCREEN_BYTESIZE_V	src/NoDiceLib/NoDiceLib.h	29;"	d
-SCREEN_COUNT	src/NoDiceLib/NoDiceLib.h	32;"	d
-SCREEN_MAP_ROW_OFFSET	src/NoDiceLib/NoDiceLib.h	37;"	d
-SCREEN_MCOUNT	src/NoDiceLib/NoDiceLib.h	36;"	d
-SCREEN_VCOUNT	src/NoDiceLib/NoDiceLib.h	33;"	d
-SCREEN_VHEIGHT	src/NoDiceLib/NoDiceLib.h	31;"	d
-SCREEN_WIDTH	src/NoDiceLib/NoDiceLib.h	30;"	d
-SMB3RAM	src/NoDiceLib/internal.h	/^enum SMB3RAM$/;"	g
-SMB3RAM_TOTAL	src/NoDiceLib/internal.h	/^	SMB3RAM_TOTAL$/;"	e	enum:SMB3RAM
-SMB3_RAM	src/NoDiceLib/internal.h	/^extern struct SMB3_RAM $/;"	s
+Run6502	src/NoDiceLib/rom.c	/^word Run6502(M6502 *R)$/;"	f
+S	src/M6502/M6502.h	/^  byte A,P,X,Y,S;     \/* CPU registers and program counter   *\/$/;"	m	struct:__anon9
+SCRATCH_END	src/NoDiceLib/rom.c	154;"	d	file:
+SCRATCH_START	src/NoDiceLib/rom.c	153;"	d	file:
+SCREEN_BYTESIZE	src/NoDiceLib/NoDiceLib.h	24;"	d
+SCREEN_BYTESIZE_M	src/NoDiceLib/NoDiceLib.h	31;"	d
+SCREEN_BYTESIZE_V	src/NoDiceLib/NoDiceLib.h	25;"	d
+SCREEN_COUNT	src/NoDiceLib/NoDiceLib.h	28;"	d
+SCREEN_MAP_ROW_OFFSET	src/NoDiceLib/NoDiceLib.h	33;"	d
+SCREEN_MCOUNT	src/NoDiceLib/NoDiceLib.h	32;"	d
+SCREEN_VCOUNT	src/NoDiceLib/NoDiceLib.h	29;"	d
+SCREEN_VHEIGHT	src/NoDiceLib/NoDiceLib.h	27;"	d
+SCREEN_WIDTH	src/NoDiceLib/NoDiceLib.h	26;"	d
+SMB3RAM	src/NoDiceLib/ram.h	/^enum SMB3RAM$/;"	g
+SMB3RAM_TOTAL	src/NoDiceLib/ram.h	/^	SMB3RAM_TOTAL$/;"	e	enum:SMB3RAM
+SMB3_RAM	src/NoDiceLib/ram.h	/^extern struct SMB3_RAM $/;"	s
 SPECOBJ_ADD	src/NoDice/gui.c	/^	SPECOBJ_ADD,$/;"	e	enum:SPECOBJ_OPS	file:
 SPECOBJ_DELETE	src/NoDice/gui.c	/^	SPECOBJ_DELETE$/;"	e	enum:SPECOBJ_OPS	file:
 SPECOBJ_OPS	src/NoDice/gui.c	/^enum SPECOBJ_OPS$/;"	g	file:
 SPECOBJ_PROP	src/NoDice/gui.c	/^	SPECOBJ_PROP,$/;"	e	enum:SPECOBJ_OPS	file:
-SUBDIR_ICONS	src/NoDiceLib/NoDiceLib.h	20;"	d
-SUBDIR_ICON_LEVELS	src/NoDiceLib/NoDiceLib.h	21;"	d
-SUBDIR_ICON_TILES	src/NoDiceLib/NoDiceLib.h	22;"	d
-SUBDIR_LEVELS	src/NoDiceLib/NoDiceLib.h	18;"	d
-SUBDIR_MAPS	src/NoDiceLib/NoDiceLib.h	23;"	d
-SUBDIR_OBJECTS	src/NoDiceLib/NoDiceLib.h	19;"	d
-SUBDIR_PRG	src/NoDiceLib/NoDiceLib.h	17;"	d
-TEMP_VAR15	src/NoDiceLib/internal.h	/^	TEMP_VAR15,$/;"	e	enum:SMB3RAM
-TEMP_VAR16	src/NoDiceLib/internal.h	/^	TEMP_VAR16,$/;"	e	enum:SMB3RAM
-TILEADDR_OFF	src/NoDiceLib/internal.h	/^	TILEADDR_OFF,$/;"	e	enum:SMB3RAM
-TILEMEM_BASE	src/NoDiceLib/NoDiceLib.h	26;"	d
-TILEMEM_END	src/NoDiceLib/NoDiceLib.h	27;"	d
-TILESIZE	src/NoDiceLib/NoDiceLib.h	34;"	d
-TRUE	src/NoDice/NoDice.h	9;"	d
-Temp_Var15	src/NoDiceLib/rom.c	42;"	d	file:
-Temp_Var16	src/NoDiceLib/rom.c	43;"	d	file:
+SUBDIR_ICONS	src/NoDiceLib/NoDiceLib.h	16;"	d
+SUBDIR_ICON_LEVELS	src/NoDiceLib/NoDiceLib.h	17;"	d
+SUBDIR_ICON_TILES	src/NoDiceLib/NoDiceLib.h	18;"	d
+SUBDIR_LEVELS	src/NoDiceLib/NoDiceLib.h	14;"	d
+SUBDIR_MAPS	src/NoDiceLib/NoDiceLib.h	19;"	d
+SUBDIR_OBJECTS	src/NoDiceLib/NoDiceLib.h	15;"	d
+SUBDIR_PRG	src/NoDiceLib/NoDiceLib.h	13;"	d
+TEMP_VAR15	src/NoDiceLib/ram.h	/^	TEMP_VAR15,$/;"	e	enum:SMB3RAM
+TEMP_VAR16	src/NoDiceLib/ram.h	/^	TEMP_VAR16,$/;"	e	enum:SMB3RAM
+TILEADDR_OFF	src/NoDiceLib/ram.h	/^	TILEADDR_OFF,$/;"	e	enum:SMB3RAM
+TILEMEM_BASE	src/NoDiceLib/NoDiceLib.h	22;"	d
+TILEMEM_END	src/NoDiceLib/NoDiceLib.h	23;"	d
+TILESIZE	src/NoDiceLib/NoDiceLib.h	30;"	d
+Temp_Var15	src/NoDiceLib/rom.c	166;"	d	file:
+Temp_Var16	src/NoDiceLib/rom.c	167;"	d	file:
 TempoList	src/MusConv/import.c	/^} TempoList[MAX_TEMPO_CHANGES];$/;"	v	typeref:struct:__anon1	file:
-TileAddr_Off	src/NoDiceLib/rom.c	52;"	d	file:
-Trace	src/M6502/M6502.h	/^  byte Trace;         \/* Set Trace=1 to start tracing        *\/$/;"	m	struct:__anon6
-Trap	src/M6502/M6502.h	/^  word Trap;          \/* Set Trap to address to trace from   *\/$/;"	m	struct:__anon6
-TrapBadOps	src/M6502/M6502.h	/^  byte TrapBadOps;    \/* Set to 1 to warn of illegal opcodes *\/$/;"	m	struct:__anon6
+TileAddr_Off	src/NoDiceLib/rom.c	176;"	d	file:
+Trace	src/M6502/M6502.h	/^  byte Trace;         \/* Set Trace=1 to start tracing        *\/$/;"	m	struct:__anon9
+Trap	src/M6502/M6502.h	/^  word Trap;          \/* Set Trap to address to trace from   *\/$/;"	m	struct:__anon9
+TrapBadOps	src/M6502/M6502.h	/^  byte TrapBadOps;    \/* Set to 1 to warn of illegal opcodes *\/$/;"	m	struct:__anon9
 UNDOMODE	src/NoDice/edit.c	/^enum UNDOMODE$/;"	g	file:
 UNDOMODE_GENS_NOHEADER	src/NoDice/edit.c	/^	UNDOMODE_GENS_NOHEADER,		\/\/ Mark generator undo, headerless$/;"	e	enum:UNDOMODE	file:
 UNDOMODE_GENS_WITHHEADER	src/NoDice/edit.c	/^	UNDOMODE_GENS_WITHHEADER,	\/\/ Mark generator undo, with header$/;"	e	enum:UNDOMODE	file:
 UNDOMODE_LINK	src/NoDice/edit.c	/^	UNDOMODE_LINK				\/\/ Mark link undo$/;"	e	enum:UNDOMODE	file:
 UNDOMODE_MAPTILE	src/NoDice/edit.c	/^	UNDOMODE_MAPTILE,			\/\/ Mark map tile undo$/;"	e	enum:UNDOMODE	file:
 UNDOMODE_OBJECTS	src/NoDice/edit.c	/^	UNDOMODE_OBJECTS,			\/\/ Mark object undo$/;"	e	enum:UNDOMODE	file:
-UNDO_STACK_LIMIT	src/NoDice/edit.c	9;"	d	file:
-User	src/M6502/M6502.h	/^  void *User;         \/* Arbitrary user data (ID,RAM*,etc.)  *\/$/;"	m	struct:__anon6
-VERT_SCROLL	src/NoDiceLib/internal.h	/^	VERT_SCROLL,$/;"	e	enum:SMB3RAM
-VERT_SCROLL_HI	src/NoDiceLib/internal.h	/^	VERT_SCROLL_HI,$/;"	e	enum:SMB3RAM
-V_FLAG	src/M6502/M6502.h	39;"	d
-Vert_Scroll	src/NoDiceLib/rom.c	50;"	d	file:
-Vert_Scroll_Hi	src/NoDiceLib/rom.c	44;"	d	file:
-W	src/M6502/M6502.h	/^  word W;$/;"	m	union:__anon4
-WORD_TYPE_DEFINED	src/M6502/M6502.h	50;"	d
-WORLD_NUM	src/NoDiceLib/internal.h	/^	WORLD_NUM,$/;"	e	enum:SMB3RAM
+UNDO_STACK_LIMIT	src/NoDice/edit.c	13;"	d	file:
+User	src/M6502/M6502.h	/^  void *User;         \/* Arbitrary user data (ID,RAM*,etc.)  *\/$/;"	m	struct:__anon9
+VERT_SCROLL	src/NoDiceLib/ram.h	/^	VERT_SCROLL,$/;"	e	enum:SMB3RAM
+VERT_SCROLL_HI	src/NoDiceLib/ram.h	/^	VERT_SCROLL_HI,$/;"	e	enum:SMB3RAM
+V_FLAG	src/M6502/M6502.h	36;"	d
+Vert_Scroll	src/NoDiceLib/rom.c	174;"	d	file:
+Vert_Scroll_Hi	src/NoDiceLib/rom.c	168;"	d	file:
+W	src/M6502/M6502.h	/^  word W;$/;"	m	union:__anon7
+WORD_TYPE_DEFINED	src/M6502/M6502.h	48;"	d
+WORLD_NUM	src/NoDiceLib/ram.h	/^	WORLD_NUM,$/;"	e	enum:SMB3RAM
 WinMain	src/NoDice/main.c	/^int APIENTRY WinMain( HINSTANCE hInstance,$/;"	f
-World_Num	src/NoDiceLib/rom.c	57;"	d	file:
+World_Num	src/NoDiceLib/rom.c	181;"	d	file:
 Wr6502	src/NoDiceLib/rom.c	/^void Wr6502(register word Addr,register byte Value)$/;"	f
 WriteVarLen	src/MusConv/export.c	/^void WriteVarLen(FILE *outfile, unsigned int value)$/;"	f
-X	src/M6502/M6502.h	/^  byte A,P,X,Y,S;     \/* CPU registers and program counter   *\/$/;"	m	struct:__anon6
-Y	src/M6502/M6502.h	/^  byte A,P,X,Y,S;     \/* CPU registers and program counter   *\/$/;"	m	struct:__anon6
+X	src/M6502/M6502.h	/^  byte A,P,X,Y,S;     \/* CPU registers and program counter   *\/$/;"	m	struct:__anon9
+Y	src/M6502/M6502.h	/^  byte A,P,X,Y,S;     \/* CPU registers and program counter   *\/$/;"	m	struct:__anon9
 ZNTable	src/M6502/M6502.h	/^static const byte ZNTable[256] =$/;"	v
-Z_FLAG	src/M6502/M6502.h	34;"	d
+Z_FLAG	src/M6502/M6502.h	31;"	d
 Zp	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
 Zx	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
 Zy	src/M6502/Debug.c	/^enum AddressingModes { Ac=0,Il,Im,Ab,Zp,Zx,Zy,Ax,Ay,Rl,Ix,Iy,In,No };$/;"	e	enum:AddressingModes	file:
@@ -515,10 +519,10 @@ _EZXML_H	src/MusConv/ezxml.h	26;"	d
 _EZXML_H	src/NoDiceLib/ezxml.h	26;"	d
 _GtkSelectableOverlay	src/NoDice/guictls.h	/^struct _GtkSelectableOverlay$/;"	s
 _GtkSelectableOverlayClass	src/NoDice/guictls.h	/^struct _GtkSelectableOverlayClass {$/;"	s
-_INTERNAL_H	src/NoDiceLib/internal.h	2;"	d
+_INTERNAL_H	src/NoDiceLib/internal.h	5;"	d
 _MUSCONV_H	src/MusConv/MusConv.h	2;"	d
-_NODICELIB_H	src/NoDiceLib/NoDiceLib.h	9;"	d
-_NODICE_H	src/NoDice/NoDice.h	2;"	d
+_NODICELIB_H	src/NoDiceLib/NoDiceLib.h	5;"	d
+_NODICE_H	src/NoDice/NoDice.h	6;"	d
 _PPU_SPR	src/NoDice/ppu.c	/^static struct _PPU_SPR$/;"	s	file:
 _PRG	src/NoDiceLib/rom.c	/^static rom_t _PRG = NULL, _CHR = NULL;$/;"	v	file:
 _PRG_A	src/NoDiceLib/rom.c	/^static rom_t _PRG_A, _PRG_B, _PRG_C, _PRG_D;$/;"	v	file:
@@ -528,12 +532,12 @@ _PRG_D	src/NoDiceLib/rom.c	/^static rom_t _PRG_A, _PRG_B, _PRG_C, _PRG_D;$/;"	v	
 _PRG_FakeScratch	src/NoDiceLib/rom.c	/^static unsigned char _PRG_FakeScratch[SCRATCH_END - SCRATCH_START + 1];$/;"	v	file:
 _RAM	src/NoDiceLib/rom.c	/^static unsigned char _RAM[ (MEM_B_END - MEM_B_START + 1) + (MEM_A_END - MEM_A_START + 1) ] = { 0 };$/;"	v	file:
 _buffer	src/NoDiceLib/nodice.c	/^char _buffer[BUFFER_LEN];$/;"	v
-_build_str	src/NoDiceLib/NoDiceLib.h	/^		char *_build_str;		\/\/ Pointer to split build string, just required for freeing later$/;"	m	struct:NoDice_configuration::__anon3
-_config_init	src/NoDiceLib/config.c	/^int _config_init()$/;"	f
-_config_shutdown	src/NoDiceLib/config.c	/^void _config_shutdown()$/;"	f
+_build_str	src/NoDiceLib/config.h	/^		char *_build_str;		\/\/ Pointer to split build string, just required for freeing later$/;"	m	struct:NoDice_configuration::__anon3
+_config_init	src/NoDiceLib/config.c	/^int _config_init() {$/;"	f
+_config_shutdown	src/NoDiceLib/config.c	/^void _config_shutdown() {$/;"	f
 _error_msg	src/NoDiceLib/nodice.c	/^char _error_msg[ERROR_MSG_LEN];$/;"	v
 _gui_combobox_simple_set_selected_foreach_callback_data	src/NoDice/gui_combobox_simple.c	/^struct _gui_combobox_simple_set_selected_foreach_callback_data$/;"	s	file:
-_gui_draw_info	src/NoDice/NoDice.h	/^extern struct _gui_draw_info$/;"	s
+_gui_draw_info	src/NoDice/gui.h	/^extern struct _gui_draw_info$/;"	s
 _gui_listbox_set_index_foreach_callback_data	src/NoDice/gui_listbox.c	/^struct _gui_listbox_set_index_foreach_callback_data$/;"	s	file:
 _gui_map_links_browse_click_data	src/NoDice/gui_popups.c	/^struct _gui_map_links_browse_click_data$/;"	s	file:
 _gui_new_level_existing_lo_change_data	src/NoDice/gui_popups.c	/^static struct _gui_new_level_existing_lo_change_data$/;"	s	file:
@@ -541,7 +545,7 @@ _gui_new_level_tileset_change_data	src/NoDice/gui_popups.c	/^static struct _gui_
 _gui_open_level_popup_desc_widgets	src/NoDice/gui_popups.c	/^struct _gui_open_level_popup_desc_widgets$/;"	s	file:
 _gui_parameter_widgets	src/NoDice/gui.c	/^static struct _gui_parameter_widgets$/;"	s	file:
 _gui_start_widgets	src/NoDice/gui.c	/^static struct _gui_start_widgets$/;"	s	file:
-_gui_tilehints	src/NoDice/NoDice.h	/^extern struct _gui_tilehints$/;"	s
+_gui_tilehints	src/NoDice/gui.h	/^extern struct _gui_tilehints$/;"	s
 _import_map	src/MusConv/MusConv.h	/^extern struct _import_map$/;"	s
 _map_tile_buttons	src/NoDice/gui.c	/^static struct _map_tile_buttons$/;"	s	file:
 _nes_palette	src/NoDice/ppu.c	/^static const struct _nes_palette$/;"	s	file:
@@ -549,7 +553,7 @@ _ram	src/NoDiceLib/ram.c	/^struct SMB3_RAM _ram[SMB3RAM_TOTAL] =$/;"	v	typeref:s
 _ram_resolve_labels	src/NoDiceLib/ram.c	/^int _ram_resolve_labels()$/;"	f
 _rom_free_level_list	src/NoDiceLib/rom.c	/^void _rom_free_level_list()$/;"	f
 _rom_load	src/NoDiceLib/rom.c	/^int _rom_load()$/;"	f
-_rom_load_symbols	src/NoDiceLib/rom.c	/^static int _rom_load_symbols()$/;"	f	file:
+_rom_load_symbols	src/NoDiceLib/rom.c	/^static int _rom_load_symbols() {$/;"	f	file:
 _rom_shutdown	src/NoDiceLib/rom.c	/^void _rom_shutdown()$/;"	f
 _translation_data	src/NoDice/guictls.h	/^	struct _translation_data$/;"	s	struct:_GtkSelectableOverlay
 addr_end	src/NoDiceLib/NoDiceLib.h	/^	unsigned short addr_start, addr_end;$/;"	m	struct:NoDice_level
@@ -557,7 +561,7 @@ addr_max	src/NoDiceLib/NoDiceLib.h	/^		unsigned short addr_max;		\/\/ Maximum ti
 addr_min	src/NoDiceLib/NoDiceLib.h	/^		unsigned short addr_min;		\/\/ Minimum tile RAM address used$/;"	m	struct:NoDice_level::NoDice_the_level_generator
 addr_start	src/NoDiceLib/NoDiceLib.h	/^		unsigned short addr_start;	\/\/ Tile RAM address generator starts at$/;"	m	struct:NoDice_level::NoDice_the_level_generator
 addr_start	src/NoDiceLib/NoDiceLib.h	/^	unsigned short addr_start, addr_end;$/;"	m	struct:NoDice_level
-address	src/NoDiceLib/internal.h	/^	unsigned short address;		\/\/ Address of variable (to be resolved by FNS)$/;"	m	struct:SMB3_RAM
+address	src/NoDiceLib/ram.h	/^	unsigned short address;		\/\/ Address of variable (to be resolved by FNS)$/;"	m	struct:SMB3_RAM
 address	src/NoDiceLib/rom.c	/^	unsigned short address;$/;"	m	struct:ROM_label	file:
 alt_level_layout	src/NoDiceLib/NoDiceLib.h	/^			alt_level_layout, 	\/\/ Alternate level layout address$/;"	m	struct:NoDice_level::NoDice_level_header
 alt_level_objects	src/NoDiceLib/NoDiceLib.h	/^			alt_level_objects;	\/\/ Alternate level object set address$/;"	m	struct:NoDice_level::NoDice_level_header
@@ -565,16 +569,16 @@ alt_level_tileset	src/NoDiceLib/NoDiceLib.h	/^		unsigned char alt_level_tileset;
 attr	src/MusConv/ezxml.h	/^    char **attr;     \/\/ tag attributes { name, value, name, value, ... NULL }$/;"	m	struct:ezxml
 attr	src/NoDiceLib/ezxml.c	/^    char ***attr;         \/\/ default attributes$/;"	m	struct:ezxml_root	file:
 attr	src/NoDiceLib/ezxml.h	/^    char **attr;     \/\/ tag attributes { name, value, name, value, ... NULL }$/;"	m	struct:ezxml
-attr_to_byte	src/NoDiceLib/config.c	/^static unsigned char attr_to_byte(ezxml_t node, const char *attr_name, unsigned char default_val)$/;"	f	file:
-attr_to_int	src/NoDiceLib/config.c	/^static int attr_to_int(ezxml_t node, const char *attr_name, int default_val)$/;"	f	file:
+attr_to_byte	src/NoDiceLib/config.c	/^static unsigned char attr_to_byte(ezxml_t node, const char *attr_name, unsigned char default_val) {$/;"	f	file:
+attr_to_int	src/NoDiceLib/config.c	/^static int attr_to_int(ezxml_t node, const char *attr_name, int default_val) {$/;"	f	file:
 b	src/NoDice/ppu.c	/^	unsigned char r, g, b;$/;"	m	struct:_nes_palette	file:
-bank	src/NoDiceLib/NoDiceLib.h	/^				unsigned char bank;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
+bank	src/NoDiceLib/config.h	/^				unsigned char bank;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
 bg_page_1	src/NoDiceLib/NoDiceLib.h	/^		bg_page_1, 	\/\/ First MMC3 BG page$/;"	m	struct:NoDice_level
 bg_page_2	src/NoDiceLib/NoDiceLib.h	/^		bg_page_2;	\/\/ Second MMC3 BG page$/;"	m	struct:NoDice_level
 bg_pal	src/NoDiceLib/NoDiceLib.h	/^	unsigned char bg_pal[16];	\/\/ NES color values making up the 4 BG palettes$/;"	m	struct:NoDice_level
-build_argv	src/NoDiceLib/NoDiceLib.h	/^		char **build_argv;		\/\/ Build executable (index 0) and additional parameters$/;"	m	struct:NoDice_configuration::__anon3
-builderr	src/NoDiceLib/NoDiceLib.h	/^		enum BUILDERR builderr;	\/\/ Error check style$/;"	m	struct:NoDice_configuration::__anon3	typeref:enum:NoDice_configuration::__anon3::BUILDERR
-buildinfo	src/NoDiceLib/NoDiceLib.h	/^	} buildinfo;$/;"	m	struct:NoDice_configuration	typeref:struct:NoDice_configuration::__anon3
+build_argv	src/NoDiceLib/config.h	/^		char **build_argv;		\/\/ Build executable (index 0) and additional parameters$/;"	m	struct:NoDice_configuration::__anon3
+builderr	src/NoDiceLib/config.h	/^		enum BUILDERR builderr;	\/\/ Error check style$/;"	m	struct:NoDice_configuration::__anon3	typeref:enum:NoDice_configuration::__anon3::BUILDERR
+buildinfo	src/NoDiceLib/config.h	/^	} buildinfo;$/;"	m	struct:NoDice_configuration	typeref:struct:NoDice_configuration::__anon3
 button_active	src/NoDice/gui.c	/^	GtkWidget *button_active;$/;"	m	struct:_gui_start_widgets	file:
 button_cancel	src/NoDice/gui.c	/^	GtkWidget *button_cancel;$/;"	m	struct:_gui_start_widgets	file:
 buttons	src/NoDice/gui.c	/^	GtkWidget *buttons[255];	\/\/ Buttons for map tiles$/;"	m	struct:_map_tile_buttons	file:
@@ -592,9 +596,9 @@ col_size	src/NoDice/gui.c	/^	int col_size;	\/\/ Remember last column size to see
 combo	src/NoDice/gui_combobox_simple.c	/^	GtkComboBox *combo;$/;"	m	struct:_gui_combobox_simple_set_selected_foreach_callback_data	file:
 config_load	src/MusConv/config.c	/^int config_load()$/;"	f
 config_xml	src/NoDiceLib/config.c	/^static ezxml_t config_xml, game_xml;$/;"	v	file:
-context	src/NoDice/NoDice.h	/^	void *context;	\/\/ Holds pointer to context for Cairo; typeless so it can be exposed$/;"	m	struct:_gui_draw_info
-core6502_timeout	src/NoDiceLib/NoDiceLib.h	/^	int core6502_timeout;$/;"	m	struct:NoDice_configuration
-count_children	src/NoDiceLib/config.c	/^static int count_children(ezxml_t xml, const char *child)$/;"	f	file:
+context	src/NoDice/gui.h	/^	void *context;	\/\/ Holds pointer to context for Cairo; typeless so it can be exposed$/;"	m	struct:_gui_draw_info
+core6502_timeout	src/NoDiceLib/config.h	/^	int core6502_timeout;$/;"	m	struct:NoDice_configuration
+count_children	src/NoDiceLib/config.c	/^static int count_children(ezxml_t xml, const char *child) {$/;"	f	file:
 cur	src/NoDiceLib/ezxml.c	/^    ezxml_t cur;          \/\/ current xml tree insertion point$/;"	m	struct:ezxml_root	file:
 cur_gen	src/NoDiceLib/rom.c	/^static struct NoDice_the_level_generator *cur_gen = NULL, *prev_gen = NULL;$/;"	v	typeref:struct:NoDice_the_level_generator	file:
 cur_hold	src/MusConv/export.c	/^	unsigned char cur_hold;			\/\/ Current rest value$/;"	m	struct:smb3_track	file:
@@ -603,12 +607,12 @@ cur_track_event	src/MusConv/import.c	/^	*cur_track_event[MUSICTRACK_TOTAL] = { N
 current_tempo	src/MusConv/import.c	/^unsigned int current_tempo = 0;$/;"	v
 data	src/MusConv/import.c	/^	unsigned char data;		\/\/ Event data (if needed)$/;"	m	struct:music_event_list	file:
 data_ptr	src/MusConv/export.c	/^	const unsigned char *data_ptr;	\/\/ Pointer to segment data$/;"	m	struct:smb3_track	file:
-desc	src/NoDiceLib/NoDiceLib.h	/^				const char *desc;		\/\/ Description of level$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
-desc	src/NoDiceLib/NoDiceLib.h	/^				const char *desc;	\/\/ Description of generator$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
-desc	src/NoDiceLib/NoDiceLib.h	/^			const char *desc;		\/\/ Description of tileset$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
-desc	src/NoDiceLib/NoDiceLib.h	/^			const char *desc;		\/\/ Description$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects
-display	src/NoDiceLib/NoDiceLib.h	/^					const char *display;	\/\/ Display value for this option item$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options::NoDice_option
-display	src/NoDiceLib/NoDiceLib.h	/^				const char *display;	\/\/ Display value$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
+desc	src/NoDiceLib/config.h	/^				const char *desc;		\/\/ Description of level$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
+desc	src/NoDiceLib/config.h	/^				const char *desc;	\/\/ Description of generator$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
+desc	src/NoDiceLib/config.h	/^			const char *desc;		\/\/ Description of tileset$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
+desc	src/NoDiceLib/config.h	/^			const char *desc;		\/\/ Description$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects
+display	src/NoDiceLib/config.h	/^					const char *display;	\/\/ Display value for this option item$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options::NoDice_option
+display	src/NoDiceLib/config.h	/^				const char *display;	\/\/ Display value$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
 e	src/NoDiceLib/ezxml.c	/^    char *e;              \/\/ end of work area$/;"	m	struct:ezxml_root	file:
 edit_cur_level	src/NoDice/edit.c	/^static const struct NoDice_the_levels *edit_cur_level;$/;"	v	typeref:struct:NoDice_the_levels	file:
 edit_gen_bring_forward	src/NoDice/edit.c	/^void edit_gen_bring_forward(struct NoDice_the_level_generator *gen)$/;"	f
@@ -631,7 +635,7 @@ edit_link_insert_link	src/NoDice/edit.c	/^int edit_link_insert_link(int row, int
 edit_link_remove	src/NoDice/edit.c	/^void edit_link_remove(struct NoDice_map_link *link)$/;"	f
 edit_link_sort	src/NoDice/edit.c	/^static void edit_link_sort()$/;"	f	file:
 edit_link_translate	src/NoDice/edit.c	/^void edit_link_translate(struct NoDice_map_link *link, int diff_row, int diff_col)$/;"	f
-edit_map_obj_clear	src/NoDice/edit.c	/^void edit_map_obj_clear(struct NoDice_the_level_object *obj)$/;"	f
+edit_map_obj_clear	src/NoDice/edit.c	/^void edit_map_obj_clear(struct NoDice_the_level_object *obj) {$/;"	f
 edit_maptile_get	src/NoDice/edit.c	/^unsigned char edit_maptile_get(int row, int col)$/;"	f
 edit_maptile_set	src/NoDice/edit.c	/^void edit_maptile_set(int row, int col, unsigned char tile)$/;"	f
 edit_notebook_page	src/NoDice/gui.c	/^	enum EDIT_NOTEBOOK_PAGES edit_notebook_page;$/;"	m	struct:_gui_start_widgets	typeref:enum:_gui_start_widgets::EDIT_NOTEBOOK_PAGES	file:
@@ -707,20 +711,20 @@ ezxml_txt	src/MusConv/ezxml.h	91;"	d
 ezxml_txt	src/NoDiceLib/ezxml.h	91;"	d
 ezxml_vget	src/NoDiceLib/ezxml.c	/^ezxml_t ezxml_vget(ezxml_t xml, va_list ap)$/;"	f
 file	src/NoDice/gui_popups.c	/^	const char *file;		\/\/ Fill in the blank$/;"	m	struct:label_file_pair	file:
-filebase	src/NoDiceLib/NoDiceLib.h	/^	const char *filebase;$/;"	m	struct:NoDice_configuration
+filebase	src/NoDiceLib/config.h	/^	const char *filebase;$/;"	m	struct:NoDice_configuration
 filename	src/NoDice/gui_popups.c	/^	GtkWidget *filename;	\/\/ File to include for data$/;"	m	struct:_gui_new_level_existing_lo_change_data	file:
 flags	src/MusConv/ezxml.h	/^    short flags;     \/\/ additional information$/;"	m	struct:ezxml
 flags	src/NoDiceLib/ezxml.h	/^    short flags;     \/\/ additional information$/;"	m	struct:ezxml
-flips	src/NoDiceLib/NoDiceLib.h	/^				unsigned char flips;	\/\/ bit 0: Hflip, 1: Vflip$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
+flips	src/NoDiceLib/config.h	/^				unsigned char flips;	\/\/ bit 0: Hflip, 1: Vflip$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
 g	src/NoDice/ppu.c	/^	unsigned char r, g, b;$/;"	m	struct:_nes_palette	file:
 g_list_free_full	src/NoDice/gui.c	/^void g_list_free_full(GList *list, GDestroyNotify  free_func)$/;"	f
-game	src/NoDiceLib/NoDiceLib.h	/^	} game;$/;"	m	struct:NoDice_configuration	typeref:struct:NoDice_configuration::NoDice_game
-game_dir	src/NoDiceLib/NoDiceLib.h	/^	const char *game_dir;$/;"	m	struct:NoDice_configuration
+game	src/NoDiceLib/config.h	/^	} game;$/;"	m	struct:NoDice_configuration	typeref:struct:NoDice_configuration::NoDice_game
+game_dir	src/NoDiceLib/config.h	/^	const char *game_dir;$/;"	m	struct:NoDice_configuration
 game_xml	src/NoDiceLib/config.c	/^static ezxml_t config_xml, game_xml;$/;"	v	file:
 gen	src/NoDice/guictls.h	/^	struct NoDice_the_level_generator *gen;		\/\/ The generator this represents (if applicable)$/;"	m	struct:_GtkSelectableOverlay	typeref:struct:_GtkSelectableOverlay::NoDice_the_level_generator
-gen_count	src/NoDiceLib/NoDiceLib.h	/^			int 	gen_count;		\/\/ Count of generators$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
-generators	src/NoDiceLib/NoDiceLib.h	/^			}	*generators;		\/\/ Variable and Fixed-size block generators$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
+gen_count	src/NoDiceLib/config.h	/^			int 	gen_count;		\/\/ Count of generators$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
 generators	src/NoDiceLib/NoDiceLib.h	/^	}	*generators;		\/\/ All generators$/;"	m	struct:NoDice_level	typeref:struct:NoDice_level::NoDice_the_level_generator
+generators	src/NoDiceLib/config.h	/^			}	*generators;		\/\/ Variable and Fixed-size block generators$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
 get_menubar_menu	src/NoDice/gui.c	/^static GtkWidget *get_menubar_menu( GtkWidget  *window )$/;"	f	file:
 get_option_menu	src/NoDice/gui.c	/^GtkWidget *get_option_menu( void )$/;"	f
 gtk_selectable_overlay_class_init	src/NoDice/gui_overlay.c	/^static void gtk_selectable_overlay_class_init(GtkSelectableOverlayClass *klass)$/;"	f	file:
@@ -756,8 +760,8 @@ gui_combobox_simple_set_selected	src/NoDice/gui_combobox_simple.c	/^void gui_com
 gui_combobox_simple_set_selected_foreach_callback	src/NoDice/gui_combobox_simple.c	/^static gboolean gui_combobox_simple_set_selected_foreach_callback(GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)$/;"	f	file:
 gui_create_right_pane	src/NoDice/gui.c	/^static void gui_create_right_pane(GtkWidget *vbox)$/;"	f	file:
 gui_disable_empty_objs	src/NoDice/gui.c	/^void gui_disable_empty_objs(int is_empty)$/;"	f
-gui_display_6502_error	src/NoDice/gui_popups.c	/^void gui_display_6502_error(enum RUN6502_STOP_REASON reason)$/;"	f
-gui_display_message	src/NoDice/gui_popups.c	/^void gui_display_message(int is_error, const char *err_str)$/;"	f
+gui_display_6502_error	src/NoDice/gui_popups.c	/^void gui_display_6502_error(enum RUN6502_STOP_REASON reason) {$/;"	f
+gui_display_message	src/NoDice/gui_popups.c	/^void gui_display_message(int is_error, const char *err_str) {$/;"	f
 gui_do_load_complete_actions	src/NoDice/gui.c	/^static void gui_do_load_complete_actions()$/;"	f	file:
 gui_draw_info	src/NoDice/gui.c	/^struct _gui_draw_info gui_draw_info = { 0.75, 2.0 };$/;"	v	typeref:struct:_gui_draw_info
 gui_fixed_calc_size	src/NoDice/gui.c	/^static void gui_fixed_calc_size()$/;"	f	file:
@@ -773,7 +777,7 @@ gui_init	src/NoDice/gui.c	/^int gui_init()$/;"	f
 gui_level_base_size	src/NoDice/gui.c	/^static int gui_bank_free_space = 0, gui_level_base_size = 0, gui_level_new_size = 0;$/;"	v	file:
 gui_level_calc_size	src/NoDice/gui.c	/^static int gui_level_calc_size()$/;"	f	file:
 gui_level_new_size	src/NoDice/gui.c	/^static int gui_bank_free_space = 0, gui_level_base_size = 0, gui_level_new_size = 0;$/;"	v	file:
-gui_level_properties	src/NoDice/gui_popups.c	/^void gui_level_properties(struct NoDice_the_level_generator *selected_gen)$/;"	f
+gui_level_properties	src/NoDice/gui_popups.c	/^void gui_level_properties(struct NoDice_the_level_generator *selected_gen) {$/;"	f
 gui_level_properties_browse_click	src/NoDice/gui_popups.c	/^static void gui_level_properties_browse_click(GtkButton *button, gpointer user_data)$/;"	f	file:
 gui_level_properties_option_list_change	src/NoDice/gui_popups.c	/^static void gui_level_properties_option_list_change(GtkComboBox *widget, gpointer user_data)$/;"	f	file:
 gui_level_properties_option_spin_change	src/NoDice/gui_popups.c	/^static void gui_level_properties_option_spin_change(GtkSpinButton *spinbutton, gpointer user_data)$/;"	f	file:
@@ -784,7 +788,7 @@ gui_listbox_get_disconnected_list	src/NoDice/gui_listbox.c	/^GtkListStore *gui_l
 gui_listbox_get_index	src/NoDice/gui_listbox.c	/^int gui_listbox_get_index(GtkWidget *listbox)$/;"	f
 gui_listbox_get_index_by_view	src/NoDice/gui_listbox.c	/^int gui_listbox_get_index_by_view(GtkTreeView *view)$/;"	f
 gui_listbox_get_view_and_model	src/NoDice/gui_listbox.c	/^static void gui_listbox_get_view_and_model(GtkWidget *listbox, GtkTreeView **view, GtkTreeModel **model)$/;"	f	file:
-gui_listbox_new	src/NoDice/gui_listbox.c	/^GtkWidget *gui_listbox_new(GCallback sel_change_callback, gpointer user_data)$/;"	f
+gui_listbox_new	src/NoDice/gui_listbox.c	/^GtkWidget *gui_listbox_new(GCallback sel_change_callback, gpointer user_data) {$/;"	f
 gui_listbox_reconnect_list	src/NoDice/gui_listbox.c	/^void gui_listbox_reconnect_list(GtkWidget *listbox, GtkListStore *model)$/;"	f
 gui_listbox_set_first	src/NoDice/gui_listbox.c	/^void gui_listbox_set_first(GtkWidget *listbox)$/;"	f
 gui_listbox_set_index	src/NoDice/gui_listbox.c	/^void gui_listbox_set_index(GtkWidget *listbox, int index)$/;"	f
@@ -876,27 +880,27 @@ gui_surface_destroy	src/NoDice/gui.c	/^void gui_surface_destroy(gui_surface_t *s
 gui_surface_from_file	src/NoDice/gui.c	/^gui_surface_t *gui_surface_from_file(const char *file)$/;"	f
 gui_surface_overlay	src/NoDice/gui.c	/^void gui_surface_overlay(gui_surface_t *draw, int dest_x, int dest_y)$/;"	f
 gui_surface_release_data	src/NoDice/gui.c	/^void gui_surface_release_data(gui_surface_t *surface)$/;"	f
-gui_surface_t	src/NoDice/NoDice.h	/^typedef void gui_surface_t;$/;"	t
+gui_surface_t	src/NoDice/gui.h	/^typedef void gui_surface_t;$/;"	t
 gui_tilehints	src/NoDice/gui.c	/^struct _gui_tilehints gui_tilehints[256] = { { 0 } };	\/\/ Tile hints$/;"	v	typeref:struct:_gui_tilehints
 gui_update_for_generators	src/NoDice/gui.c	/^void gui_update_for_generators()$/;"	f
 gui_update_for_generators_foreach_callback	src/NoDice/gui.c	/^static void gui_update_for_generators_foreach_callback(GtkWidget *widget, gpointer unused)$/;"	f	file:
 gui_update_option_controls	src/NoDice/gui_property_box.c	/^void gui_update_option_controls(GList *context)$/;"	f
-h	src/M6502/M6502.h	/^  struct { byte l,h; } B;$/;"	m	struct:__anon4::__anon5
+h	src/M6502/M6502.h	/^  struct { byte h,l; } B;$/;"	m	struct:__anon7::__anon8
 head_music_tracks	src/MusConv/import.c	/^}	*head_music_tracks[MUSICTRACK_TOTAL],$/;"	v	typeref:struct:music_event_list	file:
 header	src/NoDiceLib/NoDiceLib.h	/^	} header;$/;"	m	struct:NoDice_level	typeref:struct:NoDice_level::NoDice_level_header
-headers	src/NoDiceLib/NoDiceLib.h	/^		} 	headers[LEVEL_HEADER_COUNT];$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_headers
+headers	src/NoDiceLib/config.h	/^		} 	headers[LEVEL_HEADER_COUNT];$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_headers
 height	src/NoDice/ppu.c	/^	int width, height;$/;"	m	struct:_PPU_SPR	file:
-high	src/NoDiceLib/NoDiceLib.h	/^				struct NoDice_headers high;	\/\/ High byte options$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override::NoDice_headers
-hint	src/NoDice/NoDice.h	/^	gui_surface_t *hint;	\/\/ Tile hint graphic$/;"	m	struct:_gui_tilehints
+high	src/NoDiceLib/config.h	/^				struct NoDice_headers high;	\/\/ High byte options$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override::NoDice_headers
+hint	src/NoDice/gui.h	/^	gui_surface_t *hint;	\/\/ Tile hint graphic$/;"	m	struct:_gui_tilehints
 hold_remain	src/MusConv/export.c	/^	unsigned char hold_remain;		\/\/ Rest time remaining$/;"	m	struct:smb3_track	file:
-id	src/NoDiceLib/NoDiceLib.h	/^				const char *id;		\/\/ Optional id value for referencing$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
-id	src/NoDiceLib/NoDiceLib.h	/^				unsigned char id;	\/\/ ID of generator$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
-id	src/NoDiceLib/NoDiceLib.h	/^			int id;			\/\/ ID of tileset$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
-id	src/NoDiceLib/NoDiceLib.h	/^			unsigned char id;			\/\/ ID of tile to map$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile
-id	src/NoDiceLib/NoDiceLib.h	/^			unsigned char id;		\/\/ ID of the tile$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tilehint
-id	src/NoDiceLib/NoDiceLib.h	/^			unsigned char id;	\/\/ ID of item$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_object_item
 id	src/NoDiceLib/NoDiceLib.h	/^		unsigned char id;			\/\/ ID of generator$/;"	m	struct:NoDice_level::NoDice_the_level_generator
 id	src/NoDiceLib/NoDiceLib.h	/^		unsigned char id;	\/\/ 0xFF is a terminator$/;"	m	struct:NoDice_level::NoDice_the_level_object
+id	src/NoDiceLib/config.h	/^				const char *id;		\/\/ Optional id value for referencing$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
+id	src/NoDiceLib/config.h	/^				unsigned char id;	\/\/ ID of generator$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
+id	src/NoDiceLib/config.h	/^			int id;			\/\/ ID of tileset$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
+id	src/NoDiceLib/config.h	/^			unsigned char id;			\/\/ ID of tile to map$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile
+id	src/NoDiceLib/config.h	/^			unsigned char id;		\/\/ ID of the tile$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tilehint
+id	src/NoDiceLib/config.h	/^			unsigned char id;	\/\/ ID of item$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_object_item
 image_preview	src/NoDice/gui_popups.c	/^	GtkWidget *image_preview;	\/\/ Preview image$/;"	m	struct:_gui_open_level_popup_desc_widgets	file:
 import_noise_map	src/MusConv/config.c	/^struct _import_map import_patch_map[128], import_noise_map[128], import_percussion_map[128];$/;"	v	typeref:struct:
 import_patch_map	src/MusConv/config.c	/^struct _import_map import_patch_map[128], import_noise_map[128], import_percussion_map[128];$/;"	v	typeref:struct:_import_map
@@ -905,20 +909,20 @@ index	src/NoDiceLib/NoDiceLib.h	/^		unsigned short index;	\/\/ Internal index co
 index_end	src/NoDiceLib/NoDiceLib.h	/^	unsigned char index_end;$/;"	m	struct:NoDice_music_context
 index_loop	src/NoDiceLib/NoDiceLib.h	/^	unsigned char index_loop;$/;"	m	struct:NoDice_music_context
 index_start	src/NoDiceLib/NoDiceLib.h	/^	unsigned char index_start;$/;"	m	struct:NoDice_music_context
-is_global	src/NoDice/NoDice.h	/^	int is_global;			\/\/ TRUE means this is from the global <tilehints \/> collection, so no need to free\/reload$/;"	m	struct:_gui_tilehints
+is_global	src/NoDice/gui.h	/^	int is_global;			\/\/ TRUE means this is from the global <tilehints \/> collection, so no need to free\/reload$/;"	m	struct:_gui_tilehints
 is_loading_level	src/NoDiceLib/rom.c	/^static byte is_loading_level = 0;	\/\/ Set to enable any of the following$/;"	v	file:
 is_special	src/NoDice/gui_popups.c	/^	int is_special;$/;"	m	struct:_gui_map_links_browse_click_data	file:
 is_vert	src/NoDiceLib/NoDiceLib.h	/^		unsigned char is_vert;$/;"	m	struct:NoDice_level::NoDice_level_header
 jct_data	src/NoDice/gui.c	/^	unsigned char jct_data;		\/\/ Contains the "Level_JctYLHStart" component during editing$/;"	m	struct:_gui_start_widgets	file:
-jct_options	src/NoDiceLib/NoDiceLib.h	/^		struct NoDice_headers jct_options;$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_headers
+jct_options	src/NoDiceLib/config.h	/^		struct NoDice_headers jct_options;$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_headers
 jct_x	src/NoDice/gui.c	/^	unsigned short jct_x, jct_y;	\/\/ Coordinates for display of jucntion (jct_x is real, jct_y is calculated)$/;"	m	struct:_gui_start_widgets	file:
 jct_y	src/NoDice/gui.c	/^	unsigned short jct_x, jct_y;	\/\/ Coordinates for display of jucntion (jct_x is real, jct_y is calculated)$/;"	m	struct:_gui_start_widgets	file:
-l	src/M6502/M6502.h	/^  struct { byte l,h; } B;$/;"	m	struct:__anon4::__anon5
+l	src/M6502/M6502.h	/^  struct { byte h,l; } B;$/;"	m	struct:__anon7::__anon8
 label	src/NoDice/gui.c	/^	GtkWidget *label;$/;"	m	struct:_gui_parameter_widgets	file:
 label	src/NoDice/gui_popups.c	/^	const char *label;		\/\/ Fill in the blank$/;"	m	struct:label_file_pair	file:
 label	src/NoDice/gui_property_box.c	/^	GtkWidget *label;				\/\/ Label in property box$/;"	m	struct:gui_generate_option_controls_context	file:
-label	src/NoDiceLib/NoDiceLib.h	/^					const char *label;		\/\/ Assembler label for this option item$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options::NoDice_option
-label	src/NoDiceLib/NoDiceLib.h	/^			const char *label;		\/\/ Label$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects
+label	src/NoDiceLib/config.h	/^					const char *label;		\/\/ Assembler label for this option item$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options::NoDice_option
+label	src/NoDiceLib/config.h	/^			const char *label;		\/\/ Label$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects
 label	src/NoDiceLib/rom.c	/^	char label[32];$/;"	m	struct:ROM_label	file:
 label_file	src/NoDice/gui_popups.c	/^	char label_file[128];	\/\/ For display purposes$/;"	m	struct:label_file_pair	file:
 label_file_pair	src/NoDice/gui_popups.c	/^static struct label_file_pair$/;"	s	file:
@@ -931,8 +935,8 @@ layout_data	src/NoDice/edit.c	/^	unsigned char *layout_data;$/;"	m	struct:edit_u
 layout_data_size	src/NoDice/edit.c	/^	int layout_data_size;$/;"	m	struct:edit_undo	file:
 layout_object_cbs	src/NoDice/gui_popups.c	/^} layout_object_cbs;$/;"	v	typeref:struct:_gui_new_level_tileset_change_data	file:
 layout_pairs	src/NoDice/gui_popups.c	/^} *layout_pairs = NULL, *object_pairs = NULL;$/;"	v	typeref:struct:label_file_pair	file:
-layoutfile	src/NoDiceLib/NoDiceLib.h	/^				const char *layoutfile;	\/\/ Assembly file for level layout$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
-layoutlabel	src/NoDiceLib/NoDiceLib.h	/^				const char *layoutlabel;	\/\/ Assembly label for level layout$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
+layoutfile	src/NoDiceLib/config.h	/^				const char *layoutfile;	\/\/ Assembly file for level layout$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
+layoutlabel	src/NoDiceLib/config.h	/^				const char *layoutlabel;	\/\/ Assembly label for level layout$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
 layouts	src/NoDice/gui_popups.c	/^	GtkWidget *layouts;	\/\/ simple combobox holding layouts$/;"	m	struct:_gui_new_level_tileset_change_data	file:
 len	src/NoDiceLib/ezxml.c	/^    size_t len;           \/\/ length of allocated memory for mmap, -1 for malloc$/;"	m	struct:ezxml_root	file:
 level	src/NoDiceLib/NoDiceLib.h	/^	const struct NoDice_the_levels *level;	\/\/ Definition of the level$/;"	m	struct:NoDice_level	typeref:struct:NoDice_level::NoDice_the_levels
@@ -942,32 +946,31 @@ level_gen_remove	src/NoDice/edit.c	/^static void level_gen_remove(struct NoDice_
 level_label	src/NoDice/gui_popups.c	/^	GtkWidget *level_label;$/;"	m	struct:_gui_map_links_browse_click_data	file:
 level_layout	src/NoDice/gui_popups.c	/^} level_layout, level_object;$/;"	v	typeref:struct:_gui_new_level_existing_lo_change_data	file:
 level_object	src/NoDice/gui_popups.c	/^} level_layout, level_object;$/;"	v	typeref:struct:_gui_new_level_existing_lo_change_data	file:
-level_range_check_high	src/NoDiceLib/NoDiceLib.h	/^	unsigned short level_range_check_high;$/;"	m	struct:NoDice_configuration
+level_range_check_high	src/NoDiceLib/config.h	/^	unsigned short level_range_check_high;$/;"	m	struct:NoDice_configuration
 level_reload	src/NoDice/edit.c	/^static void level_reload(int expected_generator_count)$/;"	f	file:
 level_reload_with_selection	src/NoDice/edit.c	/^static void level_reload_with_selection(int expected_generator_count, int old_sel_index)$/;"	f	file:
-levels	src/NoDiceLib/NoDiceLib.h	/^				*levels;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
-levels_count	src/NoDiceLib/NoDiceLib.h	/^			int levels_count;		\/\/ Count of levels$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
+levels	src/NoDiceLib/config.h	/^				*levels;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
+levels_count	src/NoDiceLib/config.h	/^			int levels_count;		\/\/ Count of levels$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
 link	src/NoDice/guictls.h	/^	struct NoDice_map_link *link;				\/\/ The map link this represents (if applicable)$/;"	m	struct:_GtkSelectableOverlay	typeref:struct:_GtkSelectableOverlay::NoDice_map_link
-low	src/NoDiceLib/NoDiceLib.h	/^				struct NoDice_headers low;	\/\/ Low byte options$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override::NoDice_headers
+low	src/NoDiceLib/config.h	/^				struct NoDice_headers low;	\/\/ Low byte options$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override::NoDice_headers
 m	src/NoDiceLib/ezxml.c	/^    char *m;              \/\/ original xml string$/;"	m	struct:ezxml_root	file:
 main	src/MusConv/main.c	/^int main(int argc, char *argv[])$/;"	f
 main	src/NoDice/main.c	/^int main(int argc, char *argv[])$/;"	f
 main	src/NoDiceLib/ezxml.c	/^int main(int argc, char **argv)$/;"	f
-main	src/NoDiceLib/stristr.c	/^int main(void)$/;"	f
 map	src/MusConv/MusConv.h	/^	unsigned char map;$/;"	m	struct:_import_map
 map_link	src/NoDice/gui_popups.c	/^	struct NoDice_map_link *map_link;$/;"	m	struct:_gui_map_links_browse_click_data	typeref:struct:_gui_map_links_browse_click_data::NoDice_map_link	file:
 map_link_change_by_opt_list	src/NoDice/gui_popups.c	/^static void map_link_change_by_opt_list(const struct NoDice_header_options *option_list, unsigned short maplink_ovrtype, unsigned short maplink_index, int relative_value)$/;"	f	file:
 map_link_count	src/NoDiceLib/NoDiceLib.h	/^	int map_link_count;$/;"	m	struct:NoDice_level
 map_links	src/NoDiceLib/NoDiceLib.h	/^	} map_links[MAX_MAP_LINKS];	\/\/ Enough storage to link every tile on every screen$/;"	m	struct:NoDice_level	typeref:struct:NoDice_level::NoDice_map_link
-map_object_items	src/NoDiceLib/NoDiceLib.h	/^		} *map_object_items;$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_object_item
 map_object_items	src/NoDiceLib/NoDiceLib.h	/^	unsigned char map_object_items[MOBJS_MAX];$/;"	m	struct:NoDice_level
-map_objects	src/NoDiceLib/NoDiceLib.h	/^			map_objects[256];		\/\/ World Map objects$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_objects
-map_special_tiles	src/NoDiceLib/NoDiceLib.h	/^		} *map_special_tiles;$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile
+map_object_items	src/NoDiceLib/config.h	/^		} *map_object_items;$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_object_item
+map_objects	src/NoDiceLib/config.h	/^			map_objects[256];		\/\/ World Map objects$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_objects
+map_special_tiles	src/NoDiceLib/config.h	/^		} *map_special_tiles;$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile
 map_tile_buttons	src/NoDice/gui.c	/^} map_tile_buttons;$/;"	v	typeref:struct:_map_tile_buttons	file:
 map_tile_calc_ptr	src/NoDice/edit.c	/^static unsigned char *map_tile_calc_ptr(int row, int col)$/;"	f	file:
-mask	src/NoDiceLib/NoDiceLib.h	/^				unsigned char mask;		\/\/ Mask of options list$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
-mask_bits_to_byte	src/NoDiceLib/config.c	/^static unsigned char mask_bits_to_byte(const char *mask)$/;"	f	file:
-max	src/NoDiceLib/NoDiceLib.h	/^					unsigned char max;	\/\/ Maximum value$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator::NoDice_generator_parameter
+mask	src/NoDiceLib/config.h	/^				unsigned char mask;		\/\/ Mask of options list$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
+mask_bits_to_byte	src/NoDiceLib/config.c	/^static unsigned char mask_bits_to_byte(const char *mask) {$/;"	f	file:
+max	src/NoDiceLib/config.h	/^					unsigned char max;	\/\/ Maximum value$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator::NoDice_generator_parameter
 menu_edit_arrange	src/NoDice/gui.c	/^static void menu_edit_arrange(GtkWidget *w, gpointer data)$/;"	f	file:
 menu_edit_delete	src/NoDice/gui.c	/^static void menu_edit_delete(GtkWidget *w, gpointer data)$/;"	f	file:
 menu_edit_properties	src/NoDice/gui.c	/^static void menu_edit_properties(GtkWidget *w, gpointer data)$/;"	f	file:
@@ -988,7 +991,7 @@ midi_write_program_change	src/MusConv/export.c	/^static void midi_write_program_
 midi_write_setup	src/MusConv/export.c	/^static void midi_write_setup(struct smb3_track *track, unsigned char *midi_channel)$/;"	f	file:
 midi_write_sysex	src/MusConv/export.c	/^static void midi_write_sysex(struct smb3_track *track, const char *sysex)$/;"	f	file:
 midi_write_sysex_track0	src/MusConv/export.c	/^static void midi_write_sysex_track0(FILE *midi, unsigned int time, const char *sysex)$/;"	f	file:
-min	src/NoDiceLib/NoDiceLib.h	/^					unsigned char min;	\/\/ Minimum value$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator::NoDice_generator_parameter
+min	src/NoDiceLib/config.h	/^					unsigned char min;	\/\/ Minimum value$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator::NoDice_generator_parameter
 mouse_origin_x	src/NoDice/guictls.h	/^		double mouse_origin_x, mouse_origin_y;		\/\/ Origin of mouse when dragging began$/;"	m	struct:_GtkSelectableOverlay::_translation_data
 mouse_origin_y	src/NoDice/guictls.h	/^		double mouse_origin_x, mouse_origin_y;		\/\/ Origin of mouse when dragging began$/;"	m	struct:_GtkSelectableOverlay::_translation_data
 mthd	src/MusConv/import.c	/^} mthd;$/;"	v	typeref:struct:MTHD_CHUNK	file:
@@ -1002,17 +1005,17 @@ music_segment_track	src/MusConv/import.c	/^	struct music_segment_track$/;"	s	str
 music_segments	src/MusConv/import.c	/^} music_segments[256] = { 0 };		\/\/ 256 should be more than enough since the segment counter is only 8-bit$/;"	v	typeref:struct:music_segment	file:
 music_segments	src/NoDiceLib/NoDiceLib.h	/^	} music_segments[256];		\/\/ 256 should be more than enough since the segment counter is only 8-bit$/;"	m	struct:NoDice_music_context	typeref:struct:NoDice_music_context::NoDice_music_segment
 name	src/MusConv/ezxml.h	/^    char *name;      \/\/ tag name$/;"	m	struct:ezxml
-name	src/NoDiceLib/NoDiceLib.h	/^					const char *name;	\/\/ Name of the parameter$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator::NoDice_generator_parameter
-name	src/NoDiceLib/NoDiceLib.h	/^				const char *name;		\/\/ Name of level$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
-name	src/NoDiceLib/NoDiceLib.h	/^				const char *name;	\/\/ Name of generator$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
-name	src/NoDiceLib/NoDiceLib.h	/^			const char *name;		\/\/ Name of object$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects
-name	src/NoDiceLib/NoDiceLib.h	/^			const char *name;		\/\/ Name of tileset$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
-name	src/NoDiceLib/NoDiceLib.h	/^			const char *name;	\/\/ Name of item$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_object_item
+name	src/NoDiceLib/config.h	/^					const char *name;	\/\/ Name of the parameter$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator::NoDice_generator_parameter
+name	src/NoDiceLib/config.h	/^				const char *name;		\/\/ Name of level$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
+name	src/NoDiceLib/config.h	/^				const char *name;	\/\/ Name of generator$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
+name	src/NoDiceLib/config.h	/^			const char *name;		\/\/ Name of object$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects
+name	src/NoDiceLib/config.h	/^			const char *name;		\/\/ Name of tileset$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
+name	src/NoDiceLib/config.h	/^			const char *name;	\/\/ Name of item$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_object_item
 name	src/NoDiceLib/ezxml.h	/^    char *name;      \/\/ tag name$/;"	m	struct:ezxml
 nes_palette	src/NoDice/ppu.c	/^} nes_palette[64] =$/;"	v	typeref:struct:_nes_palette	file:
 nes_palette_current	src/NoDice/ppu.c	/^static const struct _nes_palette *nes_palette_current[32];$/;"	v	typeref:struct:_nes_palette	file:
-nes_pixel	src/NoDice/ppu.c	47;"	d	file:
-nes_pixel	src/NoDice/ppu.c	49;"	d	file:
+nes_pixel	src/NoDice/ppu.c	50;"	d	file:
+nes_pixel	src/NoDice/ppu.c	52;"	d	file:
 next	src/MusConv/ezxml.h	/^    ezxml_t next;    \/\/ next tag with same name in this section at this depth$/;"	m	struct:ezxml
 next	src/MusConv/import.c	/^	struct music_event_list *next;$/;"	m	struct:music_event_list	typeref:struct:music_event_list::music_event_list	file:
 next	src/NoDiceLib/NoDiceLib.h	/^		struct NoDice_the_level_generator *next;		\/\/ Next generator in level$/;"	m	struct:NoDice_level::NoDice_the_level_generator	typeref:struct:NoDice_level::NoDice_the_level_generator::NoDice_the_level_generator
@@ -1025,13 +1028,13 @@ object_addr	src/NoDiceLib/NoDiceLib.h	/^		unsigned short object_addr;	\/\/ Objec
 object_count	src/NoDiceLib/NoDiceLib.h	/^	int object_count;$/;"	m	struct:NoDice_level
 object_index	src/NoDice/gui_popups.c	/^	int object_index;$/;"	m	struct:gui_special_obj_properties_data	file:
 object_pairs	src/NoDice/gui_popups.c	/^} *layout_pairs = NULL, *object_pairs = NULL;$/;"	v	typeref:struct:label_file_pair	file:
-object_set_bank	src/NoDiceLib/NoDiceLib.h	/^			const char *object_set_bank;	\/\/ The bank ASM file which specifies $/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_options
+object_set_bank	src/NoDiceLib/config.h	/^			const char *object_set_bank;	\/\/ The bank ASM file which specifies $/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_options
 object_unknown	src/NoDiceLib/NoDiceLib.h	/^	unsigned char object_unknown;$/;"	m	struct:NoDice_level
-objectfile	src/NoDiceLib/NoDiceLib.h	/^				const char *objectfile;	\/\/ Assembly file for object layout$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
-objectlabel	src/NoDiceLib/NoDiceLib.h	/^				const char *objectlabel;	\/\/ Assembly label for object layout$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
+objectfile	src/NoDiceLib/config.h	/^				const char *objectfile;	\/\/ Assembly file for object layout$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
+objectlabel	src/NoDiceLib/config.h	/^				const char *objectlabel;	\/\/ Assembly label for object layout$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_the_levels
 objects	src/NoDice/gui_popups.c	/^	GtkWidget *objects;	\/\/ simple combobox holding objects$/;"	m	struct:_gui_new_level_tileset_change_data	file:
-objects	src/NoDiceLib/NoDiceLib.h	/^		}	*objects,$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_objects
 objects	src/NoDiceLib/NoDiceLib.h	/^	} objects[OBJS_MAX];$/;"	m	struct:NoDice_level	typeref:struct:NoDice_level::NoDice_the_level_object
+objects	src/NoDiceLib/config.h	/^		}	*objects,$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_objects
 off	src/MusConv/ezxml.h	/^    size_t off;      \/\/ tag offset from start of parent tag character content$/;"	m	struct:ezxml
 off	src/NoDiceLib/ezxml.h	/^    size_t off;      \/\/ tag offset from start of parent tag character content$/;"	m	struct:ezxml
 offset	src/M6502/M6502.h	/^typedef signed char offset;$/;"	t
@@ -1041,41 +1044,41 @@ opt_list_for_map_link	src/NoDice/gui_popups.c	/^static const struct NoDice_heade
 option	src/NoDiceLib/NoDiceLib.h	/^		unsigned char option[LEVEL_HEADER_COUNT];$/;"	m	struct:NoDice_level::NoDice_level_header
 option_list	src/NoDice/gui_property_box.c	/^	const struct NoDice_header_options *option_list;	\/\/ Option related to this control$/;"	m	struct:gui_generate_option_controls_context	typeref:struct:gui_generate_option_controls_context::NoDice_header_options	file:
 option_string_add	src/NoDice/edit.c	/^static int option_string_add(char *opt_str, const char *addition, int *opt_str_pos)$/;"	f	file:
-options	src/NoDiceLib/NoDiceLib.h	/^				} *options;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options	typeref:struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options::NoDice_option
-options	src/NoDiceLib/NoDiceLib.h	/^		} options;$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_options
-options_count	src/NoDiceLib/NoDiceLib.h	/^				int options_count;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
-options_list	src/NoDiceLib/NoDiceLib.h	/^			} *options_list;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers	typeref:struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
-options_list_count	src/NoDiceLib/NoDiceLib.h	/^			int options_list_count;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers
+options	src/NoDiceLib/config.h	/^				} *options;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options	typeref:struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options::NoDice_option
+options	src/NoDiceLib/config.h	/^		} options;$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_options
+options_count	src/NoDiceLib/config.h	/^				int options_count;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
+options_list	src/NoDiceLib/config.h	/^			} *options_list;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers	typeref:struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
+options_list_count	src/NoDiceLib/config.h	/^			int options_list_count;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers
 ordered	src/MusConv/ezxml.h	/^    ezxml_t ordered; \/\/ next tag, same section and depth, in original order$/;"	m	struct:ezxml
 ordered	src/NoDiceLib/ezxml.h	/^    ezxml_t ordered; \/\/ next tag, same section and depth, in original order$/;"	m	struct:ezxml
 origin_x	src/NoDice/guictls.h	/^		int origin_x, origin_y;					\/\/ Origin X\/Y$/;"	m	struct:_GtkSelectableOverlay::_translation_data
 origin_y	src/NoDice/guictls.h	/^		int origin_x, origin_y;					\/\/ Origin X\/Y$/;"	m	struct:_GtkSelectableOverlay::_translation_data
-original_dir	src/NoDiceLib/NoDiceLib.h	/^	char original_dir[PATH_MAX];	\/\/ Maintain original CWD in case of configuration reload$/;"	m	struct:NoDice_configuration
-overlay	src/NoDiceLib/NoDiceLib.h	/^			const char *overlay;	\/\/ Overlay graphic file$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tilehint
-override_object	src/NoDiceLib/NoDiceLib.h	/^			} override_tile, override_object;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override
-override_tile	src/NoDiceLib/NoDiceLib.h	/^			} override_tile, override_object;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override
+original_dir	src/NoDiceLib/config.h	/^	char original_dir[PATH_MAX];	\/\/ Maintain original CWD in case of configuration reload$/;"	m	struct:NoDice_configuration
+overlay	src/NoDiceLib/config.h	/^			const char *overlay;	\/\/ Overlay graphic file$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tilehint
+override_object	src/NoDiceLib/config.h	/^			} override_tile, override_object;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override
+override_tile	src/NoDiceLib/config.h	/^			} override_tile, override_object;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile	typeref:struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile::NoDice_map_special_tile_override
 p	src/NoDiceLib/NoDiceLib.h	/^		unsigned char p[GEN_MAX_PARAMS];	\/\/ Parameters depending on generator; see #define GEN_MAX_PARAMS$/;"	m	struct:NoDice_level::NoDice_the_level_generator
-pair	src/M6502/M6502.h	/^} pair;$/;"	t	typeref:union:__anon4
+pair	src/M6502/M6502.h	/^} pair;$/;"	t	typeref:union:__anon7
 pairs	src/NoDice/gui_popups.c	/^	const struct label_file_pair *pairs;$/;"	m	struct:_gui_new_level_existing_lo_change_data	typeref:struct:_gui_new_level_existing_lo_change_data::label_file_pair	file:
-palette	src/NoDiceLib/NoDiceLib.h	/^				unsigned char palette;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
-parameters	src/NoDiceLib/NoDiceLib.h	/^				} parameters[GEN_MAX_PARAMS];$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator::NoDice_generator_parameter
+palette	src/NoDiceLib/config.h	/^				unsigned char palette;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
+parameters	src/NoDiceLib/config.h	/^				} parameters[GEN_MAX_PARAMS];$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator::NoDice_generator_parameter
 parent	src/MusConv/ezxml.h	/^    ezxml_t parent;  \/\/ parent tag, NULL if current tag is root tag$/;"	m	struct:ezxml
 parent	src/NoDiceLib/ezxml.h	/^    ezxml_t parent;  \/\/ parent tag, NULL if current tag is root tag$/;"	m	struct:ezxml
 parent_class	src/NoDice/guictls.h	/^  GtkWidgetClass parent_class;$/;"	m	struct:_GtkSelectableOverlayClass
-parse_generators	src/NoDiceLib/config.c	/^static void parse_generators(ezxml_t root, struct NoDice_generator *generator, int base_index, int gen_type)$/;"	f	file:
-parse_header_options	src/NoDiceLib/config.c	/^static void parse_header_options(ezxml_t root, struct NoDice_headers *header)$/;"	f	file:
-parse_levels	src/NoDiceLib/config.c	/^static void parse_levels(ezxml_t root, struct NoDice_the_levels **level, int *lev_count)$/;"	f	file:
-parse_objects	src/NoDiceLib/config.c	/^static void parse_objects(ezxml_t root, struct NoDice_objects *objects)$/;"	f	file:
-parse_tilehints	src/NoDiceLib/config.c	/^static void parse_tilehints(ezxml_t root, struct NoDice_tilehint **tilehints, int *tilehint_count)$/;"	f	file:
-path	src/NoDiceLib/NoDiceLib.h	/^			const char *path;		\/\/ Relative file path component to access tileset$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
+parse_generators	src/NoDiceLib/config.c	/^static void parse_generators(ezxml_t root, struct NoDice_generator *generator, int base_index, int gen_type) {$/;"	f	file:
+parse_header_options	src/NoDiceLib/config.c	/^static void parse_header_options(ezxml_t root, struct NoDice_headers *header) {$/;"	f	file:
+parse_levels	src/NoDiceLib/config.c	/^static void parse_levels(ezxml_t root, struct NoDice_the_levels **level, int *lev_count) {$/;"	f	file:
+parse_objects	src/NoDiceLib/config.c	/^static void parse_objects(ezxml_t root, struct NoDice_objects *objects) {$/;"	f	file:
+parse_tilehints	src/NoDiceLib/config.c	/^static void parse_tilehints(ezxml_t root, struct NoDice_tilehint **tilehints, int *tilehint_count) {$/;"	f	file:
+path	src/NoDiceLib/config.h	/^			const char *path;		\/\/ Relative file path component to access tileset$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
 path_buffer	src/NoDice/edit.c	/^static char path_buffer[PATH_MAX];$/;"	v	file:
 path_buffer	src/NoDice/gui.c	/^static char path_buffer[PATH_MAX];$/;"	v	file:
-pattern	src/NoDiceLib/NoDiceLib.h	/^				unsigned char pattern;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
+pattern	src/NoDiceLib/config.h	/^				unsigned char pattern;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
 pi	src/NoDiceLib/ezxml.c	/^    char ***pi;           \/\/ processing instructions$/;"	m	struct:ezxml_root	file:
 ppu_configure_for_level	src/NoDice/ppu.c	/^void ppu_configure_for_level()$/;"	f
 ppu_configure_for_level_sprites	src/NoDice/ppu.c	/^static void ppu_configure_for_level_sprites(struct NoDice_objects *this_obj)$/;"	f	file:
 ppu_draw	src/NoDice/ppu.c	/^void ppu_draw(int x, int y, int w, int h)$/;"	f
-ppu_draw_pattern	src/NoDice/ppu.c	274;"	d	file:
+ppu_draw_pattern	src/NoDice/ppu.c	277;"	d	file:
 ppu_draw_tile	src/NoDice/ppu.c	/^void ppu_draw_tile(int x, int y, unsigned char tile, unsigned char pal)$/;"	f
 ppu_init	src/NoDice/ppu.c	/^void ppu_init()$/;"	f
 ppu_init_objs	src/NoDice/ppu.c	/^static void ppu_init_objs(struct _PPU_SPR *ppu_spr_base, int is_map_objects)$/;"	f	file:
@@ -1094,19 +1097,19 @@ property_vbox	src/NoDice/gui.c	/^	GtkWidget *property_vbox;$/;"	m	struct:_gui_st
 r	src/NoDice/ppu.c	/^	unsigned char r, g, b;$/;"	m	struct:_nes_palette	file:
 readBE16	src/MusConv/import.c	/^static short readBE16(FILE *in)$/;"	f	file:
 readBE32	src/MusConv/import.c	/^static int readBE32(FILE *in)$/;"	f	file:
-regular_objects	src/NoDiceLib/NoDiceLib.h	/^			regular_objects[256], 	\/\/ Level objects$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_objects
+regular_objects	src/NoDiceLib/config.h	/^			regular_objects[256], 	\/\/ Level objects$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_objects
 required_child	src/MusConv/config.c	/^static ezxml_t required_child(ezxml_t root, const char *item)$/;"	f	file:
-required_child	src/NoDiceLib/config.c	/^static ezxml_t required_child(ezxml_t root, const char *item)$/;"	f	file:
+required_child	src/NoDiceLib/config.c	/^static ezxml_t required_child(ezxml_t root, const char *item) {$/;"	f	file:
 rest_get_nearest_index	src/MusConv/import.c	/^static unsigned char rest_get_nearest_index(const unsigned char *rest_table_base_ptr, unsigned char target_value)$/;"	f	file:
 rest_table	src/NoDiceLib/NoDiceLib.h	/^	const unsigned char *rest_table;	\/\/ Rest lookup table$/;"	m	struct:NoDice_music_context
 rest_table_base	src/NoDiceLib/NoDiceLib.h	/^	unsigned char rest_table_base;		\/\/ Base index value into rest_table$/;"	m	struct:NoDice_music_context
 revert_tileset	src/NoDice/gui.c	/^	const struct NoDice_tileset *revert_tileset;$/;"	m	struct:_gui_start_widgets	typeref:struct:_gui_start_widgets::NoDice_tileset	file:
 rom_MMC3_set_pages	src/NoDiceLib/rom.c	/^static void rom_MMC3_set_pages(unsigned char page_A000, unsigned char page_C000)$/;"	f	file:
-rom_Reset6502	src/NoDiceLib/rom.c	/^static void rom_Reset6502(int ram_clear)$/;"	f	file:
+rom_Reset6502	src/NoDiceLib/rom.c	/^static void rom_Reset6502(int ram_clear) {$/;"	f	file:
 rom_make_ptr_for_addr	src/NoDiceLib/rom.c	/^static const unsigned char *rom_make_ptr_for_addr(unsigned short Addr)$/;"	f	file:
 rom_pack_level_header	src/NoDiceLib/rom.c	/^static void rom_pack_level_header(unsigned char **ptr)$/;"	f	file:
 rom_t	src/NoDiceLib/rom.c	/^typedef const unsigned char *rom_t;$/;"	t	file:
-rootfile	src/NoDiceLib/NoDiceLib.h	/^			const char *rootfile;	\/\/ Name of ASM file which defines the layout includes for this tileset; if null, use "path"$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
+rootfile	src/NoDiceLib/config.h	/^			const char *rootfile;	\/\/ Name of ASM file which defines the layout includes for this tileset; if null, use "path"$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
 row	src/NoDiceLib/NoDiceLib.h	/^		unsigned char row;$/;"	m	struct:NoDice_level::NoDice_the_level_object
 row_tileset	src/NoDiceLib/NoDiceLib.h	/^		unsigned char row_tileset;	\/\/ upper 4 bits is row, lower 4 bits is tileset$/;"	m	struct:NoDice_level::NoDice_map_link
 run_6502_timeout_thread	src/NoDice/gui.c	/^static gpointer run_6502_timeout_thread(gpointer optr)$/;"	f	file:
@@ -1126,7 +1129,7 @@ select_handler	src/NoDice/guictls.h	/^	void (* select_handler)(const GtkSelectab
 selected	src/NoDice/guictls.h	/^	gboolean selected;						\/\/ This item is selected$/;"	m	struct:_GtkSelectableOverlay
 selected_level	src/NoDice/gui_popups.c	/^	const struct NoDice_the_levels *selected_level;$/;"	m	struct:_gui_open_level_popup_desc_widgets	typeref:struct:_gui_open_level_popup_desc_widgets::NoDice_the_levels	file:
 selected_level_tileset	src/NoDice/gui_popups.c	/^	unsigned char selected_level_tileset;$/;"	m	struct:_gui_open_level_popup_desc_widgets	file:
-shift	src/NoDiceLib/NoDiceLib.h	/^				unsigned char shift;	\/\/ Shift value$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
+shift	src/NoDiceLib/config.h	/^				unsigned char shift;	\/\/ Shift value$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
 showif_handler	src/NoDice/gui_property_box.c	/^static void showif_handler(GtkWidget *widget, GList *context)$/;"	f	file:
 showif_handler_count_foreach_callback	src/NoDice/gui_property_box.c	/^static void showif_handler_count_foreach_callback(gpointer data, gpointer user_data)$/;"	f	file:
 showif_handler_foreach_callback	src/NoDice/gui_property_box.c	/^static void showif_handler_foreach_callback(gpointer data, gpointer user_data)$/;"	f	file:
@@ -1134,25 +1137,26 @@ showif_handler_foreach_callback_data	src/NoDice/gui_property_box.c	/^struct show
 showif_handler_list	src/NoDice/gui_property_box.c	/^static void showif_handler_list(GtkComboBox *widget, gpointer user_data)$/;"	f	file:
 showif_handler_spin	src/NoDice/gui_property_box.c	/^static void showif_handler_spin(GtkSpinButton *widget, gpointer user_data)$/;"	f	file:
 showif_handler_toggle	src/NoDice/gui_property_box.c	/^static void showif_handler_toggle(GtkToggleButton *widget, gpointer user_data)$/;"	f	file:
-showif_id	src/NoDiceLib/NoDiceLib.h	/^				const char *showif_id;		\/\/ Id to check$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
-showif_val	src/NoDiceLib/NoDiceLib.h	/^				unsigned char showif_val;	\/\/ Value to match$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
+showif_id	src/NoDiceLib/config.h	/^				const char *showif_id;		\/\/ Id to check$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
+showif_val	src/NoDiceLib/config.h	/^				unsigned char showif_val;	\/\/ Value to match$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options
 sibling	src/MusConv/ezxml.h	/^    ezxml_t sibling; \/\/ next tag with different name in same section and depth$/;"	m	struct:ezxml
 sibling	src/NoDiceLib/ezxml.h	/^    ezxml_t sibling; \/\/ next tag with different name in same section and depth$/;"	m	struct:ezxml
 size	src/NoDiceLib/NoDiceLib.h	/^		unsigned char size;			\/\/ Size of generator$/;"	m	struct:NoDice_level::NoDice_the_level_generator
 smb3_midi_event	src/MusConv/export.c	/^	struct smb3_midi_event$/;"	s	struct:smb3_track	file:
 smb3_track	src/MusConv/export.c	/^struct smb3_track$/;"	s	file:
 smb3_tracks	src/MusConv/export.c	/^} smb3_tracks[MUSICTRACK_TOTAL] = { NULL };$/;"	v	typeref:struct:smb3_track
-sort_gens_compare	src/NoDiceLib/config.c	/^static int sort_gens_compare (const void * a, const void * b)$/;"	f	file:
+sort_gens_compare	src/NoDiceLib/config.c	/^static int sort_gens_compare (const void * a, const void * b) {$/;"	f	file:
 sort_links_compare	src/NoDice/edit.c	/^static int sort_links_compare(const void *a, const void *b)$/;"	f	file:
 sort_objs_compare	src/NoDice/edit.c	/^static int sort_objs_compare(const void *a, const void *b)$/;"	f	file:
-special_options	src/NoDiceLib/NoDiceLib.h	/^			struct NoDice_headers special_options;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects	typeref:struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_headers
+special_options	src/NoDiceLib/config.h	/^			struct NoDice_headers special_options;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects	typeref:struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_headers
 spin	src/NoDice/gui.c	/^	GtkWidget *spin;$/;"	m	struct:_gui_parameter_widgets	file:
 spr_pal	src/NoDiceLib/NoDiceLib.h	/^	unsigned char spr_pal[16];	\/\/ NES color values making up the 4 SPR palettes$/;"	m	struct:NoDice_level
-sprites	src/NoDiceLib/NoDiceLib.h	/^			} *sprites;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects	typeref:struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
+sprites	src/NoDiceLib/config.h	/^			} *sprites;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects	typeref:struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
 standalone	src/NoDiceLib/ezxml.c	/^    short standalone;     \/\/ non-zero if <?xml standalone="yes"?>$/;"	m	struct:ezxml_root	file:
 start_time	src/MusConv/import.c	/^	unsigned int start_time;			\/\/ The time when this segment begins!$/;"	m	struct:music_segment	file:
 state	src/NoDice/gui.c	/^	unsigned char state;$/;"	m	struct:_gui_start_widgets	file:
-std	makefile	/^	gcc -std=c11 -O -c $< -o $@ `pkg-config --cflags gtk+-2.0`$/;"	m
+std	makefile	/^	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`$/;"	m
+std	makefile	/^	gcc -std=c11 -g -c $< -o $@$/;"	m
 stristr	src/NoDiceLib/stristr.c	/^char *stristr(const char *String, const char *Pattern)$/;"	f
 surface	src/NoDice/ppu.c	/^	gui_surface_t *surface;	\/\/ Actual complete sprite$/;"	m	struct:_PPU_SPR	file:
 target_index	src/NoDice/gui_combobox_simple.c	/^	int target_index;$/;"	m	struct:_gui_combobox_simple_set_selected_foreach_callback_data	file:
@@ -1163,24 +1167,24 @@ textbox_desc	src/NoDice/gui.c	/^	GtkWidget *textbox_desc;$/;"	m	struct:_gui_star
 textbox_desc	src/NoDice/gui_popups.c	/^	GtkWidget *textbox_desc;		\/\/ Level description text box$/;"	m	struct:_gui_open_level_popup_desc_widgets	file:
 tile_id_grid	src/NoDiceLib/NoDiceLib.h	/^	unsigned short tile_id_grid[TILEMEM_END - TILEMEM_BASE];$/;"	m	struct:NoDice_level
 tile_layout	src/NoDiceLib/NoDiceLib.h	/^	unsigned char tile_layout[256][4];	\/\/ UL, LL, UR, LR; 8x8 patterns making up the 16x16 tile$/;"	m	struct:NoDice_level
-tilehint_alpha	src/NoDice/NoDice.h	/^	double tilehint_alpha;$/;"	m	struct:_gui_draw_info
-tilehint_count	src/NoDiceLib/NoDiceLib.h	/^			int tilehint_count;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
-tilehint_count	src/NoDiceLib/NoDiceLib.h	/^		int tilehint_count;$/;"	m	struct:NoDice_configuration::NoDice_game
-tilehints	src/NoDiceLib/NoDiceLib.h	/^			struct NoDice_tilehint *tilehints;	\/\/ Tileset specific hints$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_tilehint
-tilehints	src/NoDiceLib/NoDiceLib.h	/^		} *tilehints;				\/\/ Tileset-agnostic (common) hints$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tilehint
+tilehint_alpha	src/NoDice/gui.h	/^	double tilehint_alpha;$/;"	m	struct:_gui_draw_info
+tilehint_count	src/NoDiceLib/config.h	/^			int tilehint_count;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset
+tilehint_count	src/NoDiceLib/config.h	/^		int tilehint_count;$/;"	m	struct:NoDice_configuration::NoDice_game
+tilehints	src/NoDiceLib/config.h	/^			struct NoDice_tilehint *tilehints;	\/\/ Tileset specific hints$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_tilehint
+tilehints	src/NoDiceLib/config.h	/^		} *tilehints;				\/\/ Tileset-agnostic (common) hints$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tilehint
 tiles	src/NoDiceLib/NoDiceLib.h	/^	unsigned char *tiles;		\/\/ Pointer to beginning of tile RAM$/;"	m	struct:NoDice_level
-tileset	src/NoDiceLib/NoDiceLib.h	/^			unsigned char tileset;		\/\/ If "tilelayout" is specified, this provides the tileset to be used (otherwise ignored)$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile
 tileset	src/NoDiceLib/NoDiceLib.h	/^	const struct NoDice_tileset *tileset;	\/\/ Tileset of this level$/;"	m	struct:NoDice_level	typeref:struct:NoDice_level::NoDice_tileset
-tileset_count	src/NoDiceLib/NoDiceLib.h	/^		int tileset_count;	\/\/ Count of tilesets$/;"	m	struct:NoDice_configuration::NoDice_game
-tilesets	src/NoDiceLib/NoDiceLib.h	/^		} *tilesets;	\/\/ Tilesets in this game$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset
+tileset	src/NoDiceLib/config.h	/^			unsigned char tileset;		\/\/ If "tilelayout" is specified, this provides the tileset to be used (otherwise ignored)$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_map_special_tile
+tileset_count	src/NoDiceLib/config.h	/^		int tileset_count;	\/\/ Count of tilesets$/;"	m	struct:NoDice_configuration::NoDice_game
+tilesets	src/NoDiceLib/config.h	/^		} *tilesets;	\/\/ Tilesets in this game$/;"	m	struct:NoDice_configuration::NoDice_game	typeref:struct:NoDice_configuration::NoDice_game::NoDice_tileset
 time	src/MusConv/export.c	/^		unsigned int time;$/;"	m	struct:smb3_track::smb3_midi_event	file:
 time	src/MusConv/import.c	/^	unsigned int time;		\/\/ Literal time of event$/;"	m	struct:music_event_list	file:
 time_total	src/MusConv/export.c	/^	unsigned short time_total;		\/\/ Time accumulating (not delta like MIDI uses)$/;"	m	struct:smb3_track	file:
-title	src/NoDiceLib/NoDiceLib.h	/^			const char *title;				\/\/ Game title$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_options
-total_map_object_items	src/NoDiceLib/NoDiceLib.h	/^		int total_map_object_items;$/;"	m	struct:NoDice_configuration::NoDice_game
-total_map_special_tiles	src/NoDiceLib/NoDiceLib.h	/^		int total_map_special_tiles;$/;"	m	struct:NoDice_configuration::NoDice_game
+title	src/NoDiceLib/config.h	/^			const char *title;				\/\/ Game title$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_options
+total_map_object_items	src/NoDiceLib/config.h	/^		int total_map_object_items;$/;"	m	struct:NoDice_configuration::NoDice_game
+total_map_special_tiles	src/NoDiceLib/config.h	/^		int total_map_special_tiles;$/;"	m	struct:NoDice_configuration::NoDice_game
 total_screens	src/NoDiceLib/NoDiceLib.h	/^		unsigned char total_screens;$/;"	m	struct:NoDice_level::NoDice_level_header
-total_sprites	src/NoDiceLib/NoDiceLib.h	/^			int total_sprites;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects
+total_sprites	src/NoDiceLib/config.h	/^			int total_sprites;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects
 track_end_time	src/MusConv/import.c	/^		unsigned int track_end_time;	\/\/ Termination time of this track$/;"	m	struct:music_segment::music_segment_track	file:
 track_start	src/MusConv/import.c	/^		unsigned char track_start;		\/\/ Start offsets for this tracks$/;"	m	struct:music_segment::music_segment_track	file:
 track_starts	src/NoDiceLib/NoDiceLib.h	/^		unsigned char track_starts[MUSICTRACK_TOTAL];	\/\/ Start offsets for all tracks$/;"	m	struct:NoDice_music_context::NoDice_music_segment
@@ -1188,8 +1192,8 @@ tracks	src/MusConv/import.c	/^	} tracks[MUSICTRACK_TOTAL];$/;"	m	struct:music_se
 translation_data	src/NoDice/guictls.h	/^	} translation_data;		\/\/ Data used to translate a generator$/;"	m	struct:_GtkSelectableOverlay	typeref:struct:_GtkSelectableOverlay::_translation_data
 txt	src/MusConv/ezxml.h	/^    char *txt;       \/\/ tag character content, empty string if none$/;"	m	struct:ezxml
 txt	src/NoDiceLib/ezxml.h	/^    char *txt;       \/\/ tag character content, empty string if none$/;"	m	struct:ezxml
-type	src/NoDiceLib/NoDiceLib.h	/^				unsigned char type;	\/\/ Type of generator$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
 type	src/NoDiceLib/NoDiceLib.h	/^		unsigned char type;		\/\/ Type of generator$/;"	m	struct:NoDice_level::NoDice_the_level_generator
+type	src/NoDiceLib/config.h	/^				unsigned char type;	\/\/ Type of generator$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_tileset::NoDice_generator
 u	src/NoDiceLib/ezxml.c	/^    char *u;              \/\/ UTF-8 conversion of string if original was UTF-16$/;"	m	struct:ezxml_root	file:
 uint	src/NoDiceLib/stristr.c	/^typedef unsigned int uint;$/;"	t	file:
 undo_mark	src/NoDice/edit.c	/^static void undo_mark(enum UNDOMODE undo_mode)$/;"	f	file:
@@ -1202,8 +1206,8 @@ undo_stack_pos	src/NoDice/edit.c	/^	undo_stack_pos = 0, 	\/\/ Position within st
 undo_stack_total	src/NoDice/edit.c	/^	undo_stack_total = 0;	\/\/ Total items in undo stack$/;"	v	file:
 usage	src/MusConv/main.c	/^static void usage()$/;"	f	file:
 vaddr_to_level	src/NoDiceLib/rom.c	/^static void vaddr_to_level(unsigned short addr, unsigned char *t15, unsigned char *t16)$/;"	f	file:
-value	src/NoDiceLib/NoDiceLib.h	/^					unsigned char value;	\/\/ Value for this option$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options::NoDice_option
-varname	src/NoDiceLib/internal.h	/^	const char *varname;		\/\/ Name of variable (from source, to be resolved by FNS)$/;"	m	struct:SMB3_RAM
+value	src/NoDiceLib/config.h	/^					unsigned char value;	\/\/ Value for this option$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_headers::NoDice_header_options::NoDice_option
+varname	src/NoDiceLib/ram.h	/^	const char *varname;		\/\/ Name of variable (from source, to be resolved by FNS)$/;"	m	struct:SMB3_RAM
 vbox	src/NoDice/gui_popups.c	/^	GtkWidget *vbox;$/;"	m	struct:gui_special_obj_properties_data	file:
 verify_generated_files	src/NoDiceLib/nodice.c	/^static int verify_generated_files()$/;"	f	file:
 vert_scroll	src/NoDiceLib/NoDiceLib.h	/^		unsigned short vert_scroll;$/;"	m	struct:NoDice_level::NoDice_level_header
@@ -1212,7 +1216,7 @@ vram_virtual_x	src/NoDiceLib/rom.c	/^static unsigned short vram_virtual_x(unsign
 vram_virtual_x_v	src/NoDiceLib/rom.c	/^static unsigned short vram_virtual_x_v(unsigned short addr)$/;"	f	file:
 vram_virtual_y	src/NoDiceLib/rom.c	/^static unsigned short vram_virtual_y(unsigned short addr)$/;"	f	file:
 vram_virtual_y_v	src/NoDiceLib/rom.c	/^static unsigned short vram_virtual_y_v(unsigned short addr)$/;"	f	file:
-warpzone	src/NoDiceLib/NoDiceLib.h	/^			const char *warpzone;			\/\/ Warp Zone layout label definition$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_options
+warpzone	src/NoDiceLib/config.h	/^			const char *warpzone;			\/\/ Warp Zone layout label definition$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_options
 widget	src/NoDice/gui_property_box.c	/^	GtkWidget *widget;				\/\/ Widget in property box$/;"	m	struct:gui_generate_option_controls_context	file:
 widget	src/NoDice/guictls.h	/^	GtkWidget widget;$/;"	m	struct:_GtkSelectableOverlay
 widget_signal_data	src/NoDice/gui_property_box.c	/^	guint widget_signal_data;		\/\/ Signal data to pass on emission (for initial visibility of Show-If controls)$/;"	m	struct:gui_generate_option_controls_context	file:
@@ -1221,11 +1225,11 @@ width	src/NoDice/ppu.c	/^	int width, height;$/;"	m	struct:_PPU_SPR	file:
 word	src/M6502/M6502.h	/^typedef unsigned short word;$/;"	t
 writeBE16	src/MusConv/export.c	/^static void writeBE16(FILE *out, short s16)$/;"	f	file:
 writeBE32	src/MusConv/export.c	/^static void writeBE32(FILE *out, int s32)$/;"	f	file:
-x	src/NoDiceLib/NoDiceLib.h	/^				int x;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
+x	src/NoDiceLib/config.h	/^				int x;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
 xe	src/NoDiceLib/NoDiceLib.h	/^		unsigned short xe, ye;		\/\/ Pixel X\/Y end$/;"	m	struct:NoDice_level::NoDice_the_level_generator
 xml	src/NoDiceLib/ezxml.c	/^    struct ezxml xml;     \/\/ is a super-struct built on top of ezxml struct$/;"	m	struct:ezxml_root	typeref:struct:ezxml_root::ezxml	file:
 xs	src/NoDiceLib/NoDiceLib.h	/^		unsigned short xs, ys;		\/\/ Pixel X\/Y start$/;"	m	struct:NoDice_level::NoDice_the_level_generator
-y	src/NoDiceLib/NoDiceLib.h	/^				int y;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
+y	src/NoDiceLib/config.h	/^				int y;$/;"	m	struct:NoDice_configuration::NoDice_game::NoDice_objects::NoDice_object_sprites
 ye	src/NoDiceLib/NoDiceLib.h	/^		unsigned short xe, ye;		\/\/ Pixel X\/Y end$/;"	m	struct:NoDice_level::NoDice_the_level_generator
 ys	src/NoDiceLib/NoDiceLib.h	/^		unsigned short xs, ys;		\/\/ Pixel X\/Y start$/;"	m	struct:NoDice_level::NoDice_the_level_generator
-zoom	src/NoDice/NoDice.h	/^	double zoom;$/;"	m	struct:_gui_draw_info
+zoom	src/NoDice/gui.h	/^	double zoom;$/;"	m	struct:_gui_draw_info

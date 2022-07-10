@@ -1,12 +1,14 @@
 #include <gtk/gtk.h>
+
 #include "../NoDiceLib/NoDiceLib.h"
+
+#include "guictls.h"
 #include "NoDice.h"
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Methods to support a pseudo "listbox" in GTK+ since it is otherwise pretty ugly :)
 /////////////////////////////////////////////////////////////////////////////////////
-GtkWidget *gui_listbox_new(GCallback sel_change_callback, gpointer user_data)
-{
+GtkWidget *gui_listbox_new(GCallback sel_change_callback, gpointer user_data) {
 	GtkWidget *scroll_window;
 	GtkWidget *list_view;
 	GtkCellRenderer *renderer;

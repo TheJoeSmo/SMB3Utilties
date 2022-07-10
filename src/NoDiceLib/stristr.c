@@ -21,13 +21,12 @@
 #include <string.h>
 #include <ctype.h>
 
+#include "stristr.h"
+
 #define NUL	'\0'
 
 typedef unsigned int uint;
 
-#if defined(__cplusplus) && __cplusplus
- extern "C" {
-#endif
 
 char *stristr(const char *String, const char *Pattern)
 {
@@ -57,30 +56,3 @@ char *stristr(const char *String, const char *Pattern)
       }
       return NULL;
 }
-
-#if defined(__cplusplus) && __cplusplus
- }
-#endif
-
-#ifdef TEST
-
-int main(void)
-{
-      int i;
-      char *buffer[2] = {"heLLo, HELLO, hello, hELLo, HellO", "Hell"};
-      char *sptr;
-
-      for (i = 0; i < 2; ++i)
-      {
-            printf("\nTest string=\"%s\"\n", sptr = buffer[i]);
-            while (0 != (sptr = stristr(sptr, "hello")))
-            {
-                  printf("Testing %s:\n", sptr);
-                  printf("Found %5.5s!\n", sptr++);
-            }
-      }
-
-      return(0);
-}
-
-#endif /* TEST */

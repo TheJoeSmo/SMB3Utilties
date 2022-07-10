@@ -1,6 +1,7 @@
 #include <stdio.h>
+
 #include "NoDiceLib.h"
-#include "internal.h"
+#include "ram.h"
 
 // These are all resolved at runtime to the addresses as provided by the FNS
 struct SMB3_RAM _ram[SMB3RAM_TOTAL] =

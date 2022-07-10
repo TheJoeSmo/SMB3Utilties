@@ -1,9 +1,11 @@
-#include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
 #include <gtk/gtk.h>
+#include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
+
 #include "../NoDiceLib/NoDiceLib.h"
+
 #include "NoDice.h"
 #include "guictls.h"
 

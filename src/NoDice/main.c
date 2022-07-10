@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
 	if(!NoDice_Init())
 	{
-		gui_display_message(TRUE, NoDice_Error());
+		gui_display_message(1, NoDice_Error());
 
 		NoDice_Shutdown();
 

@@ -14,10 +14,7 @@
 #ifndef M6502_H
 #define M6502_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
+void NoDice_load_level_by_addr(unsigned char tileset, unsigned short address, unsigned short object_address);
                                /* Compilation options:       */
 /* #define FAST_RDOP */        /* Separate Op6502()/Rd6502() */
 /* #define DEBUG */            /* Compile debugging version  */
@@ -39,6 +36,7 @@ extern "C" {
 #define	V_FLAG	  0x40         /* 1: Overflow occured        */
 #define	N_FLAG	  0x80         /* 1: Result is negative      */
 
+
 /** Simple Datatypes *****************************************/
 /** NOTICE: sizeof(byte)=1 and sizeof(word)=2               **/
 /*************************************************************/
@@ -52,17 +50,9 @@ typedef unsigned short word;
 #endif
 typedef signed char offset;
 
-/** Structured Datatypes *************************************/
-/** NOTICE: #define LSB_FIRST for machines where least      **/
-/**         signifcant byte goes first.                     **/
-/*************************************************************/
 typedef union
 {
-#ifdef LSB_FIRST
-  struct { byte l,h; } B;
-#else
   struct { byte h,l; } B;
-#endif
   word W;
 } pair;
 

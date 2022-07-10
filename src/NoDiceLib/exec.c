@@ -1,8 +1,11 @@
-#include "NoDiceLib.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/wait.h>
+
+#include "config.h"
+#include "exec.h"
+#include "stristr.h"
 
 int NoDice_exec_build(void (*buffer_callback)(const char *))
 {

@@ -3,7 +3,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
+
 #include "../NoDiceLib/NoDiceLib.h"
+
+#include "gui.h"
+#include "ppu.h"
 #include "NoDice.h"
 
 #define UNDO_STACK_LIMIT	100	// FIXME: User-configurable!
@@ -714,7 +718,7 @@ int edit_level_add_labels(const struct NoDice_the_levels *level, int add_layout,
 	}
 	else
 	{
-		gui_display_message(TRUE, "FIXME: NOT IMPLEMENTED FOR WORLD MAPS");
+		gui_display_message(1, "FIXME: NOT IMPLEMENTED FOR WORLD MAPS");
 		return 0;
 	}
 
@@ -1027,7 +1031,7 @@ static void level_reload(int expected_generator_count)
 	gui_6502_timeout_start();
 
 	// Reload level
-	NoDice_load_level_raw_data(NULL, 0, FALSE);
+	NoDice_load_level_raw_data(NULL, 0, 0);
 
 	// Cleanup timer
 	gui_6052_timeout_end();
@@ -1479,8 +1483,7 @@ void edit_obj_remove(struct NoDice_the_level_object *obj)
 }
 
 
-void edit_map_obj_clear(struct NoDice_the_level_object *obj)
-{
+void edit_map_obj_clear(struct NoDice_the_level_object *obj) {
 	// Mark undo
 	undo_mark(UNDOMODE_OBJECTS);
 

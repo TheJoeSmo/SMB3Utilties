@@ -1,6 +1,9 @@
 #include <stdio.h>
+
 #include "../NoDiceLib/NoDiceLib.h"
-#include "NoDice.h"
+
+#include "gui.h"
+#include "ppu.h"
 
 static gui_surface_t *PPU_BG_VROM[4];
 
