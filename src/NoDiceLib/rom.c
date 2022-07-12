@@ -1241,7 +1241,6 @@ void Wr6502(register word Addr, register byte Value) {
 
         MMC3_Command = 0;
     } else {
-        fprintf(stdout, "\x1B[33m Option 1");
         fwrite_warning(stderr, "Out of range write %04X", Addr);
     }
 }
