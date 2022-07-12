@@ -5,8 +5,14 @@ all: compile
 compile: bin/NoDice
 
 # Generate the main file to run
-bin/NoDice: o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o
-	gcc -std=c11 -g -o $@ o/M6502/M6502.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o `pkg-config --cflags gtk+-2.0`  `pkg-config --libs gtk+-2.0`
+bin/NoDice: o/M6502/M6502.o o/core/colors.o o/core/logging.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o
+	gcc -std=c11 -g -o $@ o/M6502/M6502.o o/core/colors.o o/core/logging.o o/NoDice/gui_overlay.o o/NoDice/gui_property_box.o o/NoDice/edit.o o/NoDice/gui_combobox_simple.o o/NoDiceLib/stristr.o o/NoDiceLib/ram.o o/NoDiceLib/exec.o o/NoDiceLib/config.o o/NoDice/ppu.o o/NoDice/gui_popups.o o/NoDice/gui.o o/NoDiceLib/NoDiceLib.o o/NoDiceLib/ezxml.o o/NoDice/guictls.o o/NoDice/NoDice.o o/NoDice/main.o `pkg-config --cflags gtk+-2.0`  `pkg-config --libs gtk+-2.0`
+
+o/core/colors.o: src/core/colors.c src/core/colors.h
+	gcc -std=c11 -g -c $< -o $@
+
+o/core/logging.o: src/core/logging.c src/core/logging.h
+	gcc -std=c11 -g -c $< -o $@
 
 o/NoDice/main.o: src/NoDice/main.c
 	gcc -std=c11 -g -c $< -o $@ `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
@@ -65,14 +71,27 @@ o/M6502/M6502.o: src/NoDiceLib/rom.c $(wildcard src/M6502/*.c) $(wildcard src/M6
 tidy:
 	clang-tidy -fix src/NoDice/*.c -checks=readability-else-after-return,readability-isolate-declaration,readability-braces-around-statements -- `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` 
 	clang-tidy -fix src/NoDiceLib/*.c -checks=readability-else-after-return,readability-isolate-declaration,readability-braces-around-statements -- `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` 
+	clang-tidy -fix src/core/*.c -checks=readability-else-after-return,readability-isolate-declaration,readability-braces-around-statements -- `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` 
 	clang-tidy -fix src/NoDice/*.h -checks=readability-else-after-return,readability-isolate-declaration,readability-braces-around-statements -- `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` 
 	clang-tidy -fix src/NoDiceLib/*.h -checks=readability-else-after-return,readability-isolate-declaration,readability-braces-around-statements -- `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` 
 	clang-tidy -fix src/M6502/M6502.h -checks=readability-else-after-return,readability-isolate-declaration,readability-braces-around-statements -- `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` 
+	clang-tidy -fix src/core/*.h -checks=readability-else-after-return,readability-isolate-declaration,readability-braces-around-statements -- `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` 
 	clang-format -i --style=file ./src/NoDice/*.c
 	clang-format -i --style=file ./src/NoDiceLib/*.c
 	clang-format -i --style=file ./src/NoDice/*.h
 	clang-format -i --style=file ./src/NoDiceLib/*.h
 	clang-format -i --style=file ./src/M6502/M6502.h
+	clang-format -i --style=file ./src/core/*.c
+	clang-format -i --style=file ./src/core/*.h
+
+tidy_quick:
+	@clang-format -i --style=file ./src/NoDice/*.c
+	@clang-format -i --style=file ./src/NoDiceLib/*.c
+	@clang-format -i --style=file ./src/NoDice/*.h
+	@clang-format -i --style=file ./src/NoDiceLib/*.h
+	@clang-format -i --style=file ./src/M6502/M6502.h
+	@clang-format -i --style=file ./src/core/*.c
+	@clang-format -i --style=file ./src/core/*.h
 
 clear: clean
 	@clear

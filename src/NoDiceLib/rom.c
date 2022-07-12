@@ -3,6 +3,8 @@
 #include <string.h>
 
 #include "../M6502/M6502.h"
+#include "../core/colors.h"
+#include "../core/logging.h"
 #include "NoDiceLib.h"
 #include "internal.h"
 
@@ -1239,7 +1241,8 @@ void Wr6502(register word Addr, register byte Value) {
 
         MMC3_Command = 0;
     } else {
-        fprintf(stderr, "Warning: Out of range write %04X\n", Addr);
+        fprintf(stdout, "\x1B[33m Option 1");
+        fwrite_warning(stderr, "Out of range write %04X", Addr);
     }
 }
 
@@ -1367,7 +1370,7 @@ byte Rd6502(register word Addr) {
     } else if (Addr >= PRG_D_START && Addr <= PRG_D_END) {
         return _PRG_D[Addr - PRG_D_START];
     } else {
-        fprintf(stderr, "Warning: Out of range read %04X\n", Addr);
+        fwrite_warning(stderr, "Out of range read %04X", Addr);
     }
 
     return 0xFF;

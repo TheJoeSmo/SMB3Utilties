@@ -1,5 +1,5 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*'
+Checks:          'clang-diagnostic-*,clang-analyzer-core-*,clang-analyzer-deadcode-*,clang-analyzer-core-nullability*,clang-analyzer-core-unix-*'
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
@@ -35,4 +35,3 @@ CheckOptions:
   - key:             modernize-use-nullptr.NullMacros
     value:           'NULL'
 ...
-
